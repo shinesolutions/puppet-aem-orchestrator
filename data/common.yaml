@@ -1,0 +1,8 @@
+---
+aem_orchestrator::basedir: /opt/shinesolutions
+aem_orchestrator::libdir: "%{hiera('aem_orchestrator::basedir')}/lib"
+aem_orchestrator::bindir: "%{hiera('aem_orchestrator::basedir')}/bin"
+aem_orchestrator::manage_dirs: true
+aem_orchestrator::jarfile_source: http://central.maven.org/maven2/com/shinesolutions/aem-orchestrator/1.0/aem-orchestrator-1.0.jar
+aem_orchestrator::jarfile_checksum: sha1
+aem_orchestrator::jarfile_checksum_value: a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1
