@@ -5,12 +5,7 @@
   "license": "Apache-2.0",
   "summary": "Puppet module for provisioning AEM Orchestrator",
   "source": "http://github.com/shinesolutions/puppet-aem-orchestrator",
-  "dependencies": [
-    {
-      "name": "puppetlabs-stdlib",
-      "version_requirement": "4.14.0"
-    }
-  ],
+  "dependencies": [ ],
   "project_page": "https://github.com/shinesolutions/puppet-aem-orchestrator",
   "tags": [
     "adobe experience manager",
