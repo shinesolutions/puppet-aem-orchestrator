@@ -7,9 +7,9 @@ RSpec.configure do |c|
   c.module_path = File.join(fixture_path, 'modules')
   c.manifest_dir = File.join(fixture_path, 'manifests')
   c.default_facts = {
-    :osfamily => 'Debian',
-    :operatingsystem => 'Ubuntu',
-    :lsbdistid => 'ubuntu',
-    :lsbdistcodename => 'trusty',
+    osfamily: 'Debian',
+    operatingsystem: 'Ubuntu',
+    lsbdistid: 'ubuntu',
+    lsbdistcodename: 'trusty',
   }
 end

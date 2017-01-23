@@ -3,6 +3,6 @@ aem_orchestrator::basedir: /opt/shinesolutions
 aem_orchestrator::libdir: "%{hiera('aem_orchestrator::basedir')}/lib"
 aem_orchestrator::bindir: "%{hiera('aem_orchestrator::basedir')}/bin"
 aem_orchestrator::manage_dirs: true
-aem_orchestrator::jarfile_source: http://central.maven.org/maven2/com/shinesolutions/aem-orchestrator/1.0/aem-orchestrator-1.0.jar
-aem_orchestrator::jarfile_checksum: sha1
-aem_orchestrator::jarfile_checksum_value: a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1
+aem_orchestrator::jarfile_source: http://central.maven.org/maven2/com/shinesolutions/aem-orchestrator/0.9.0/aem-orchestrator-0.9.0.jar
+aem_orchestrator::jarfile_checksum: sha256
+aem_orchestrator::jarfile_checksum_value: 83c0084d04c218bec8bbad971163fb1729a8dc49ff6c48a33a573d22c753e19e
