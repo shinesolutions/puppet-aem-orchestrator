@@ -1,9 +1,5 @@
 sudo: false
 language: ruby
 rvm:
-  - "1.9"
-  - "2.0"
-  - "2.1"
-  - "2.2"
-script:
-  - make ci
+  - "ruby-2.2.5"
+  - "ruby-2.3.3"
