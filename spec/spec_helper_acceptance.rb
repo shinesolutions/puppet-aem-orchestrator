@@ -23,8 +23,10 @@ RSpec.configure do |c|
   c.before :suite do
     # Install module and dependencies
     puppet_module_install(source: proj_root, module_name: 'aem_orchestrator')
-    #hosts.each do |host|
-    #  on host, puppet('module', 'install', 'puppetlabs-stdlib'), acceptable_exit_codes: [0, 1]
-    #end
+    hosts.each do |host|
+      on host, puppet('module', 'install', 'puppetlabs-java'), acceptable_exit_codes: [0, 1]
+      apply_manifest('class { "java": distribution => "jre" }')
+      apply_manifest('package { "tree": ensure => present }')
+    end
   end
 end

@@ -4,30 +4,56 @@
 #
 # === Parameters
 #
+# [*service_name*]
+#   The name of the service when it is installed. Defaults to
+#   `aem-orchestrator` and several other variables are based on it. You probably
+#   shouldn't change this.
+#
 # [*basedir*]
-#   Path to the base directory for installation. Used to define `libdir` and
-#   `bindir`.
+#   Path to the base directory for installation. Defaults to
+#   '/opt/shinesolutions' and several other paths are based on it.
 #
-# [*libdir*]
-#   Path to the `lib` directory for installation. Based on `basedir` by default
-#   but can be overridden.
+# [*installdir*]
+#   Path to the directory for installation. The JAR file and configuration
+#   files are installed here. Defaults to <basedir>/<service_name>.
 #
-# [*bindir*]
-#   Path to the `bin` directory for installation. Based on `basedir` by default
-#   but can be overridden.
+# [*homedir*]
+#   Path to the home directory for the user the service runs as. Only used if
+#   <manage_homedir> is true.
 #
-# [*manage_dirs*]
-#   Whether or not to manage the installation directories.
+# [*user*]
+#   The user the service runs as. Defaults to <service_name>.
+#
+# [*group*]
+#   The primary group for user the service runs as. Defaults to <service_name>.
 #
 # [*jarfile_source*]
 #   Source URL for the AEM Orchestrator JAR file.
 #
+# [*jarfile_checksum_value*]
+#   Checksum of the AEM Orchestrator JAR file. If not specified and an HTTP URL
+#   is used, Puppet will treat the `File` resource as updated on every run.
+#
+# [*manage_basedir*]
+#   Whether or not to manage <basedir> as a resource in Puppet.
+#
+# [*manage_installdir*]
+#   Whether or not to manage <installdir> as a resource in Puppet.
+#
+# [*manage_homedir*]
+#   Whether or not to manage <homedir> as a resource in Puppet.
+#
+# [*manage_user*]
+#   Whether or not to manage <user> as a resource in Puppet.
+#
+# [*manage_group*]
+#   Whether or not to manage <group> as a resource in Puppet.
+#
 # [*jarfile_checksum*]
 #   Checksum type used for `jarfile_checksum_value`.
 #
-# [*jarfile_checksum_value*]
-#   Checksum of the AEM Orchestrator JAR file. If not specified, Puppet will
-#   treat the `File` resource as updated on every run.
+# [*aws_profile*]
+#   If specified, sets the `AWS_PROFILE` variable in the service's environment.
 #
 # === Examples
 #
@@ -42,24 +68,89 @@
 # Copyright © 2017	Shine Solutions Group, unless otherwise noted.
 #
 class aem_orchestrator (
+  $service_name,
   $basedir,
-  $libdir,
-  $bindir,
-  $manage_dirs,
+  $installdir,
+  $homedir,
+  $user,
+  $group,
   $jarfile_source,
-  $jarfile_checksum,
   $jarfile_checksum_value,
+
+  $manage_basedir    = true,
+  $manage_installdir = false,
+  $manage_homedir    = true,
+  $manage_user       = true,
+  $manage_group      = true,
+  $jarfile_checksum  = 'sha256',
+
+  $aws_profile = undef,
 ){
-  if $manage_dirs {
-    file { [ $basedir, $libdir, $bindir ]:
+  if $manage_basedir {
+    file { $basedir:
       ensure => directory,
     }
+    $basedir_require = File[$basedir]
+  } else {
+    $basedir_require = undef
   }
-  file { "${libdir}/aem-orchestrator.jar":
-    ensure         => file,
-    source         => $jarfile_source,
-    checksum       => $jarfile_checksum,
-    checksum_value => $jarfile_checksum_value,
-    require        => [File[$libdir], File[$bindir]],
+  if $manage_user {
+    group { $group:
+      ensure => present,
+      system => true,
+    }
+    user { $user:
+      ensure     => present,
+      home       => $homedir,
+      managehome => $manage_homedir,
+      system     => true,
+      shell      => '/usr/sbin/nologin',
+      gid        => $group,
+      expiry     => absent,
+    }
+  }
+  if $manage_installdir {
+    file { [ $installdir ]:
+      ensure  => directory,
+      owner   => $user,
+      group   => $group,
+      require => [ $basedir_require, User[$user] ],
+    }
+    $file_requires = [ File[$installdir], User[$user] ]
+  } else {
+    $file_requires = [ User[$user] ]
+  }
+
+  $jarfile = "${installdir}/aem-orchestrator.jar"
+  file {
+    $jarfile:
+      ensure         => file,
+      owner          => $user,
+      group          => $group,
+      mode           => '0500',
+      source         => $jarfile_source,
+      checksum       => $jarfile_checksum,
+      checksum_value => $jarfile_checksum_value,
+      require        => $file_requires;
+    "${installdir}/application.properties":
+      ensure  => file,
+      owner   => $user,
+      group   => $group,
+      mode    => '0400',
+      content => template('aem_orchestrator/application.properties.erb'),
+      require => $file_requires;
+  }
+
+  service { $service_name:
+    ensure => running,
+    enable => true,
+  }
+
+  if $facts['os']['family'] == 'redhat' {
+    file { "/etc/systemd/system/${service_name}.service":
+      ensure  => file,
+      content => template('aem_orchestrator/service.conf.erb'),
+      notify  => Service[$service_name],
+    }
   }
 }
