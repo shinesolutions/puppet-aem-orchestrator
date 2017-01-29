@@ -1,32 +1,51 @@
-# Spring config
-endpoints.enabled=false
-endpoints.health.enabled=true
+<% base = 'aem_orchestrator::config::' -%>
 
-aws.sqs.queueName=SqsExampleQueue
+<%- if scope[base + 'endpoints_enabled'] != nil -%>
+  <%--%>endpoints.enabled=<%= scope[base + 'endpoints_enabled'] %>
+<%- end -%>
+<%- if scope[base + 'endpoints_health_enabled'] != nil -%>
+  <%--%>endpoints.health.enabled=<%= scope[base + 'endpoints_health_enabled'] %>
+<%- end -%>
 
-# See here for list of usable regions:
-# http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/regions/Regions.html
-aws.region=AP_SOUTHEAST_2
+<%- if scope[base + 'aws_client_protocol'] != nil -%>
+  <%--%>aws.client.protocol=<%= scope[base + 'aws_client_protocol'] %>
+<%- end -%>
+<%- if scope[base + 'aws_client_proxy_host'] != nil -%>
+  <%--%>aws.client.proxy.host=<%= scope[base + 'aws_client_proxy_host'] %>
+<%- end -%>
+<%- if scope[base + 'aws_client_proxy_port'] != nil -%>
+  <%--%>aws.client.proxy.port=<%= scope[base + 'aws_client_proxy_port'] %>
+<%- end -%>
+<%- if scope[base + 'aws_client_connection_timeout'] != nil -%>
+  <%--%>aws.client.connection.timeout=<%= scope[base + 'aws_client_connection_timeout'] %>
+<%- end -%>
+<%- if scope[base + 'aws_client_error_retry'] != nil -%>
+  <%--%>aws.client.max.errorRetry=<%= scope[base + 'aws_client_error_retry'] %>
+<%- end -%>
 
-aws.autoscale.group.name.publisherDispatcher=publisherDispatcherGroupName
-aws.autoscale.group.name.publisher=publisherGroupName
-aws.autoscale.group.name.authorDispatcher=authorDispatcherGroupName
+<%- if scope[base + 'sqs_queue_name'] != nil -%>
+  <%--%>aws.sqs.queueName=<%= scope[base + 'sqs_queue_name'] %>
+<%- end -%>
 
-aws.client.protocol=HTTPS
-aws.client.proxy.host=proxy.aem
-aws.client.proxy.port=3128
-aws.client.connection.timeout=30000
-aws.client.max.errorRetry=10
+<%- ['replicator', 'orchestrator'].each do |var| -%>
+  <%- baseVar = base + var -%>
+  <%- if scope[baseVar + 'Username'] != nil -%>
+    <%--%>aem.<%= var %>.username=<%= scope[baseVar + 'Username'] %>
+  <%- end -%>
+  <%- if scope[baseVar + 'Password'] != nil -%>
+    <%--%>aem.<%= var %>.username=<%= scope[baseVar + 'Password'] %>
+  <%- end -%>
+<%- end -%>
 
-
-aem.replicator.username=replicator
-aem.replicator.password=replicator
-aem.orchestrator.username=orchestrator
-aem.orchestrator.password=orchestrator
-
-aem.protocol.publisherDispatcher=https
-aem.protocol.publisher=https
-aem.protocol.authorDispatcher=https
-aem.port.publisherDispatcher=4502
-aem.port.publisher=4502
-aem.port.authorDispatcher=4502
+<%- ['publisherDispatcher', 'publisher', 'authorDispatcher'].each do |var| -%>
+  <%- baseVar = base + var -%>
+  <%- if scope[baseVar + 'GroupName'] != nil -%>
+    <%--%>aws.autoscale.group.name.<%= var %>=<%= scope[baseVar + 'GroupName'] %>
+  <%- end -%>
+  <%- if scope[baseVar + 'Protocol'] != nil -%>
+    <%--%>aem.protocol.<%= var %>=<%= scope[baseVar + 'Protocol'] %>
+  <%- end -%>
+  <%- if scope[baseVar + 'Port'] != nil -%>
+    <%--%>aem.port.<%= var %>=<%= scope[baseVar + 'Port'] %>
+  <%- end -%>
+<%- end -%>

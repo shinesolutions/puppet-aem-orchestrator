@@ -86,6 +86,8 @@ class aem_orchestrator (
 
   $aws_profile = undef,
 ){
+  include ::aem_orchestrator::config
+
   if $manage_basedir {
     file { $basedir:
       ensure => directory,
