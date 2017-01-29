@@ -29,23 +29,23 @@
 
 <%- ['replicator', 'orchestrator'].each do |var| -%>
   <%- baseVar = base + var -%>
-  <%- if scope[baseVar + 'Username'] != nil -%>
-    <%--%>aem.<%= var %>.username=<%= scope[baseVar + 'Username'] %>
+  <%- if scope[baseVar + '_username'] != nil -%>
+    <%--%>aem.<%= var %>.username=<%= scope[baseVar + '_username'] %>
   <%- end -%>
-  <%- if scope[baseVar + 'Password'] != nil -%>
-    <%--%>aem.<%= var %>.username=<%= scope[baseVar + 'Password'] %>
+  <%- if scope[baseVar + '_password'] != nil -%>
+    <%--%>aem.<%= var %>.username=<%= scope[baseVar + '_password'] %>
   <%- end -%>
 <%- end -%>
 
 <%- ['publisherDispatcher', 'publisher', 'authorDispatcher'].each do |var| -%>
-  <%- baseVar = base + var -%>
-  <%- if scope[baseVar + 'GroupName'] != nil -%>
-    <%--%>aws.autoscale.group.name.<%= var %>=<%= scope[baseVar + 'GroupName'] %>
+  <%- baseVar = base + var.gsub(/(.)([A-Z])/,'\1_\2').downcase -%>
+  <%- if scope[baseVar + '_group_name'] != nil -%>
+    <%--%>aws.autoscale.group.name.<%= var %>=<%= scope[baseVar + '_group_name'] %>
   <%- end -%>
-  <%- if scope[baseVar + 'Protocol'] != nil -%>
-    <%--%>aem.protocol.<%= var %>=<%= scope[baseVar + 'Protocol'] %>
+  <%- if scope[baseVar + '_protocol'] != nil -%>
+    <%--%>aem.protocol.<%= var %>=<%= scope[baseVar + '_protocol'] %>
   <%- end -%>
-  <%- if scope[baseVar + 'Port'] != nil -%>
-    <%--%>aem.port.<%= var %>=<%= scope[baseVar + 'Port'] %>
+  <%- if scope[baseVar + '_port'] != nil -%>
+    <%--%>aem.port.<%= var %>=<%= scope[baseVar + '_port'] %>
   <%- end -%>
 <%- end -%>
