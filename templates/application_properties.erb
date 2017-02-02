@@ -1,0 +1,88 @@
+<% pfx = 'aem_orchestrator::application_properties::' -%>
+<%- if scope[pfx + 'aem_client_api_connection_timeout'] != nil -%>
+  <%--%>aem.client.api.connection.timeout = <%= scope[pfx + 'aem_client_api_connection_timeout'] %>
+<%- end -%>
+<%- if scope[pfx + 'aem_client_api_debug'] != nil -%>
+  <%--%>aem.client.api.debug = <%= scope[pfx + 'aem_client_api_debug'] %>
+<%- end -%>
+<%- if scope[pfx + 'aem_orchestrator_password'] != nil -%>
+  <%--%>aem.orchestrator.password = <%= scope[pfx + 'aem_orchestrator_password'] %>
+<%- end -%>
+<%- if scope[pfx + 'aem_orchestrator_username'] != nil -%>
+  <%--%>aem.orchestrator.username = <%= scope[pfx + 'aem_orchestrator_username'] %>
+<%- end -%>
+<%- if scope[pfx + 'aem_port_author_dispatcher'] != nil -%>
+  <%--%>aem.port.authorDispatcher = <%= scope[pfx + 'aem_port_author_dispatcher'] %>
+<%- end -%>
+<%- if scope[pfx + 'aem_port_publish'] != nil -%>
+  <%--%>aem.port.publish = <%= scope[pfx + 'aem_port_publish'] %>
+<%- end -%>
+<%- if scope[pfx + 'aem_port_publish_dispatcher'] != nil -%>
+  <%--%>aem.port.publishDispatcher = <%= scope[pfx + 'aem_port_publish_dispatcher'] %>
+<%- end -%>
+<%- if scope[pfx + 'aem_protocol_author_dispatcher'] != nil -%>
+  <%--%>aem.protocol.authorDispatcher = <%= scope[pfx + 'aem_protocol_author_dispatcher'] %>
+<%- end -%>
+<%- if scope[pfx + 'aem_protocol_publish'] != nil -%>
+  <%--%>aem.protocol.publish = <%= scope[pfx + 'aem_protocol_publish'] %>
+<%- end -%>
+<%- if scope[pfx + 'aem_protocol_publish_dispatcher'] != nil -%>
+  <%--%>aem.protocol.publishDispatcher = <%= scope[pfx + 'aem_protocol_publish_dispatcher'] %>
+<%- end -%>
+<%- if scope[pfx + 'aem_replicator_password'] != nil -%>
+  <%--%>aem.replicator.password = <%= scope[pfx + 'aem_replicator_password'] %>
+<%- end -%>
+<%- if scope[pfx + 'aem_replicator_username'] != nil -%>
+  <%--%>aem.replicator.username = <%= scope[pfx + 'aem_replicator_username'] %>
+<%- end -%>
+<%- if scope[pfx + 'aws_client_connection_timeout'] != nil -%>
+  <%--%>aws.client.connection.timeout = <%= scope[pfx + 'aws_client_connection_timeout'] %>
+<%- end -%>
+<%- if scope[pfx + 'aws_client_max_error_retry'] != nil -%>
+  <%--%>aws.client.max.errorRetry = <%= scope[pfx + 'aws_client_max_error_retry'] %>
+<%- end -%>
+<%- if scope[pfx + 'aws_client_protocol'] != nil -%>
+  <%--%>aws.client.protocol = <%= scope[pfx + 'aws_client_protocol'] %>
+<%- end -%>
+<%- if scope[pfx + 'aws_client_proxy_host'] != nil -%>
+  <%--%>aws.client.proxy.host = <%= scope[pfx + 'aws_client_proxy_host'] %>
+<%- end -%>
+<%- if scope[pfx + 'aws_client_proxy_port'] != nil -%>
+  <%--%>aws.client.proxy.port = <%= scope[pfx + 'aws_client_proxy_port'] %>
+<%- end -%>
+<%- if scope[pfx + 'aws_client_use_proxy'] != nil -%>
+  <%--%>aws.client.useProxy = <%= scope[pfx + 'aws_client_use_proxy'] %>
+<%- end -%>
+<%- if scope[pfx + 'aws_cloudformation_auto_scale_group_logical_id_author_dispatcher'] != nil -%>
+  <%--%>aws.cloudformation.autoScaleGroup.logicalId.authorDispatcher = <%= scope[pfx + 'aws_cloudformation_auto_scale_group_logical_id_author_dispatcher'] %>
+<%- end -%>
+<%- if scope[pfx + 'aws_cloudformation_auto_scale_group_logical_id_publish'] != nil -%>
+  <%--%>aws.cloudformation.autoScaleGroup.logicalId.publish = <%= scope[pfx + 'aws_cloudformation_auto_scale_group_logical_id_publish'] %>
+<%- end -%>
+<%- if scope[pfx + 'aws_cloudformation_auto_scale_group_logical_id_publish_dispatcher'] != nil -%>
+  <%--%>aws.cloudformation.autoScaleGroup.logicalId.publishDispatcher = <%= scope[pfx + 'aws_cloudformation_auto_scale_group_logical_id_publish_dispatcher'] %>
+<%- end -%>
+<%- if scope[pfx + 'aws_cloudformation_load_balancer_logical_id_author'] != nil -%>
+  <%--%>aws.cloudformation.loadBalancer.logicalId.author = <%= scope[pfx + 'aws_cloudformation_load_balancer_logical_id_author'] %>
+<%- end -%>
+<%- if scope[pfx + 'aws_cloudformation_stack_name_author'] != nil -%>
+  <%--%>aws.cloudformation.stackName.author = <%= scope[pfx + 'aws_cloudformation_stack_name_author'] %>
+<%- end -%>
+<%- if scope[pfx + 'aws_cloudformation_stack_name_author_dispatcher'] != nil -%>
+  <%--%>aws.cloudformation.stackName.authorDispatcher = <%= scope[pfx + 'aws_cloudformation_stack_name_author_dispatcher'] %>
+<%- end -%>
+<%- if scope[pfx + 'aws_cloudformation_stack_name_publish'] != nil -%>
+  <%--%>aws.cloudformation.stackName.publish = <%= scope[pfx + 'aws_cloudformation_stack_name_publish'] %>
+<%- end -%>
+<%- if scope[pfx + 'aws_cloudformation_stack_name_publish_dispatcher'] != nil -%>
+  <%--%>aws.cloudformation.stackName.publishDispatcher = <%= scope[pfx + 'aws_cloudformation_stack_name_publish_dispatcher'] %>
+<%- end -%>
+<%- if scope[pfx + 'aws_sqs_queue_name'] != nil -%>
+  <%--%>aws.sqs.queueName = <%= scope[pfx + 'aws_sqs_queue_name'] %>
+<%- end -%>
+<%- if scope[pfx + 'endpoints_enabled'] != nil -%>
+  <%--%>endpoints.enabled = <%= scope[pfx + 'endpoints_enabled'] %>
+<%- end -%>
+<%- if scope[pfx + 'endpoints_health_enabled'] != nil -%>
+  <%--%>endpoints.health.enabled = <%= scope[pfx + 'endpoints_health_enabled'] %>
+<%- end -%>

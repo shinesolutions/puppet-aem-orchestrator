@@ -86,8 +86,6 @@ class aem_orchestrator (
 
   $aws_profile = undef,
 ){
-  include ::aem_orchestrator::config
-
   if $manage_basedir {
     file { $basedir:
       ensure => directory,
@@ -134,18 +132,11 @@ class aem_orchestrator (
       checksum       => $jarfile_checksum,
       checksum_value => $jarfile_checksum_value,
       require        => $file_requires;
-    "${installdir}/application.properties":
-      ensure  => file,
-      owner   => $user,
-      group   => $group,
-      mode    => '0400',
-      content => template('aem_orchestrator/application.properties.erb'),
-      require => $file_requires;
-  }
-
-  service { $service_name:
-    ensure => running,
-    enable => true,
+  } ->
+  class { '::aem_orchestrator::application_properties':
+    path  => "${installdir}/application.properties",
+    owner => $user,
+    group => $group,
   }
 
   if $facts['os']['family'] == 'redhat' {
@@ -153,6 +144,12 @@ class aem_orchestrator (
       ensure  => file,
       content => template('aem_orchestrator/service.conf.erb'),
       notify  => Service[$service_name],
+      require => File[$jarfile],
     }
+  }
+
+  service { $service_name:
+    ensure => running,
+    enable => true,
   }
 }
