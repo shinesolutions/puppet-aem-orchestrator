@@ -11,13 +11,29 @@ describe 'aem_orchestrator::application_properties' do
     let(:params) { {:aem_client_api_debug => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.client.api.debug = foo/) }
   end
-  context 'with aem_orchestrator_password => foo' do
-    let(:params) { {:aem_orchestrator_password => 'foo', :path => '/tmp/foo', } }
-    it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.orchestrator.password = foo/) }
+  context 'with aem_credentials_orchestrator_password => foo' do
+    let(:params) { {:aem_credentials_orchestrator_password => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.credentials.orchestrator.password = foo/) }
   end
-  context 'with aem_orchestrator_username => foo' do
-    let(:params) { {:aem_orchestrator_username => 'foo', :path => '/tmp/foo', } }
-    it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.orchestrator.username = foo/) }
+  context 'with aem_credentials_orchestrator_username => foo' do
+    let(:params) { {:aem_credentials_orchestrator_username => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.credentials.orchestrator.username = foo/) }
+  end
+  context 'with aem_credentials_replicator_password => foo' do
+    let(:params) { {:aem_credentials_replicator_password => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.credentials.replicator.password = foo/) }
+  end
+  context 'with aem_credentials_replicator_username => foo' do
+    let(:params) { {:aem_credentials_replicator_username => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.credentials.replicator.username = foo/) }
+  end
+  context 'with aem_credentials_s3_file_uri => foo' do
+    let(:params) { {:aem_credentials_s3_file_uri => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.credentials.s3.file.uri = foo/) }
+  end
+  context 'with aem_credentials_s3_use => foo' do
+    let(:params) { {:aem_credentials_s3_use => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.credentials.s3.use = foo/) }
   end
   context 'with aem_port_author_dispatcher => foo' do
     let(:params) { {:aem_port_author_dispatcher => 'foo', :path => '/tmp/foo', } }
@@ -42,14 +58,6 @@ describe 'aem_orchestrator::application_properties' do
   context 'with aem_protocol_publish_dispatcher => foo' do
     let(:params) { {:aem_protocol_publish_dispatcher => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.protocol.publishDispatcher = foo/) }
-  end
-  context 'with aem_replicator_password => foo' do
-    let(:params) { {:aem_replicator_password => 'foo', :path => '/tmp/foo', } }
-    it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.replicator.password = foo/) }
-  end
-  context 'with aem_replicator_username => foo' do
-    let(:params) { {:aem_replicator_username => 'foo', :path => '/tmp/foo', } }
-    it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.replicator.username = foo/) }
   end
   context 'with aws_client_connection_timeout => foo' do
     let(:params) { {:aws_client_connection_timeout => 'foo', :path => '/tmp/foo', } }

@@ -1,3 +1,7 @@
+### 0.9.3
+* Update `application_properties` to match latest `application.properties`
+  ( https://github.com/shinesolutions/aem-orchestrator/tree/1bf330e )
+
 ### 0.9.2
 * Added `application_properties` class.
 

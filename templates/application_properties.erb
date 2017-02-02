@@ -5,11 +5,23 @@
 <%- if scope[pfx + 'aem_client_api_debug'] != nil -%>
   <%--%>aem.client.api.debug = <%= scope[pfx + 'aem_client_api_debug'] %>
 <%- end -%>
-<%- if scope[pfx + 'aem_orchestrator_password'] != nil -%>
-  <%--%>aem.orchestrator.password = <%= scope[pfx + 'aem_orchestrator_password'] %>
+<%- if scope[pfx + 'aem_credentials_orchestrator_password'] != nil -%>
+  <%--%>aem.credentials.orchestrator.password = <%= scope[pfx + 'aem_credentials_orchestrator_password'] %>
 <%- end -%>
-<%- if scope[pfx + 'aem_orchestrator_username'] != nil -%>
-  <%--%>aem.orchestrator.username = <%= scope[pfx + 'aem_orchestrator_username'] %>
+<%- if scope[pfx + 'aem_credentials_orchestrator_username'] != nil -%>
+  <%--%>aem.credentials.orchestrator.username = <%= scope[pfx + 'aem_credentials_orchestrator_username'] %>
+<%- end -%>
+<%- if scope[pfx + 'aem_credentials_replicator_password'] != nil -%>
+  <%--%>aem.credentials.replicator.password = <%= scope[pfx + 'aem_credentials_replicator_password'] %>
+<%- end -%>
+<%- if scope[pfx + 'aem_credentials_replicator_username'] != nil -%>
+  <%--%>aem.credentials.replicator.username = <%= scope[pfx + 'aem_credentials_replicator_username'] %>
+<%- end -%>
+<%- if scope[pfx + 'aem_credentials_s3_file_uri'] != nil -%>
+  <%--%>aem.credentials.s3.file.uri = <%= scope[pfx + 'aem_credentials_s3_file_uri'] %>
+<%- end -%>
+<%- if scope[pfx + 'aem_credentials_s3_use'] != nil -%>
+  <%--%>aem.credentials.s3.use = <%= scope[pfx + 'aem_credentials_s3_use'] %>
 <%- end -%>
 <%- if scope[pfx + 'aem_port_author_dispatcher'] != nil -%>
   <%--%>aem.port.authorDispatcher = <%= scope[pfx + 'aem_port_author_dispatcher'] %>
@@ -28,12 +40,6 @@
 <%- end -%>
 <%- if scope[pfx + 'aem_protocol_publish_dispatcher'] != nil -%>
   <%--%>aem.protocol.publishDispatcher = <%= scope[pfx + 'aem_protocol_publish_dispatcher'] %>
-<%- end -%>
-<%- if scope[pfx + 'aem_replicator_password'] != nil -%>
-  <%--%>aem.replicator.password = <%= scope[pfx + 'aem_replicator_password'] %>
-<%- end -%>
-<%- if scope[pfx + 'aem_replicator_username'] != nil -%>
-  <%--%>aem.replicator.username = <%= scope[pfx + 'aem_replicator_username'] %>
 <%- end -%>
 <%- if scope[pfx + 'aws_client_connection_timeout'] != nil -%>
   <%--%>aws.client.connection.timeout = <%= scope[pfx + 'aws_client_connection_timeout'] %>

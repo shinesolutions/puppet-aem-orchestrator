@@ -24,11 +24,23 @@
 # [*aem_client_api_debug*]
 #   Java property `aem.client.api.debug`
 #
-# [*aem_orchestrator_password*]
-#   Java property `aem.orchestrator.password`
+# [*aem_credentials_orchestrator_password*]
+#   Java property `aem.credentials.orchestrator.password`
 #
-# [*aem_orchestrator_username*]
-#   Java property `aem.orchestrator.username`
+# [*aem_credentials_orchestrator_username*]
+#   Java property `aem.credentials.orchestrator.username`
+#
+# [*aem_credentials_replicator_password*]
+#   Java property `aem.credentials.replicator.password`
+#
+# [*aem_credentials_replicator_username*]
+#   Java property `aem.credentials.replicator.username`
+#
+# [*aem_credentials_s3_file_uri*]
+#   Java property `aem.credentials.s3.file.uri`
+#
+# [*aem_credentials_s3_use*]
+#   Java property `aem.credentials.s3.use`
 #
 # [*aem_port_author_dispatcher*]
 #   Java property `aem.port.authorDispatcher`
@@ -47,12 +59,6 @@
 #
 # [*aem_protocol_publish_dispatcher*]
 #   Java property `aem.protocol.publishDispatcher`
-#
-# [*aem_replicator_password*]
-#   Java property `aem.replicator.password`
-#
-# [*aem_replicator_username*]
-#   Java property `aem.replicator.username`
 #
 # [*aws_client_connection_timeout*]
 #   Java property `aws.client.connection.timeout`
@@ -126,16 +132,18 @@ class aem_orchestrator::application_properties (
 
   $aem_client_api_connection_timeout = undef,
   $aem_client_api_debug = undef,
-  $aem_orchestrator_password = undef,
-  $aem_orchestrator_username = undef,
+  $aem_credentials_orchestrator_password = undef,
+  $aem_credentials_orchestrator_username = undef,
+  $aem_credentials_replicator_password = undef,
+  $aem_credentials_replicator_username = undef,
+  $aem_credentials_s3_file_uri = undef,
+  $aem_credentials_s3_use = undef,
   $aem_port_author_dispatcher = undef,
   $aem_port_publish = undef,
   $aem_port_publish_dispatcher = undef,
   $aem_protocol_author_dispatcher = undef,
   $aem_protocol_publish = undef,
   $aem_protocol_publish_dispatcher = undef,
-  $aem_replicator_password = undef,
-  $aem_replicator_username = undef,
   $aws_client_connection_timeout = undef,
   $aws_client_max_error_retry = undef,
   $aws_client_protocol = undef,
