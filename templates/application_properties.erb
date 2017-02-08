@@ -23,6 +23,9 @@
 <%- if scope[pfx + 'aem_credentials_s3_use'] != nil -%>
   <%--%>aem.credentials.s3.use = <%= scope[pfx + 'aem_credentials_s3_use'] %>
 <%- end -%>
+<%- if scope[pfx + 'aem_port_author'] != nil -%>
+  <%--%>aem.port.author = <%= scope[pfx + 'aem_port_author'] %>
+<%- end -%>
 <%- if scope[pfx + 'aem_port_author_dispatcher'] != nil -%>
   <%--%>aem.port.authorDispatcher = <%= scope[pfx + 'aem_port_author_dispatcher'] %>
 <%- end -%>
@@ -31,6 +34,9 @@
 <%- end -%>
 <%- if scope[pfx + 'aem_port_publish_dispatcher'] != nil -%>
   <%--%>aem.port.publishDispatcher = <%= scope[pfx + 'aem_port_publish_dispatcher'] %>
+<%- end -%>
+<%- if scope[pfx + 'aem_protocol_author'] != nil -%>
+  <%--%>aem.protocol.author = <%= scope[pfx + 'aem_protocol_author'] %>
 <%- end -%>
 <%- if scope[pfx + 'aem_protocol_author_dispatcher'] != nil -%>
   <%--%>aem.protocol.authorDispatcher = <%= scope[pfx + 'aem_protocol_author_dispatcher'] %>

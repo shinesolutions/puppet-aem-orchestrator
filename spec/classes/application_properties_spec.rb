@@ -35,6 +35,10 @@ describe 'aem_orchestrator::application_properties' do
     let(:params) { {:aem_credentials_s3_use => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.credentials.s3.use = foo/) }
   end
+  context 'with aem_port_author => foo' do
+    let(:params) { {:aem_port_author => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.port.author = foo/) }
+  end
   context 'with aem_port_author_dispatcher => foo' do
     let(:params) { {:aem_port_author_dispatcher => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.port.authorDispatcher = foo/) }
@@ -46,6 +50,10 @@ describe 'aem_orchestrator::application_properties' do
   context 'with aem_port_publish_dispatcher => foo' do
     let(:params) { {:aem_port_publish_dispatcher => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.port.publishDispatcher = foo/) }
+  end
+  context 'with aem_protocol_author => foo' do
+    let(:params) { {:aem_protocol_author => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.protocol.author = foo/) }
   end
   context 'with aem_protocol_author_dispatcher => foo' do
     let(:params) { {:aem_protocol_author_dispatcher => 'foo', :path => '/tmp/foo', } }

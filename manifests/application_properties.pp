@@ -42,6 +42,9 @@
 # [*aem_credentials_s3_use*]
 #   Java property `aem.credentials.s3.use`
 #
+# [*aem_port_author*]
+#   Java property `aem.port.author`
+#
 # [*aem_port_author_dispatcher*]
 #   Java property `aem.port.authorDispatcher`
 #
@@ -50,6 +53,9 @@
 #
 # [*aem_port_publish_dispatcher*]
 #   Java property `aem.port.publishDispatcher`
+#
+# [*aem_protocol_author*]
+#   Java property `aem.protocol.author`
 #
 # [*aem_protocol_author_dispatcher*]
 #   Java property `aem.protocol.authorDispatcher`
@@ -138,9 +144,11 @@ class aem_orchestrator::application_properties (
   $aem_credentials_replicator_username = undef,
   $aem_credentials_s3_file_uri = undef,
   $aem_credentials_s3_use = undef,
+  $aem_port_author = undef,
   $aem_port_author_dispatcher = undef,
   $aem_port_publish = undef,
   $aem_port_publish_dispatcher = undef,
+  $aem_protocol_author = undef,
   $aem_protocol_author_dispatcher = undef,
   $aem_protocol_publish = undef,
   $aem_protocol_publish_dispatcher = undef,
