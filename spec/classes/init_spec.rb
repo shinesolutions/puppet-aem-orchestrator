@@ -4,6 +4,7 @@ describe 'aem_orchestrator' do
     it { is_expected.to contain_class('aem_orchestrator') }
     it { is_expected.to contain_class('aem_orchestrator::application_properties') }
     it { is_expected.to contain_file('/opt/shinesolutions') }
+    it { is_expected.to contain_archive('/opt/shinesolutions/aem-orchestrator/aem-orchestrator.jar') }
     it { is_expected.to contain_file('/opt/shinesolutions/aem-orchestrator/aem-orchestrator.jar') }
     it { is_expected.to contain_file('/etc/systemd/system/aem-orchestrator.service') }
     it { is_expected.to contain_file('/opt/shinesolutions/aem-orchestrator/application.properties') }

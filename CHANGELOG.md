@@ -1,3 +1,6 @@
+### 0.9.4
+* Use the `puppet-archive` module to allow fetching JAR file from `S3`.
+
 ### 0.9.3
 * Update `application_properties` to match latest `application.properties`
   ( https://github.com/shinesolutions/aem-orchestrator/tree/1bf330e )
