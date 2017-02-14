@@ -1,0 +1,10 @@
+.fixtures.yml
+.rspec
+.rubocop.yml
+.travis.yml
+Gemfile
+Gemfile.lock
+Makefile
+Rakefile
+spec/
+tools/
