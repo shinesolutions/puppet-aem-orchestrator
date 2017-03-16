@@ -127,6 +127,7 @@ class aem_orchestrator (
   }
 
   $jarfile = "${installdir}/aem-orchestrator.jar"
+  $servicefile = "/etc/systemd/system/${service_name}.service"
   archive { $jarfile:
     ensure        => present,
     source        => $jarfile_source,
@@ -138,20 +139,22 @@ class aem_orchestrator (
     owner => $user,
     group => $group,
     mode  => $jarfile_mode,
-  } ->
-  class { '::aem_orchestrator::application_properties':
-    path  => "${installdir}/application.properties",
-    owner => $user,
-    group => $group,
   }
 
   if $facts['os']['family'] == 'redhat' {
-    file { "/etc/systemd/system/${service_name}.service":
+    file { $servicefile:
       ensure  => file,
       content => template('aem_orchestrator/service.conf.erb'),
-      notify  => Service[$service_name],
       require => File[$jarfile],
     }
+  }
+
+  class { '::aem_orchestrator::application_properties':
+    path    => "${installdir}/application.properties",
+    owner   => $user,
+    group   => $group,
+    notify  => Service[$service_name],
+    require => File[$servicefile],
   }
 
   service { $service_name:
