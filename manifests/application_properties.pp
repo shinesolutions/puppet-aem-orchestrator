@@ -66,6 +66,12 @@
 # [*aem_protocol_publish_dispatcher*]
 #   Java property `aem.protocol.publishDispatcher`
 #
+# [*aem_reverse_replication_enable*]
+#   Java property `aem.reverseReplication.enable`
+#
+# [*aem_reverse_replication_transport_uri_postfix*]
+#   Java property `aem.reverseReplication.transportUri.postfix`
+#
 # [*aws_client_connection_timeout*]
 #   Java property `aws.client.connection.timeout`
 #
@@ -108,6 +114,15 @@
 # [*aws_cloudformation_stack_name_publish_dispatcher*]
 #   Java property `aws.cloudformation.stackName.publishDispatcher`
 #
+# [*aws_device_name*]
+#   Java property `aws.device.name`
+#
+# [*aws_region*]
+#   Java property `aws.region`
+#
+# [*aws_snapshot_tags*]
+#   Java property `aws.snapshot.tags`
+#
 # [*aws_sqs_queue_name*]
 #   Java property `aws.sqs.queueName`
 #
@@ -116,6 +131,15 @@
 #
 # [*endpoints_health_enabled*]
 #   Java property `endpoints.health.enabled`
+#
+# [*endpoints_info_enabled*]
+#   Java property `endpoints.info.enabled`
+#
+# [*startup_wait_for_author_elb_back_off_period*]
+#   Java property `startup.waitForAuthorElb.backOffPeriod`
+#
+# [*startup_wait_for_author_elb_max_attempts*]
+#   Java property `startup.waitForAuthorElb.maxAttempts`
 #
 # === Examples
 #
@@ -152,6 +176,8 @@ class aem_orchestrator::application_properties (
   $aem_protocol_author_dispatcher = undef,
   $aem_protocol_publish = undef,
   $aem_protocol_publish_dispatcher = undef,
+  $aem_reverse_replication_enable = undef,
+  $aem_reverse_replication_transport_uri_postfix = undef,
   $aws_client_connection_timeout = undef,
   $aws_client_max_error_retry = undef,
   $aws_client_protocol = undef,
@@ -166,9 +192,15 @@ class aem_orchestrator::application_properties (
   $aws_cloudformation_stack_name_author_dispatcher = undef,
   $aws_cloudformation_stack_name_publish = undef,
   $aws_cloudformation_stack_name_publish_dispatcher = undef,
+  $aws_device_name = undef,
+  $aws_region = undef,
+  $aws_snapshot_tags = undef,
   $aws_sqs_queue_name = undef,
   $endpoints_enabled = undef,
   $endpoints_health_enabled = undef,
+  $endpoints_info_enabled = undef,
+  $startup_wait_for_author_elb_back_off_period = undef,
+  $startup_wait_for_author_elb_max_attempts = undef,
 
 ) {
   file { $path:

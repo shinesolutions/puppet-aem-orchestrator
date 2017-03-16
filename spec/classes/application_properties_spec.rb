@@ -67,6 +67,14 @@ describe 'aem_orchestrator::application_properties' do
     let(:params) { {:aem_protocol_publish_dispatcher => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.protocol.publishDispatcher = foo/) }
   end
+  context 'with aem_reverse_replication_enable => foo' do
+    let(:params) { {:aem_reverse_replication_enable => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.reverseReplication.enable = foo/) }
+  end
+  context 'with aem_reverse_replication_transport_uri_postfix => foo' do
+    let(:params) { {:aem_reverse_replication_transport_uri_postfix => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.reverseReplication.transportUri.postfix = foo/) }
+  end
   context 'with aws_client_connection_timeout => foo' do
     let(:params) { {:aws_client_connection_timeout => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^aws.client.connection.timeout = foo/) }
@@ -123,6 +131,18 @@ describe 'aem_orchestrator::application_properties' do
     let(:params) { {:aws_cloudformation_stack_name_publish_dispatcher => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^aws.cloudformation.stackName.publishDispatcher = foo/) }
   end
+  context 'with aws_device_name => foo' do
+    let(:params) { {:aws_device_name => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^aws.device.name = foo/) }
+  end
+  context 'with aws_region => foo' do
+    let(:params) { {:aws_region => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^aws.region = foo/) }
+  end
+  context 'with aws_snapshot_tags => foo' do
+    let(:params) { {:aws_snapshot_tags => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^aws.snapshot.tags = foo/) }
+  end
   context 'with aws_sqs_queue_name => foo' do
     let(:params) { {:aws_sqs_queue_name => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^aws.sqs.queueName = foo/) }
@@ -134,5 +154,17 @@ describe 'aem_orchestrator::application_properties' do
   context 'with endpoints_health_enabled => foo' do
     let(:params) { {:endpoints_health_enabled => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^endpoints.health.enabled = foo/) }
+  end
+  context 'with endpoints_info_enabled => foo' do
+    let(:params) { {:endpoints_info_enabled => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^endpoints.info.enabled = foo/) }
+  end
+  context 'with startup_wait_for_author_elb_back_off_period => foo' do
+    let(:params) { {:startup_wait_for_author_elb_back_off_period => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^startup.waitForAuthorElb.backOffPeriod = foo/) }
+  end
+  context 'with startup_wait_for_author_elb_max_attempts => foo' do
+    let(:params) { {:startup_wait_for_author_elb_max_attempts => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^startup.waitForAuthorElb.maxAttempts = foo/) }
   end
 end
