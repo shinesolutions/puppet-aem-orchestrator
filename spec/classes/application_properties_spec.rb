@@ -143,6 +143,10 @@ describe 'aem_orchestrator::application_properties' do
     let(:params) { {:aws_snapshot_tags => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^aws.snapshot.tags = foo/) }
   end
+  context 'with aws_sns_topic_name => foo' do
+    let(:params) { {:aws_sns_topic_name => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^aws.sns.topicName = foo/) }
+  end
   context 'with aws_sqs_queue_name => foo' do
     let(:params) { {:aws_sqs_queue_name => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^aws.sqs.queueName = foo/) }

@@ -104,6 +104,9 @@
 <%- if scope[pfx + 'aws_snapshot_tags'] != nil -%>
   <%--%>aws.snapshot.tags = <%= scope[pfx + 'aws_snapshot_tags'] %>
 <%- end -%>
+<%- if scope[pfx + 'aws_sns_topic_name'] != nil -%>
+  <%--%>aws.sns.topicName = <%= scope[pfx + 'aws_sns_topic_name'] %>
+<%- end -%>
 <%- if scope[pfx + 'aws_sqs_queue_name'] != nil -%>
   <%--%>aws.sqs.queueName = <%= scope[pfx + 'aws_sqs_queue_name'] %>
 <%- end -%>

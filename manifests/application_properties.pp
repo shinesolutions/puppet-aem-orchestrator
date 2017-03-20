@@ -123,6 +123,9 @@
 # [*aws_snapshot_tags*]
 #   Java property `aws.snapshot.tags`
 #
+# [*aws_sns_topic_name*]
+#   Java property `aws.sns.topicName`
+#
 # [*aws_sqs_queue_name*]
 #   Java property `aws.sqs.queueName`
 #
@@ -195,6 +198,7 @@ class aem_orchestrator::application_properties (
   $aws_device_name = undef,
   $aws_region = undef,
   $aws_snapshot_tags = undef,
+  $aws_sns_topic_name = undef,
   $aws_sqs_queue_name = undef,
   $endpoints_enabled = undef,
   $endpoints_health_enabled = undef,
