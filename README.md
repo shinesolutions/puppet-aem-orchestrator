@@ -11,7 +11,7 @@ A Puppet module for provisioning the Shine Solutions
 
 ### Setup Requirements
 
-If you want to us an `S3` URL ( s3://_bucket_/_path_ ) for the jar file source,
+If you want to use an `S3` URL ( s3://_bucket_/_path_ ) for the jar file source,
 you'll need to have the AWS CLI installed and configured so `root` can run the
 command below without error. This means you'll need to ensure AWS default
 credentials are configured correctly. Information on how to set them up is
