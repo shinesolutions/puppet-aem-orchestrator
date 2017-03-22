@@ -54,4 +54,6 @@ following to point to the AEM Orchestrator jar file:
 
 The module's classes and their parameters are documented in the comments in
 each manifest file. HTML documentation generated with `puppet strings` can be
-found in the [docs](docs/index.html) folder.
+found in the `docs/` folder -- which is published on [GitHub
+Pages](https://shinesolutions.github.io/puppet-aem-orchestrator/) for easy
+reference.
