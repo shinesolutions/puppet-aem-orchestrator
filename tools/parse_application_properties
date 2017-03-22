@@ -28,29 +28,29 @@ def parse_args():
     )
     p.add_argument(
         '--class-name', '-n',
-        default = 'application_properties',
+        default = None,
         help    = unwrap("""
-            The name of the generated class. Defaults to
-            `application_properties`.
+            The name of the generated class. Default is based on the example
+            file name.
         """),
     )
     p.add_argument(
         '--class-file', '-f',
-        default = 'manifests/application_properties.pp',
+        default = None,
         help    = unwrap("""
             The Puppet file to write to.
         """),
     )
     p.add_argument(
         '--template-file', '-t',
-        default = 'templates/application_properties.erb',
+        default = None,
         help    = unwrap("""
             The ERB template file to write to.
         """),
     )
     p.add_argument(
         '--spec-file', '-s',
-        default = 'spec/classes/application_properties_spec.rb',
+        default = None,
         help    = unwrap("""
             The Ruby spec file to write to.
         """),
@@ -80,6 +80,20 @@ def parse_args():
     )
 
     args = p.parse_args()
+
+    if args.class_name is None:
+        if args.file == '-':
+            sys.stderr.write('You must provide a class name (--class-name) when example file is stdin.\n')
+            raise SystemExit(1)
+        else:
+            args.class_name = os.path.basename(args.file).replace('.', '_')
+    if args.class_file is None:
+        args.class_file = 'manifests/{0}.pp'.format(args.class_name)
+    if args.template_file is None:
+        args.template_file = 'templates/{0}.erb'.format(args.class_name)
+    if args.spec_file is None:
+        args.spec_file = 'spec/classes/{0}_spec.rb'.format(args.class_name)
+    sys.stderr.write('%r\n'%args)
     return args
 
 class property_key(object):
@@ -100,6 +114,13 @@ class property_key(object):
     def doco(self):
         return 'Java property `{0}`'.format(self.key)
 
+def parse_example_file(file):
+    keys = []
+    for key in sorted(javaproperties.load(file).keys()):
+        keys.append(property_key(key, full_class_name, acronyms = args.acronym))
+    return keys
+
+
 template_tmpl = Template(
     textwrap.dedent(u"""\
         <% pfx = '{{ class_prefix }}::' -%>
@@ -116,52 +137,51 @@ template_tmpl = Template(
 
 class_tmpl = Template(
     textwrap.dedent(u"""\
-    # == Class: {{ full_class_name }}
+    # @summary
+    #   Write the `application.properties` file.
     #
-    # Write the `application.properties` file.
+    #  This class writes the `application.properties` file for the AEM
+    #  Orchestrator. It is auto-generated and should not be modified by hand.
+    #  Documentation for each of the properties can be found in the example
+    #  `application.properties` from which it is generated. (see below)
     #
-    # === Parameters
+    #  _Note:_ This is an internal class that shouldn't be used directly. It is
+    #  included by the `aem_orchestrator` class. You can change values for it's
+    #  parameters using Hiera.
     #
-    # [*path*]
+    # @see https://github.com/shinesolutions/aem-orchestrator/blob/master/src/main/resources/application.properties
+    #   The example AEM Orchestrator file.
+    #
+    # @param path
     #   The path to the application.properties file on disk. Required.
     #
-    # [*owner*]
+    # @param owner
     #   The user that should own the application.properties file. This user is *not*
     #   created by this module and should be managed elsewhere. Required.
     #
-    # [*group*]
+    # @param group
     #   The group that should own the application.properties file. This group is
     #   *not* created by this module and should be managed elsewhere. Required.
     #
-    # [*mode*]
+    # @param mode
     #   The mode of the application.properties file. Passed to the `file` resource.
     #
     {% for property in properties -%}
-    # [*{{ property.snake_case }}*]
+    # @param {{ property.snake_case }}
     #   {{ property.doco }}
     #
     {% endfor -%}
-    # === Examples
-    #
-    #  This is an internal class that isn't normally used. You can change values
-    #  for it's parameters using Hiera.
-    #
-    # === Authors
-    #
-    # This is an auto-generated class.
-    #
-    # === Copyright
     #
     # Copyright © 2017 Shine Solutions Group, unless otherwise noted.
     #
     class {{ full_class_name }} (
-      $path,
-      $owner,
-      $group,
-      $mode,
+      String $path,
+      String $owner,
+      String $group,
+      String $mode,
 
     {% for property in properties %}
-      ${{ property.snake_case }} = undef,
+      Variant[String, Undef] ${{ property.snake_case }} = undef,
     {% endfor %}
 
     ) {
@@ -209,9 +229,11 @@ if __name__ == '__main__':
         full_class_name = args.class_prefix.strip(':') + '::' + full_class_name
 
     keys = []
-    with open(args.file) as properties_file:
-        for key in sorted(javaproperties.load(properties_file).keys()):
-            keys.append(property_key(key, full_class_name, acronyms = args.acronym))
+    if args.file == '-':
+        keys = parse_example_file(sys.stdin)
+    else:
+        with open(args.file) as properties_file:
+            keys = parse_example_file(properties_file)
 
     with open(args.template_file, 'w') as template_file:
         template_file.write(template_tmpl.render(
