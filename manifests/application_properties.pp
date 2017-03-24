@@ -111,11 +111,17 @@
 # @param aws_cloudformation_load_balancer_logical_id_author
 #   Java property `aws.cloudformation.loadBalancer.logicalId.author`
 #
+# @param aws_cloudformation_sns_logical_id_event_topic
+#   Java property `aws.cloudformation.sns.logicalId.eventTopic`
+#
 # @param aws_cloudformation_stack_name_author
 #   Java property `aws.cloudformation.stackName.author`
 #
 # @param aws_cloudformation_stack_name_author_dispatcher
 #   Java property `aws.cloudformation.stackName.authorDispatcher`
+#
+# @param aws_cloudformation_stack_name_messaging
+#   Java property `aws.cloudformation.stackName.messaging`
 #
 # @param aws_cloudformation_stack_name_publish
 #   Java property `aws.cloudformation.stackName.publish`
@@ -131,9 +137,6 @@
 #
 # @param aws_snapshot_tags
 #   Java property `aws.snapshot.tags`
-#
-# @param aws_sns_topic_name
-#   Java property `aws.sns.topicName`
 #
 # @param aws_sqs_queue_name
 #   Java property `aws.sqs.queueName`
@@ -190,14 +193,15 @@ class aem_orchestrator::application_properties (
   Variant[String, Undef] $aws_cloudformation_auto_scale_group_logical_id_publish = undef,
   Variant[String, Undef] $aws_cloudformation_auto_scale_group_logical_id_publish_dispatcher = undef,
   Variant[String, Undef] $aws_cloudformation_load_balancer_logical_id_author = undef,
+  Variant[String, Undef] $aws_cloudformation_sns_logical_id_event_topic = undef,
   Variant[String, Undef] $aws_cloudformation_stack_name_author = undef,
   Variant[String, Undef] $aws_cloudformation_stack_name_author_dispatcher = undef,
+  Variant[String, Undef] $aws_cloudformation_stack_name_messaging = undef,
   Variant[String, Undef] $aws_cloudformation_stack_name_publish = undef,
   Variant[String, Undef] $aws_cloudformation_stack_name_publish_dispatcher = undef,
   Variant[String, Undef] $aws_device_name = undef,
   Variant[String, Undef] $aws_region = undef,
   Variant[String, Undef] $aws_snapshot_tags = undef,
-  Variant[String, Undef] $aws_sns_topic_name = undef,
   Variant[String, Undef] $aws_sqs_queue_name = undef,
   Variant[String, Undef] $endpoints_enabled = undef,
   Variant[String, Undef] $endpoints_health_enabled = undef,

@@ -673,6 +673,24 @@ Required.</p>
   
     <li>
       
+        <span class='name'>aws_cloudformation_sns_logical_id_event_topic</span>
+      
+      
+        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Java property <code>aws.cloudformation.sns.logicalId.eventTopic</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
         <span class='name'>aws_cloudformation_stack_name_author</span>
       
       
@@ -703,6 +721,24 @@ Required.</p>
         &mdash;
         <div class='inline'>
 <p>Java property <code>aws.cloudformation.stackName.authorDispatcher</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>aws_cloudformation_stack_name_messaging</span>
+      
+      
+        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Java property <code>aws.cloudformation.stackName.messaging</code></p>
 </div>
       
     </li>
@@ -793,24 +829,6 @@ Required.</p>
         &mdash;
         <div class='inline'>
 <p>Java property <code>aws.snapshot.tags</code></p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='name'>aws_sns_topic_name</span>
-      
-      
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt>undef</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>Java property <code>aws.sns.topicName</code></p>
 </div>
       
     </li>
@@ -940,9 +958,6 @@ Required.</p>
         <pre class="lines">
 
 
-159
-160
-161
 162
 163
 164
@@ -997,10 +1012,14 @@ Required.</p>
 213
 214
 215
-216</pre>
+216
+217
+218
+219
+220</pre>
       </td>
       <td>
-        <pre class="code"><span class="info file"># File 'manifests/application_properties.pp', line 159</span>
+        <pre class="code"><span class="info file"># File 'manifests/application_properties.pp', line 162</span>
 
 class aem_orchestrator::application_properties (
   String $path,
@@ -1036,14 +1055,15 @@ class aem_orchestrator::application_properties (
   Variant[String, Undef] $aws_cloudformation_auto_scale_group_logical_id_publish = undef,
   Variant[String, Undef] $aws_cloudformation_auto_scale_group_logical_id_publish_dispatcher = undef,
   Variant[String, Undef] $aws_cloudformation_load_balancer_logical_id_author = undef,
+  Variant[String, Undef] $aws_cloudformation_sns_logical_id_event_topic = undef,
   Variant[String, Undef] $aws_cloudformation_stack_name_author = undef,
   Variant[String, Undef] $aws_cloudformation_stack_name_author_dispatcher = undef,
+  Variant[String, Undef] $aws_cloudformation_stack_name_messaging = undef,
   Variant[String, Undef] $aws_cloudformation_stack_name_publish = undef,
   Variant[String, Undef] $aws_cloudformation_stack_name_publish_dispatcher = undef,
   Variant[String, Undef] $aws_device_name = undef,
   Variant[String, Undef] $aws_region = undef,
   Variant[String, Undef] $aws_snapshot_tags = undef,
-  Variant[String, Undef] $aws_sns_topic_name = undef,
   Variant[String, Undef] $aws_sqs_queue_name = undef,
   Variant[String, Undef] $endpoints_enabled = undef,
   Variant[String, Undef] $endpoints_health_enabled = undef,
@@ -1067,7 +1087,7 @@ class aem_orchestrator::application_properties (
 </div>
 
       <div id="footer">
-  Generated on Thu Mar 23 08:38:24 2017 by
+  Generated on Fri Mar 24 16:08:09 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.8 (ruby-2.3.1).
 </div>

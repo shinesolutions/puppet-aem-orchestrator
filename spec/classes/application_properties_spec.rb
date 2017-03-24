@@ -115,6 +115,10 @@ describe 'aem_orchestrator::application_properties' do
     let(:params) { {:aws_cloudformation_load_balancer_logical_id_author => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^aws.cloudformation.loadBalancer.logicalId.author = foo/) }
   end
+  context 'with aws_cloudformation_sns_logical_id_event_topic => foo' do
+    let(:params) { {:aws_cloudformation_sns_logical_id_event_topic => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^aws.cloudformation.sns.logicalId.eventTopic = foo/) }
+  end
   context 'with aws_cloudformation_stack_name_author => foo' do
     let(:params) { {:aws_cloudformation_stack_name_author => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^aws.cloudformation.stackName.author = foo/) }
@@ -122,6 +126,10 @@ describe 'aem_orchestrator::application_properties' do
   context 'with aws_cloudformation_stack_name_author_dispatcher => foo' do
     let(:params) { {:aws_cloudformation_stack_name_author_dispatcher => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^aws.cloudformation.stackName.authorDispatcher = foo/) }
+  end
+  context 'with aws_cloudformation_stack_name_messaging => foo' do
+    let(:params) { {:aws_cloudformation_stack_name_messaging => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^aws.cloudformation.stackName.messaging = foo/) }
   end
   context 'with aws_cloudformation_stack_name_publish => foo' do
     let(:params) { {:aws_cloudformation_stack_name_publish => 'foo', :path => '/tmp/foo', } }
@@ -142,10 +150,6 @@ describe 'aem_orchestrator::application_properties' do
   context 'with aws_snapshot_tags => foo' do
     let(:params) { {:aws_snapshot_tags => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^aws.snapshot.tags = foo/) }
-  end
-  context 'with aws_sns_topic_name => foo' do
-    let(:params) { {:aws_sns_topic_name => 'foo', :path => '/tmp/foo', } }
-    it { is_expected.to contain_file('/tmp/foo').with_content(/^aws.sns.topicName = foo/) }
   end
   context 'with aws_sqs_queue_name => foo' do
     let(:params) { {:aws_sqs_queue_name => 'foo', :path => '/tmp/foo', } }

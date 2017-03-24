@@ -83,11 +83,17 @@
 <%- if scope[pfx + 'aws_cloudformation_load_balancer_logical_id_author'] != nil -%>
   <%--%>aws.cloudformation.loadBalancer.logicalId.author = <%= scope[pfx + 'aws_cloudformation_load_balancer_logical_id_author'] %>
 <%- end -%>
+<%- if scope[pfx + 'aws_cloudformation_sns_logical_id_event_topic'] != nil -%>
+  <%--%>aws.cloudformation.sns.logicalId.eventTopic = <%= scope[pfx + 'aws_cloudformation_sns_logical_id_event_topic'] %>
+<%- end -%>
 <%- if scope[pfx + 'aws_cloudformation_stack_name_author'] != nil -%>
   <%--%>aws.cloudformation.stackName.author = <%= scope[pfx + 'aws_cloudformation_stack_name_author'] %>
 <%- end -%>
 <%- if scope[pfx + 'aws_cloudformation_stack_name_author_dispatcher'] != nil -%>
   <%--%>aws.cloudformation.stackName.authorDispatcher = <%= scope[pfx + 'aws_cloudformation_stack_name_author_dispatcher'] %>
+<%- end -%>
+<%- if scope[pfx + 'aws_cloudformation_stack_name_messaging'] != nil -%>
+  <%--%>aws.cloudformation.stackName.messaging = <%= scope[pfx + 'aws_cloudformation_stack_name_messaging'] %>
 <%- end -%>
 <%- if scope[pfx + 'aws_cloudformation_stack_name_publish'] != nil -%>
   <%--%>aws.cloudformation.stackName.publish = <%= scope[pfx + 'aws_cloudformation_stack_name_publish'] %>
@@ -103,9 +109,6 @@
 <%- end -%>
 <%- if scope[pfx + 'aws_snapshot_tags'] != nil -%>
   <%--%>aws.snapshot.tags = <%= scope[pfx + 'aws_snapshot_tags'] %>
-<%- end -%>
-<%- if scope[pfx + 'aws_sns_topic_name'] != nil -%>
-  <%--%>aws.sns.topicName = <%= scope[pfx + 'aws_sns_topic_name'] %>
 <%- end -%>
 <%- if scope[pfx + 'aws_sqs_queue_name'] != nil -%>
   <%--%>aws.sqs.queueName = <%= scope[pfx + 'aws_sqs_queue_name'] %>
