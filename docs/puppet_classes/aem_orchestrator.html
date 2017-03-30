@@ -567,8 +567,8 @@ class aem_orchestrator (
     checksum_type =&gt; $jarfile_checksum_type,
     checksum      =&gt; $jarfile_checksum_value,
     require       =&gt; $file_requires;
-  } -&gt;
-  file { $jarfile:
+  }
+  -&gt; file { $jarfile:
     owner =&gt; $user,
     group =&gt; $group,
     mode  =&gt; $jarfile_mode,
@@ -602,7 +602,7 @@ class aem_orchestrator (
 </div>
 
       <div id="footer">
-  Generated on Fri Mar 24 16:08:09 2017 by
+  Generated on Thu Mar 30 12:09:51 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.8 (ruby-2.3.1).
 </div>
