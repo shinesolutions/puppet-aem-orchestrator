@@ -127,8 +127,8 @@ class aem_orchestrator (
     checksum_type => $jarfile_checksum_type,
     checksum      => $jarfile_checksum_value,
     require       => $file_requires;
-  } ->
-  file { $jarfile:
+  }
+  -> file { $jarfile:
     owner => $user,
     group => $group,
     mode  => $jarfile_mode,
