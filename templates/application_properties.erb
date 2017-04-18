@@ -47,6 +47,9 @@
 <%- if scope[pfx + 'aem_protocol_publish_dispatcher'] != nil -%>
   <%--%>aem.protocol.publishDispatcher = <%= scope[pfx + 'aem_protocol_publish_dispatcher'] %>
 <%- end -%>
+<%- if scope[pfx + 'aem_relaxed_ssl_enable'] != nil -%>
+  <%--%>aem.relaxed.ssl.enable = <%= scope[pfx + 'aem_relaxed_ssl_enable'] %>
+<%- end -%>
 <%- if scope[pfx + 'aem_reverse_replication_enable'] != nil -%>
   <%--%>aem.reverseReplication.enable = <%= scope[pfx + 'aem_reverse_replication_enable'] %>
 <%- end -%>
@@ -121,6 +124,9 @@
 <%- end -%>
 <%- if scope[pfx + 'endpoints_info_enabled'] != nil -%>
   <%--%>endpoints.info.enabled = <%= scope[pfx + 'endpoints_info_enabled'] %>
+<%- end -%>
+<%- if scope[pfx + 'http_client_relaxed_ssl_enable'] != nil -%>
+  <%--%>http.client.relaxed.ssl.enable = <%= scope[pfx + 'http_client_relaxed_ssl_enable'] %>
 <%- end -%>
 <%- if scope[pfx + 'startup_wait_for_author_elb_back_off_period'] != nil -%>
   <%--%>startup.waitForAuthorElb.backOffPeriod = <%= scope[pfx + 'startup_wait_for_author_elb_back_off_period'] %>

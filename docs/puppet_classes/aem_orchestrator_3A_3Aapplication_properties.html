@@ -454,6 +454,24 @@ Required.</p>
   
     <li>
       
+        <span class='name'>aem_relaxed_ssl_enable</span>
+      
+      
+        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Java property <code>aem.relaxed.ssl.enable</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
         <span class='name'>aem_reverse_replication_enable</span>
       
       
@@ -907,6 +925,24 @@ Required.</p>
   
     <li>
       
+        <span class='name'>http_client_relaxed_ssl_enable</span>
+      
+      
+        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Java property <code>http.client.relaxed.ssl.enable</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
         <span class='name'>startup_wait_for_author_elb_back_off_period</span>
       
       
@@ -958,12 +994,6 @@ Required.</p>
         <pre class="lines">
 
 
-162
-163
-164
-165
-166
-167
 168
 169
 170
@@ -1016,10 +1046,18 @@ Required.</p>
 217
 218
 219
-220</pre>
+220
+221
+222
+223
+224
+225
+226
+227
+228</pre>
       </td>
       <td>
-        <pre class="code"><span class="info file"># File 'manifests/application_properties.pp', line 162</span>
+        <pre class="code"><span class="info file"># File 'manifests/application_properties.pp', line 168</span>
 
 class aem_orchestrator::application_properties (
   String $path,
@@ -1043,6 +1081,7 @@ class aem_orchestrator::application_properties (
   Variant[String, Undef] $aem_protocol_author_dispatcher = undef,
   Variant[String, Undef] $aem_protocol_publish = undef,
   Variant[String, Undef] $aem_protocol_publish_dispatcher = undef,
+  Variant[String, Undef] $aem_relaxed_ssl_enable = undef,
   Variant[String, Undef] $aem_reverse_replication_enable = undef,
   Variant[String, Undef] $aem_reverse_replication_transport_uri_postfix = undef,
   Variant[String, Undef] $aws_client_connection_timeout = undef,
@@ -1068,6 +1107,7 @@ class aem_orchestrator::application_properties (
   Variant[String, Undef] $endpoints_enabled = undef,
   Variant[String, Undef] $endpoints_health_enabled = undef,
   Variant[String, Undef] $endpoints_info_enabled = undef,
+  Variant[String, Undef] $http_client_relaxed_ssl_enable = undef,
   Variant[String, Undef] $startup_wait_for_author_elb_back_off_period = undef,
   Variant[String, Undef] $startup_wait_for_author_elb_max_attempts = undef,
 
@@ -1087,7 +1127,7 @@ class aem_orchestrator::application_properties (
 </div>
 
       <div id="footer">
-  Generated on Fri Mar 24 16:08:09 2017 by
+  Generated on Tue Apr 18 11:23:31 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.8 (ruby-2.3.1).
 </div>

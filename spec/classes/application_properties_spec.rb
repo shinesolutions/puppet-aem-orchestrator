@@ -67,6 +67,10 @@ describe 'aem_orchestrator::application_properties' do
     let(:params) { {:aem_protocol_publish_dispatcher => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.protocol.publishDispatcher = foo/) }
   end
+  context 'with aem_relaxed_ssl_enable => foo' do
+    let(:params) { {:aem_relaxed_ssl_enable => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.relaxed.ssl.enable = foo/) }
+  end
   context 'with aem_reverse_replication_enable => foo' do
     let(:params) { {:aem_reverse_replication_enable => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.reverseReplication.enable = foo/) }
@@ -166,6 +170,10 @@ describe 'aem_orchestrator::application_properties' do
   context 'with endpoints_info_enabled => foo' do
     let(:params) { {:endpoints_info_enabled => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^endpoints.info.enabled = foo/) }
+  end
+  context 'with http_client_relaxed_ssl_enable => foo' do
+    let(:params) { {:http_client_relaxed_ssl_enable => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^http.client.relaxed.ssl.enable = foo/) }
   end
   context 'with startup_wait_for_author_elb_back_off_period => foo' do
     let(:params) { {:startup_wait_for_author_elb_back_off_period => 'foo', :path => '/tmp/foo', } }

@@ -75,6 +75,9 @@
 # @param aem_protocol_publish_dispatcher
 #   Java property `aem.protocol.publishDispatcher`
 #
+# @param aem_relaxed_ssl_enable
+#   Java property `aem.relaxed.ssl.enable`
+#
 # @param aem_reverse_replication_enable
 #   Java property `aem.reverseReplication.enable`
 #
@@ -150,6 +153,9 @@
 # @param endpoints_info_enabled
 #   Java property `endpoints.info.enabled`
 #
+# @param http_client_relaxed_ssl_enable
+#   Java property `http.client.relaxed.ssl.enable`
+#
 # @param startup_wait_for_author_elb_back_off_period
 #   Java property `startup.waitForAuthorElb.backOffPeriod`
 #
@@ -181,6 +187,7 @@ class aem_orchestrator::application_properties (
   Variant[String, Undef] $aem_protocol_author_dispatcher = undef,
   Variant[String, Undef] $aem_protocol_publish = undef,
   Variant[String, Undef] $aem_protocol_publish_dispatcher = undef,
+  Variant[String, Undef] $aem_relaxed_ssl_enable = undef,
   Variant[String, Undef] $aem_reverse_replication_enable = undef,
   Variant[String, Undef] $aem_reverse_replication_transport_uri_postfix = undef,
   Variant[String, Undef] $aws_client_connection_timeout = undef,
@@ -206,6 +213,7 @@ class aem_orchestrator::application_properties (
   Variant[String, Undef] $endpoints_enabled = undef,
   Variant[String, Undef] $endpoints_health_enabled = undef,
   Variant[String, Undef] $endpoints_info_enabled = undef,
+  Variant[String, Undef] $http_client_relaxed_ssl_enable = undef,
   Variant[String, Undef] $startup_wait_for_author_elb_back_off_period = undef,
   Variant[String, Undef] $startup_wait_for_author_elb_max_attempts = undef,
 
