@@ -310,6 +310,24 @@ Required.</p>
   
     <li>
       
+        <span class='name'>aem_flush_log_level</span>
+      
+      
+        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Java property <code>aem.flush.logLevel</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
         <span class='name'>aem_port_author</span>
       
       
@@ -472,6 +490,24 @@ Required.</p>
   
     <li>
       
+        <span class='name'>aem_replication_log_level</span>
+      
+      
+        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Java property <code>aem.replication.logLevel</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
         <span class='name'>aem_reverse_replication_enable</span>
       
       
@@ -484,6 +520,24 @@ Required.</p>
         &mdash;
         <div class='inline'>
 <p>Java property <code>aem.reverseReplication.enable</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>aem_reverse_replication_log_level</span>
+      
+      
+        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Java property <code>aem.reverseReplication.logLevel</code></p>
 </div>
       
     </li>
@@ -994,15 +1048,6 @@ Required.</p>
         <pre class="lines">
 
 
-168
-169
-170
-171
-172
-173
-174
-175
-176
 177
 178
 179
@@ -1054,10 +1099,22 @@ Required.</p>
 225
 226
 227
-228</pre>
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240</pre>
       </td>
       <td>
-        <pre class="code"><span class="info file"># File 'manifests/application_properties.pp', line 168</span>
+        <pre class="code"><span class="info file"># File 'manifests/application_properties.pp', line 177</span>
 
 class aem_orchestrator::application_properties (
   String $path,
@@ -1073,6 +1130,7 @@ class aem_orchestrator::application_properties (
   Variant[String, Undef] $aem_credentials_replicator_username = undef,
   Variant[String, Undef] $aem_credentials_s3_file_uri = undef,
   Variant[String, Undef] $aem_credentials_s3_use = undef,
+  Variant[String, Undef] $aem_flush_log_level = undef,
   Variant[String, Undef] $aem_port_author = undef,
   Variant[String, Undef] $aem_port_author_dispatcher = undef,
   Variant[String, Undef] $aem_port_publish = undef,
@@ -1082,7 +1140,9 @@ class aem_orchestrator::application_properties (
   Variant[String, Undef] $aem_protocol_publish = undef,
   Variant[String, Undef] $aem_protocol_publish_dispatcher = undef,
   Variant[String, Undef] $aem_relaxed_ssl_enable = undef,
+  Variant[String, Undef] $aem_replication_log_level = undef,
   Variant[String, Undef] $aem_reverse_replication_enable = undef,
+  Variant[String, Undef] $aem_reverse_replication_log_level = undef,
   Variant[String, Undef] $aem_reverse_replication_transport_uri_postfix = undef,
   Variant[String, Undef] $aws_client_connection_timeout = undef,
   Variant[String, Undef] $aws_client_max_error_retry = undef,
@@ -1127,7 +1187,7 @@ class aem_orchestrator::application_properties (
 </div>
 
       <div id="footer">
-  Generated on Tue Apr 18 11:23:31 2017 by
+  Generated on Tue Apr 18 11:57:24 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.8 (ruby-2.3.1).
 </div>

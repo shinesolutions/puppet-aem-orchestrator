@@ -35,6 +35,10 @@ describe 'aem_orchestrator::application_properties' do
     let(:params) { {:aem_credentials_s3_use => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.credentials.s3.use = foo/) }
   end
+  context 'with aem_flush_log_level => foo' do
+    let(:params) { {:aem_flush_log_level => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.flush.logLevel = foo/) }
+  end
   context 'with aem_port_author => foo' do
     let(:params) { {:aem_port_author => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.port.author = foo/) }
@@ -71,9 +75,17 @@ describe 'aem_orchestrator::application_properties' do
     let(:params) { {:aem_relaxed_ssl_enable => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.relaxed.ssl.enable = foo/) }
   end
+  context 'with aem_replication_log_level => foo' do
+    let(:params) { {:aem_replication_log_level => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.replication.logLevel = foo/) }
+  end
   context 'with aem_reverse_replication_enable => foo' do
     let(:params) { {:aem_reverse_replication_enable => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.reverseReplication.enable = foo/) }
+  end
+  context 'with aem_reverse_replication_log_level => foo' do
+    let(:params) { {:aem_reverse_replication_log_level => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.reverseReplication.logLevel = foo/) }
   end
   context 'with aem_reverse_replication_transport_uri_postfix => foo' do
     let(:params) { {:aem_reverse_replication_transport_uri_postfix => 'foo', :path => '/tmp/foo', } }

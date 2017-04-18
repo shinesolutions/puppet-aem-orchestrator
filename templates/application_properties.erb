@@ -23,6 +23,9 @@
 <%- if scope[pfx + 'aem_credentials_s3_use'] != nil -%>
   <%--%>aem.credentials.s3.use = <%= scope[pfx + 'aem_credentials_s3_use'] %>
 <%- end -%>
+<%- if scope[pfx + 'aem_flush_log_level'] != nil -%>
+  <%--%>aem.flush.logLevel = <%= scope[pfx + 'aem_flush_log_level'] %>
+<%- end -%>
 <%- if scope[pfx + 'aem_port_author'] != nil -%>
   <%--%>aem.port.author = <%= scope[pfx + 'aem_port_author'] %>
 <%- end -%>
@@ -50,8 +53,14 @@
 <%- if scope[pfx + 'aem_relaxed_ssl_enable'] != nil -%>
   <%--%>aem.relaxed.ssl.enable = <%= scope[pfx + 'aem_relaxed_ssl_enable'] %>
 <%- end -%>
+<%- if scope[pfx + 'aem_replication_log_level'] != nil -%>
+  <%--%>aem.replication.logLevel = <%= scope[pfx + 'aem_replication_log_level'] %>
+<%- end -%>
 <%- if scope[pfx + 'aem_reverse_replication_enable'] != nil -%>
   <%--%>aem.reverseReplication.enable = <%= scope[pfx + 'aem_reverse_replication_enable'] %>
+<%- end -%>
+<%- if scope[pfx + 'aem_reverse_replication_log_level'] != nil -%>
+  <%--%>aem.reverseReplication.logLevel = <%= scope[pfx + 'aem_reverse_replication_log_level'] %>
 <%- end -%>
 <%- if scope[pfx + 'aem_reverse_replication_transport_uri_postfix'] != nil -%>
   <%--%>aem.reverseReplication.transportUri.postfix = <%= scope[pfx + 'aem_reverse_replication_transport_uri_postfix'] %>

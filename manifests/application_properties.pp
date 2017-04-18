@@ -51,6 +51,9 @@
 # @param aem_credentials_s3_use
 #   Java property `aem.credentials.s3.use`
 #
+# @param aem_flush_log_level
+#   Java property `aem.flush.logLevel`
+#
 # @param aem_port_author
 #   Java property `aem.port.author`
 #
@@ -78,8 +81,14 @@
 # @param aem_relaxed_ssl_enable
 #   Java property `aem.relaxed.ssl.enable`
 #
+# @param aem_replication_log_level
+#   Java property `aem.replication.logLevel`
+#
 # @param aem_reverse_replication_enable
 #   Java property `aem.reverseReplication.enable`
+#
+# @param aem_reverse_replication_log_level
+#   Java property `aem.reverseReplication.logLevel`
 #
 # @param aem_reverse_replication_transport_uri_postfix
 #   Java property `aem.reverseReplication.transportUri.postfix`
@@ -179,6 +188,7 @@ class aem_orchestrator::application_properties (
   Variant[String, Undef] $aem_credentials_replicator_username = undef,
   Variant[String, Undef] $aem_credentials_s3_file_uri = undef,
   Variant[String, Undef] $aem_credentials_s3_use = undef,
+  Variant[String, Undef] $aem_flush_log_level = undef,
   Variant[String, Undef] $aem_port_author = undef,
   Variant[String, Undef] $aem_port_author_dispatcher = undef,
   Variant[String, Undef] $aem_port_publish = undef,
@@ -188,7 +198,9 @@ class aem_orchestrator::application_properties (
   Variant[String, Undef] $aem_protocol_publish = undef,
   Variant[String, Undef] $aem_protocol_publish_dispatcher = undef,
   Variant[String, Undef] $aem_relaxed_ssl_enable = undef,
+  Variant[String, Undef] $aem_replication_log_level = undef,
   Variant[String, Undef] $aem_reverse_replication_enable = undef,
+  Variant[String, Undef] $aem_reverse_replication_log_level = undef,
   Variant[String, Undef] $aem_reverse_replication_transport_uri_postfix = undef,
   Variant[String, Undef] $aws_client_connection_timeout = undef,
   Variant[String, Undef] $aws_client_max_error_retry = undef,
