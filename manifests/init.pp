@@ -56,6 +56,10 @@
 # @param aws_profile
 #   If specified, sets the `AWS_PROFILE` variable in the service's environment.
 #
+# @param user_shell
+#   The shell to be used when managing the user. Should be the full path to the
+#   `nologin` shell.
+#
 # @example Declaring the class
 #  include aem_orchestrator
 #
@@ -83,6 +87,7 @@ class aem_orchestrator (
   Boolean $manage_group      = true,
 
   Variant[String, Undef] $aws_profile = undef,
+  String $user_shell = '/usr/sbin/nologin',
 ){
   if $manage_basedir {
     file { $basedir:
@@ -102,7 +107,7 @@ class aem_orchestrator (
       home       => $homedir,
       managehome => $manage_homedir,
       system     => true,
-      shell      => '/usr/sbin/nologin',
+      shell      => $user_shell,
       gid        => $group,
       expiry     => absent,
     }

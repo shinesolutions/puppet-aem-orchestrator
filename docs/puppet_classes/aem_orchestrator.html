@@ -380,6 +380,25 @@ service&#39;s environment.</p>
       
     </li>
   
+    <li>
+      
+        <span class='name'>user_shell</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;/usr/sbin/nologin&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The shell to be used when managing the user. Should be the full path to the
+<code>nologin</code> shell.</p>
+</div>
+      
+    </li>
+  
 </ul>
 
 <p class="tag_title">Author:</p>
@@ -407,10 +426,6 @@ href="mailto:james.sinclair@shinesolutions.com">james.sinclair@shinesolutions.co
         <pre class="lines">
 
 
-66
-67
-68
-69
 70
 71
 72
@@ -498,10 +513,15 @@ href="mailto:james.sinclair@shinesolutions.com">james.sinclair@shinesolutions.co
 154
 155
 156
-157</pre>
+157
+158
+159
+160
+161
+162</pre>
       </td>
       <td>
-        <pre class="code"><span class="info file"># File 'manifests/init.pp', line 66</span>
+        <pre class="code"><span class="info file"># File 'manifests/init.pp', line 70</span>
 
 class aem_orchestrator (
   String $service_name,
@@ -523,6 +543,7 @@ class aem_orchestrator (
   Boolean $manage_group      = true,
 
   Variant[String, Undef] $aws_profile = undef,
+  String $user_shell = &#39;/usr/sbin/nologin&#39;,
 ){
   if $manage_basedir {
     file { $basedir:
@@ -542,7 +563,7 @@ class aem_orchestrator (
       home       =&gt; $homedir,
       managehome =&gt; $manage_homedir,
       system     =&gt; true,
-      shell      =&gt; &#39;/usr/sbin/nologin&#39;,
+      shell      =&gt; $user_shell,
       gid        =&gt; $group,
       expiry     =&gt; absent,
     }
@@ -602,7 +623,7 @@ class aem_orchestrator (
 </div>
 
       <div id="footer">
-  Generated on Thu Mar 30 12:09:51 2017 by
+  Generated on Mon Apr 24 08:48:55 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.8 (ruby-2.3.1).
 </div>
