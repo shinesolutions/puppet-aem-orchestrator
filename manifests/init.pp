@@ -125,7 +125,6 @@ class aem_orchestrator (
   }
 
   $jarfile = "${installdir}/aem-orchestrator.jar"
-  $servicefile = "/etc/systemd/system/${service_name}.service"
   archive { $jarfile:
     ensure        => present,
     source        => $jarfile_source,
@@ -140,15 +139,24 @@ class aem_orchestrator (
   }
 
   if $facts['os']['family'] == 'redhat' {
-    file { $servicefile:
-      ensure  => file,
-      content => template('aem_orchestrator/service.conf.erb'),
-      require => File[$jarfile],
+    if $facts['os']['name'] == 'Amazon' {
+      $servicefile = "/etc/init/${service_name}.conf"
+      $servicetmpl = 'upstart.erb'
+    } else {
+      $servicefile = "/etc/systemd/system/${service_name}.service"
+      $servicetmpl = 'systemd.erb'
     }
   }
 
+  file { $servicefile:
+    ensure  => file,
+    content => template("aem_orchestrator/service/${servicetmpl}"),
+    require => File[$jarfile],
+  }
+
+  $application_properties_file = "${installdir}/application.properties"
   class { '::aem_orchestrator::application_properties':
-    path    => "${installdir}/application.properties",
+    path    => $application_properties_file,
     owner   => $user,
     group   => $group,
     notify  => Service[$service_name],
@@ -156,7 +164,8 @@ class aem_orchestrator (
   }
 
   service { $service_name:
-    ensure => running,
-    enable => true,
+    ensure  => running,
+    enable  => true,
+    require => File[$application_properties_file],
   }
 }

@@ -1,0 +1,15 @@
+description Shine Solution Orchestrator for Adobe Experience Manager
+
+start on (runlevel [345] and started network)
+stop on (runlevel [!345] or stopping network)
+
+respawn
+
+normal exit 143
+
+<% if defined?(@aws_profile) && ! @aws_profile.empty? -%>
+env AWS_PROFILE=<%= @aws_profile %>
+export AWS_PROFILE
+<% end -%>
+
+exec su -s /bin/sh -c 'exec "$0" "$@"' <%= @user %> -- <%= @jarfile %>

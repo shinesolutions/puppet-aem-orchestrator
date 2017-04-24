@@ -6,7 +6,7 @@
 <title>
   Puppet Class: aem_orchestrator
   
-    &mdash; Documentation by YARD 0.9.8
+    &mdash; Documentation by YARD 0.9.9
   
 </title>
 
@@ -518,7 +518,16 @@ href="mailto:james.sinclair@shinesolutions.com">james.sinclair@shinesolutions.co
 159
 160
 161
-162</pre>
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171</pre>
       </td>
       <td>
         <pre class="code"><span class="info file"># File 'manifests/init.pp', line 70</span>
@@ -581,7 +590,6 @@ class aem_orchestrator (
   }
 
   $jarfile = &quot;${installdir}/aem-orchestrator.jar&quot;
-  $servicefile = &quot;/etc/systemd/system/${service_name}.service&quot;
   archive { $jarfile:
     ensure        =&gt; present,
     source        =&gt; $jarfile_source,
@@ -596,15 +604,24 @@ class aem_orchestrator (
   }
 
   if $facts[&#39;os&#39;][&#39;family&#39;] == &#39;redhat&#39; {
-    file { $servicefile:
-      ensure  =&gt; file,
-      content =&gt; template(&#39;aem_orchestrator/service.conf.erb&#39;),
-      require =&gt; File[$jarfile],
+    if $facts[&#39;os&#39;][&#39;name&#39;] == &#39;Amazon&#39; {
+      $servicefile = &quot;/etc/init/${service_name}.conf&quot;
+      $servicetmpl = &#39;upstart.erb&#39;
+    } else {
+      $servicefile = &quot;/etc/systemd/system/${service_name}.service&quot;
+      $servicetmpl = &#39;systemd.erb&#39;
     }
   }
 
+  file { $servicefile:
+    ensure  =&gt; file,
+    content =&gt; template(&quot;aem_orchestrator/service/${servicetmpl}&quot;),
+    require =&gt; File[$jarfile],
+  }
+
+  $application_properties_file = &quot;${installdir}/application.properties&quot;
   class { &#39;::aem_orchestrator::application_properties&#39;:
-    path    =&gt; &quot;${installdir}/application.properties&quot;,
+    path    =&gt; $application_properties_file,
     owner   =&gt; $user,
     group   =&gt; $group,
     notify  =&gt; Service[$service_name],
@@ -612,8 +629,9 @@ class aem_orchestrator (
   }
 
   service { $service_name:
-    ensure =&gt; running,
-    enable =&gt; true,
+    ensure  =&gt; running,
+    enable  =&gt; true,
+    require =&gt; File[$application_properties_file],
   }
 }</pre>
       </td>
@@ -623,9 +641,9 @@ class aem_orchestrator (
 </div>
 
       <div id="footer">
-  Generated on Mon Apr 24 08:48:55 2017 by
+  Generated on Mon Apr 24 14:46:28 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.8 (ruby-2.3.1).
+  0.9.9 (ruby-2.3.1).
 </div>
 
     </div>
