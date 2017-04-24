@@ -151,10 +151,9 @@ class aem_orchestrator (
   }
 
   file { $servicefile:
-    ensure   => file,
-    content  => template("aem_orchestrator/service/${servicetmpl}"),
-    provider => $serviceprvd,
-    require  => File[$jarfile],
+    ensure  => file,
+    content => template("aem_orchestrator/service/${servicetmpl}"),
+    require => File[$jarfile],
   }
 
   $application_properties_file = "${installdir}/application.properties"
@@ -167,8 +166,9 @@ class aem_orchestrator (
   }
 
   service { $service_name:
-    ensure  => running,
-    enable  => true,
-    require => File[$application_properties_file],
+    ensure   => running,
+    enable   => true,
+    provider => $serviceprvd,
+    require  => File[$application_properties_file],
   }
 }

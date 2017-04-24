@@ -527,7 +527,10 @@ href="mailto:james.sinclair@shinesolutions.com">james.sinclair@shinesolutions.co
 168
 169
 170
-171</pre>
+171
+172
+173
+174</pre>
       </td>
       <td>
         <pre class="code"><span class="info file"># File 'manifests/init.pp', line 70</span>
@@ -607,9 +610,11 @@ class aem_orchestrator (
     if $facts[&#39;os&#39;][&#39;name&#39;] == &#39;Amazon&#39; {
       $servicefile = &quot;/etc/init/${service_name}.conf&quot;
       $servicetmpl = &#39;upstart.erb&#39;
+      $serviceprvd = &#39;upstart&#39;
     } else {
       $servicefile = &quot;/etc/systemd/system/${service_name}.service&quot;
       $servicetmpl = &#39;systemd.erb&#39;
+      $serviceprvd = undef
     }
   }
 
@@ -629,9 +634,10 @@ class aem_orchestrator (
   }
 
   service { $service_name:
-    ensure  =&gt; running,
-    enable  =&gt; true,
-    require =&gt; File[$application_properties_file],
+    ensure   =&gt; running,
+    enable   =&gt; true,
+    provider =&gt; $serviceprvd,
+    require  =&gt; File[$application_properties_file],
   }
 }</pre>
       </td>
@@ -641,7 +647,7 @@ class aem_orchestrator (
 </div>
 
       <div id="footer">
-  Generated on Mon Apr 24 14:46:28 2017 by
+  Generated on Mon Apr 24 19:45:32 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.9 (ruby-2.3.1).
 </div>
