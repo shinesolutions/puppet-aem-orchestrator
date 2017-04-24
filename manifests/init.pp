@@ -142,16 +142,19 @@ class aem_orchestrator (
     if $facts['os']['name'] == 'Amazon' {
       $servicefile = "/etc/init/${service_name}.conf"
       $servicetmpl = 'upstart.erb'
+      $serviceprvd = 'upstart'
     } else {
       $servicefile = "/etc/systemd/system/${service_name}.service"
       $servicetmpl = 'systemd.erb'
+      $serviceprvd = undef
     }
   }
 
   file { $servicefile:
-    ensure  => file,
-    content => template("aem_orchestrator/service/${servicetmpl}"),
-    require => File[$jarfile],
+    ensure   => file,
+    content  => template("aem_orchestrator/service/${servicetmpl}"),
+    provider => $serviceprvd,
+    require  => File[$jarfile],
   }
 
   $application_properties_file = "${installdir}/application.properties"
