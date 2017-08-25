@@ -8,3 +8,8 @@ Makefile
 Rakefile
 spec/
 tools/
+docs/
+generate/
+junit/
+log/
+logs/

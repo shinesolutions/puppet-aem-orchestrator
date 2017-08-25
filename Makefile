@@ -11,12 +11,12 @@ manifests/application_properties.pp:
 	  tools/parse_application_properties -p aem_orchestrator -n application_properties -
 
 clean:
-	rm -rf pkg test/integration/modules/
+	rm -rf pkg test/integration/modules log junit
 
 test-integration:
 	echo "TODO"
 
 build:
-	puppet module build .
+	bundle exec puppet module build .
 
 .PHONY: ci clean lint test-integration build tools manifests/application_properties.pp
