@@ -168,6 +168,12 @@
 # @param startup_wait_for_author_elb_back_off_period
 #   Java property `startup.waitForAuthorElb.backOffPeriod`
 #
+# @param startup_wait_for_author_elb_max_back_off_period
+#   Java property `startup.waitForAuthorElb.maxBackOffPeriod`
+#
+# @param startup_wait_for_author_elb_back_off_period_multiplier
+#   Java property `startup.waitForAuthorElb.backOffPeriodMultiplier`
+#
 # @param startup_wait_for_author_elb_max_attempts
 #   Java property `startup.waitForAuthorElb.maxAttempts`
 #
@@ -228,6 +234,8 @@ class aem_orchestrator::application_properties (
   Variant[String, Undef] $http_client_relaxed_ssl_enable = undef,
   Variant[String, Undef] $startup_wait_for_author_elb_back_off_period = undef,
   Variant[String, Undef] $startup_wait_for_author_elb_max_attempts = undef,
+  Variant[String, Undef] $startup_wait_for_author_elb_max_back_off_period = undef,
+  Variant[String, Undef] $startup_wait_for_author_elb_back_off_period_multiplier = undef,
 
 ) {
   file { $path:

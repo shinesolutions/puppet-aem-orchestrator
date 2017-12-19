@@ -140,6 +140,14 @@
 <%- if scope[pfx + 'startup_wait_for_author_elb_back_off_period'] != nil -%>
   <%--%>startup.waitForAuthorElb.backOffPeriod = <%= scope[pfx + 'startup_wait_for_author_elb_back_off_period'] %>
 <%- end -%>
+<%- if scope[pfx + 'startup_wait_for_author_elb_max_back_off_period'] != nil -%>
+  <%--%>startup.waitForAuthorElb.maxBackOffPeriod = <%= scope[pfx + 'startup_wait_for_author_elb_max_back_off_period'] %>
+<%- end -%>
+<%- if scope[pfx + 'startup_wait_for_author_elb_back_off_period_multiplier'] != nil -%>
+  <%--%>startup.waitForAuthorElb.backOffPeriodMultiplier = <%= scope[pfx + 'startup_wait_for_author_elb_back_off_period_multiplier'] %>
+<%- end -%>
+
+
 <%- if scope[pfx + 'startup_wait_for_author_elb_max_attempts'] != nil -%>
   <%--%>startup.waitForAuthorElb.maxAttempts = <%= scope[pfx + 'startup_wait_for_author_elb_max_attempts'] %>
 <%- end -%>
