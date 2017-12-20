@@ -236,6 +236,7 @@ class aem_orchestrator::application_properties (
   Variant[String, Undef] $startup_wait_for_author_elb_max_attempts = undef,
   Variant[String, Undef] $startup_wait_for_author_elb_max_back_off_period = undef,
   Variant[String, Undef] $startup_wait_for_author_elb_back_off_period_multiplier = undef,
+  Variant[String, Undef] $alarm_content_health_check_terminate_instance_enable = undef,
 
 ) {
   file { $path:

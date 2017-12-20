@@ -151,3 +151,7 @@
 <%- if scope[pfx + 'startup_wait_for_author_elb_max_attempts'] != nil -%>
   <%--%>startup.waitForAuthorElb.maxAttempts = <%= scope[pfx + 'startup_wait_for_author_elb_max_attempts'] %>
 <%- end -%>
+
+<%- if scope[pfx + 'alarm_content_health_check_terminate_instance_enable'] != nil -%>
+<%--%>alarm.content.health.check.terminate.instance.enable = <%= scope[pfx + 'alarm_content_health_check_terminate_instance_enable'] %>
+<%- end -%>
