@@ -1,22 +1,36 @@
 APPLICATION_PROPERTIES_URL := "https://raw.githubusercontent.com/shinesolutions/aem-orchestrator/master/src/main/resources/application.properties"
 
-ci: clean Gemfile.lock manifests/application_properties.pp
-	bundle exec rake
+ci: clean deps lint manifests/application_properties.pp package
 
-Gemfile.lock: Gemfile
-	bundle install
+deps:
+	gem install bundler
+	bundle install --binstubs
+	pip install -r requirements.txt
 
 manifests/application_properties.pp:
 	curl -sL $(APPLICATION_PROPERTIES_URL) | \
-	  tools/parse_application_properties -p aem_orchestrator -n application_properties -
+	  tools/parse_application_properties \
+		-p aem_orchestrator \
+		-n application_properties \
+		-
 
 clean:
-	rm -rf pkg test/integration/modules log junit
+	rm -rf bin/ pkg/ stage/ test/ vendor/ *.lock
 
-test-integration:
-	echo "TODO"
+lint:
+	bundle exec puppet-lint \
+		--fail-on-warnings \
+		--no-140chars-check \
+		--no-autoloader_layout-check \
+		--no-documentation-check \
+		./manifests/*.pp
+	# Enable template validation after migration from ERB templates to EPP templates.
+	# puppet epp validate templates/*/*.epp
 
 build:
 	bundle exec puppet module build .
+
+package: deps
+	puppet module build .
 
 .PHONY: ci clean lint test-integration build tools manifests/application_properties.pp

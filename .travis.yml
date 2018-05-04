@@ -1,12 +1,13 @@
 sudo: false
 language: ruby
 rvm:
-  - "ruby-2.2.5"
-  - "ruby-2.3.3"
-env:
-  matrix:
-    - PUPPET_VERSION="~> 4.4.0"
-    - PUPPET_VERSION="~> 4.5.0"
-    - PUPPET_VERSION="~> 4.7.0"
-    - PUPPET_VERSION="~> 4.8.0"
-    - PUPPET_VERSION="~> 4.9.0"
+  - "2.2"
+  - "2.3"
+  - "2.4"
+before_install:
+  - wget https://apt.puppetlabs.com/puppet5-release-trusty.deb
+  - sudo dpkg -i puppet5-release-trusty.deb
+  - sudo apt-get update
+  - sudo apt-get install -y puppet-agent
+script:
+  - PATH=/opt/puppetlabs/puppet/bin/:$PATH make ci
