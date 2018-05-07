@@ -1,13 +1,13 @@
 APPLICATION_PROPERTIES_URL := "https://raw.githubusercontent.com/shinesolutions/aem-orchestrator/master/src/main/resources/application.properties"
 
-ci: clean deps lint manifests/application_properties.pp package
+ci: clean deps lint gen-properties package
 
 deps:
 	gem install bundler
 	bundle install --binstubs
 	pip install -r requirements.txt
 
-manifests/application_properties.pp:
+gen-properties:
 	curl -sL $(APPLICATION_PROPERTIES_URL) | \
 	  tools/parse_application_properties \
 		-p aem_orchestrator \
@@ -33,4 +33,4 @@ build:
 package: deps
 	puppet module build .
 
-.PHONY: ci clean lint test-integration build tools manifests/application_properties.pp
+.PHONY: ci clean lint test-integration build tools gen-properties
