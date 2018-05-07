@@ -5,8 +5,9 @@ aem_orchestrator::installdir: "%{hiera('aem_orchestrator::basedir')}/%{hiera('ae
 aem_orchestrator::homedir: "%{hiera('aem_orchestrator::installdir')}"
 aem_orchestrator::user: "%{hiera('aem_orchestrator::service_name')}"
 aem_orchestrator::group: "%{hiera('aem_orchestrator::service_name')}"
-aem_orchestrator::jarfile_source: http://central.maven.org/maven2/com/shinesolutions/aem-orchestrator/1.0.0/aem-orchestrator-1.0.0.jar
-aem_orchestrator::jarfile_checksum_value: a9a47a499adf666d16ef853d17854d9e0f66829bd2db0ba1fdece792c6ba2e59
+aem_orchestrator::jarfile_source: http://central.maven.org/maven2/com/shinesolutions/aem-orchestrator/1.0.2/aem-orchestrator-1.0.2.jar
+# SHA 256 checksum
+aem_orchestrator::jarfile_checksum_value: 5b64e172969544490b765a7623de6dc50b93d1bcaf94526f36c7e27b9baca44c
 
 aem_orchestrator::application_properties::path: "%{hiera('aem_orchestrator::installdir')}/application.properties"
 aem_orchestrator::application_properties::owner: "%{hiera('aem_orchestrator::user')}"
