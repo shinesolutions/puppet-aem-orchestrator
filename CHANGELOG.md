@@ -1,5 +1,5 @@
 ### 1.2.0
-*
+* Add new properties startup_wait_for_author_elb_max_back_off_period and startup_wait_for_author_elb_back_off_period_multiplier
 
 ### 1.1.0
 * Default to aem-orchestrator-1.0.0
