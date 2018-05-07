@@ -91,6 +91,10 @@ describe 'aem_orchestrator::application_properties' do
     let(:params) { {:aem_reverse_replication_transport_uri_postfix => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.reverseReplication.transportUri.postfix = foo/) }
   end
+  context 'with alarm_content_health_check_terminate_instance_enable => foo' do
+    let(:params) { {:alarm_content_health_check_terminate_instance_enable => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^alarm.content.health.check.terminate.instance.enable = foo/) }
+  end
   context 'with aws_client_connection_timeout => foo' do
     let(:params) { {:aws_client_connection_timeout => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^aws.client.connection.timeout = foo/) }
@@ -191,8 +195,16 @@ describe 'aem_orchestrator::application_properties' do
     let(:params) { {:startup_wait_for_author_elb_back_off_period => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^startup.waitForAuthorElb.backOffPeriod = foo/) }
   end
+  context 'with startup_wait_for_author_elb_back_off_period_multiplier => foo' do
+    let(:params) { {:startup_wait_for_author_elb_back_off_period_multiplier => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^startup.waitForAuthorElb.backOffPeriodMultiplier = foo/) }
+  end
   context 'with startup_wait_for_author_elb_max_attempts => foo' do
     let(:params) { {:startup_wait_for_author_elb_max_attempts => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^startup.waitForAuthorElb.maxAttempts = foo/) }
+  end
+  context 'with startup_wait_for_author_elb_max_back_off_period => foo' do
+    let(:params) { {:startup_wait_for_author_elb_max_back_off_period => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^startup.waitForAuthorElb.maxBackOffPeriod = foo/) }
   end
 end

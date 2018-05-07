@@ -93,6 +93,9 @@
 # @param aem_reverse_replication_transport_uri_postfix
 #   Java property `aem.reverseReplication.transportUri.postfix`
 #
+# @param alarm_content_health_check_terminate_instance_enable
+#   Java property `alarm.content.health.check.terminate.instance.enable`
+#
 # @param aws_client_connection_timeout
 #   Java property `aws.client.connection.timeout`
 #
@@ -168,14 +171,14 @@
 # @param startup_wait_for_author_elb_back_off_period
 #   Java property `startup.waitForAuthorElb.backOffPeriod`
 #
-# @param startup_wait_for_author_elb_max_back_off_period
-#   Java property `startup.waitForAuthorElb.maxBackOffPeriod`
-#
 # @param startup_wait_for_author_elb_back_off_period_multiplier
 #   Java property `startup.waitForAuthorElb.backOffPeriodMultiplier`
 #
 # @param startup_wait_for_author_elb_max_attempts
 #   Java property `startup.waitForAuthorElb.maxAttempts`
+#
+# @param startup_wait_for_author_elb_max_back_off_period
+#   Java property `startup.waitForAuthorElb.maxBackOffPeriod`
 #
 #
 # Copyright © 2017 Shine Solutions Group, unless otherwise noted.
@@ -208,6 +211,7 @@ class aem_orchestrator::application_properties (
   Variant[String, Undef] $aem_reverse_replication_enable = undef,
   Variant[String, Undef] $aem_reverse_replication_log_level = undef,
   Variant[String, Undef] $aem_reverse_replication_transport_uri_postfix = undef,
+  Variant[String, Undef] $alarm_content_health_check_terminate_instance_enable = undef,
   Variant[String, Undef] $aws_client_connection_timeout = undef,
   Variant[String, Undef] $aws_client_max_error_retry = undef,
   Variant[String, Undef] $aws_client_protocol = undef,
@@ -233,10 +237,9 @@ class aem_orchestrator::application_properties (
   Variant[String, Undef] $endpoints_info_enabled = undef,
   Variant[String, Undef] $http_client_relaxed_ssl_enable = undef,
   Variant[String, Undef] $startup_wait_for_author_elb_back_off_period = undef,
+  Variant[String, Undef] $startup_wait_for_author_elb_back_off_period_multiplier = undef,
   Variant[String, Undef] $startup_wait_for_author_elb_max_attempts = undef,
   Variant[String, Undef] $startup_wait_for_author_elb_max_back_off_period = undef,
-  Variant[String, Undef] $startup_wait_for_author_elb_back_off_period_multiplier = undef,
-  Variant[String, Undef] $alarm_content_health_check_terminate_instance_enable = undef,
 
 ) {
   file { $path:
