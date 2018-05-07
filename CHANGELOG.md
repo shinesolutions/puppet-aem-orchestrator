@@ -1,3 +1,6 @@
+### 1.3.0
+*
+
 ### 1.2.0
 * Add new properties startup_wait_for_author_elb_max_back_off_period and startup_wait_for_author_elb_back_off_period_multiplier
 * Add new property alarm.content.health.check.terminate.instance.enable
