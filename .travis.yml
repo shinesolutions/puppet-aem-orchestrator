@@ -10,4 +10,5 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install -y puppet-agent
 script:
+  - sudo chmod 777 /usr/local/lib/python2.7/dist-packages/
   - PATH=/opt/puppetlabs/puppet/bin/:$PATH make ci
