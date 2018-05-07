@@ -1,3 +1,6 @@
+### 1.2.0
+*
+
 ### 1.1.0
 * Default to aem-orchestrator-1.0.0
 * Update package build
