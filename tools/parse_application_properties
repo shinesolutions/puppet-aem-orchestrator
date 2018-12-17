@@ -172,7 +172,7 @@ class_tmpl = Template(
     #
     {% endfor -%}
     #
-    # Copyright © 2017 Shine Solutions Group, unless otherwise noted.
+    # Copyright © 2017-2019 Shine Solutions Group, unless otherwise noted.
     #
     class {{ full_class_name }} (
       String $path,
