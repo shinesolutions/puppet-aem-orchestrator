@@ -138,6 +138,10 @@ class aem_orchestrator (
     mode  => $jarfile_mode,
   }
 
+  # We have to resort to `operatingsystemrelease` check for now until
+  # Amazon Linux 2 is stable for a while, then TODO: replace it with a non-legacy
+  # fact that can be used to distinguish Amazon Linux 2
+  # lint:ignore:legacy_facts
   if $facts['os']['family'] == 'redhat' {
     if $facts['os']['name'] == 'Amazon' {
       $servicefile = "/etc/init/${service_name}.conf"
@@ -153,6 +157,7 @@ class aem_orchestrator (
       $serviceprvd = undef
     }
   }
+  # lint:endignore
 
   file { $servicefile:
     ensure  => file,
