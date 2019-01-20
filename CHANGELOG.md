@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Add Amazon Linux 2 support using systemd to manage service
+
 ### Changed
 - Upgrade default AEM Orchestrator to version 1.0.3
 

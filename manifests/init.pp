@@ -143,6 +143,10 @@ class aem_orchestrator (
       $servicefile = "/etc/init/${service_name}.conf"
       $servicetmpl = 'upstart.erb'
       $serviceprvd = 'upstart'
+    } elsif ($::operatingsystem == 'Amazon' and $::operatingsystemrelease == '2') {
+      $servicefile = "/etc/systemd/system/${service_name}.service"
+      $servicetmpl = 'systemd.erb'
+      $serviceprvd = undef
     } else {
       $servicefile = "/etc/systemd/system/${service_name}.service"
       $servicetmpl = 'systemd.erb'
