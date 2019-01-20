@@ -26,11 +26,9 @@ lint:
 		./manifests/*.pp
 	# Enable template validation after migration from ERB templates to EPP templates.
 	# puppet epp validate templates/*/*.epp
-
-build:
-	bundle exec puppet module build .
+	mv Gemfile.lock Gemfile.lock.orig && pdk validate metadata && mv Gemfile.lock.orig Gemfile.lock
 
 package: deps
-	puppet module build .
+	pdk build --force
 
-.PHONY: ci clean lint test-integration build tools gen-properties
+.PHONY: APPLICATION_PROPERTIES_URL ci deps gen-properties clean lint package
