@@ -65,7 +65,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - First functional version
 
-## [0.9.0] - 2017-01-19
+## 0.9.0 - 2017-01-19
 
 ### Added
 - Initial version
+
+[Unreleased]: https://github.com/shinesolutions/puppet-aem-orchestrator/compare/1.3.1...HEAD
+[1.3.1]: https://github.com/shinesolutions/puppet-aem-orchestrator/compare/1.3.0...1.3.1
+[1.3.0]: https://github.com/shinesolutions/puppet-aem-orchestrator/compare/1.2.0...1.3.0
+[1.2.0]: https://github.com/shinesolutions/puppet-aem-orchestrator/compare/1.1.0...1.2.0
+[1.1.0]: https://github.com/shinesolutions/puppet-aem-orchestrator/compare/1.0.0...1.1.0
+[1.0.0]: https://github.com/shinesolutions/puppet-aem-orchestrator/compare/0.9.4...1.0.0
+[0.9.4]: https://github.com/shinesolutions/puppet-aem-orchestrator/compare/0.9.3...0.9.4
+[0.9.3]: https://github.com/shinesolutions/puppet-aem-orchestrator/compare/0.9.2...0.9.3
+[0.9.2]: https://github.com/shinesolutions/puppet-aem-orchestrator/compare/0.9.1...0.9.2
+[0.9.1]: https://github.com/shinesolutions/puppet-aem-orchestrator/compare/0.9.0...0.9.1
