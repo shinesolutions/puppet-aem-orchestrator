@@ -65,7 +65,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - First functional version
 
-## [0.9.0] - unknown
+## [0.9.0] - 2017-01-19
 
 ### Added
 - Initial version
