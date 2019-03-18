@@ -31,4 +31,7 @@ lint:
 package: deps
 	pdk build --force
 
-.PHONY: APPLICATION_PROPERTIES_URL ci deps gen-properties clean lint package
+release:
+	rtk release
+
+.PHONY: APPLICATION_PROPERTIES_URL ci deps gen-properties clean lint package release
