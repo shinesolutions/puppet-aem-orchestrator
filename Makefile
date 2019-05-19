@@ -3,7 +3,7 @@ APPLICATION_PROPERTIES_URL := "https://raw.githubusercontent.com/shinesolutions/
 ci: clean deps lint gen-properties package
 
 deps:
-	gem install bundler
+	gem install bundler --version=1.17.3
 	bundle install --binstubs
 	pip install -r requirements.txt
 
