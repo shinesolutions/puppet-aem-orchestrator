@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Lock down dependencies version
+
 ## [1.4.0] - 2019-03-18
 ### Added
 - Add basedirmode and installdirmode params to allow flexibility on directory permissions
