@@ -165,7 +165,7 @@ GEM
       unf_ext
     unf_ext (0.0.7.6)
     websocket (1.2.8)
-    yard (0.9.19)
+    yard (0.9.20)
 
 PLATFORMS
   ruby
