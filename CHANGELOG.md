@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Replace Maven Central base URL from http://central.maven.org to https://repo.maven.apache.org
+
 ## [1.4.1] - 2019-05-19
 ### Changed
 - Lock down dependencies version
