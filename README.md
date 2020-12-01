@@ -1,4 +1,4 @@
-[![Build Status](https://img.shields.io/travis/shinesolutions/puppet-aem-orchestrator.svg)](http://travis-ci.org/shinesolutions/puppet-aem-orchestrator)
+[![Build Status](https://github.com/shinesolutions/puppet-aem-orchestrator/workflows/CI/badge.svg)](https://github.com/shinesolutions/puppet-aem-orchestrator/actions?query=workflow%3ACI)
 
 # shinesolutions-aem_orchestrator
 
