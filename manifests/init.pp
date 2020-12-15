@@ -174,7 +174,7 @@ class aem_orchestrator (
   }
 
   $application_properties_file = "${installdir}/application.properties"
-  class { '::aem_orchestrator::application_properties':
+  class { 'aem_orchestrator::application_properties':
     path    => $application_properties_file,
     owner   => $user,
     group   => $group,
