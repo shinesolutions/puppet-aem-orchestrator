@@ -11,6 +11,10 @@ describe 'aem_orchestrator::application_properties' do
     let(:params) { {:aem_client_api_debug => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.client.api.debug = foo/) }
   end
+  context 'with aem_client_api_verifyssl => foo' do
+    let(:params) { {:aem_client_api_verifyssl => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.client.api.verifyssl = foo/) }
+  end
   context 'with aem_credentials_orchestrator_password => foo' do
     let(:params) { {:aem_credentials_orchestrator_password => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.credentials.orchestrator.password = foo/) }

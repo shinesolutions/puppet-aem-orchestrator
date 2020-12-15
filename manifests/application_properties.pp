@@ -33,6 +33,9 @@
 # @param aem_client_api_debug
 #   Java property `aem.client.api.debug`
 #
+# @param aem_client_api_verifyssl
+#   Java property `aem.client.api.verifyssl`
+#
 # @param aem_credentials_orchestrator_password
 #   Java property `aem.credentials.orchestrator.password`
 #
@@ -191,6 +194,7 @@ class aem_orchestrator::application_properties (
 
   Variant[String, Undef] $aem_client_api_connection_timeout = undef,
   Variant[String, Undef] $aem_client_api_debug = undef,
+  Variant[String, Undef] $aem_client_api_verifyssl = undef,
   Variant[String, Undef] $aem_credentials_orchestrator_password = undef,
   Variant[String, Undef] $aem_credentials_orchestrator_username = undef,
   Variant[String, Undef] $aem_credentials_replicator_password = undef,

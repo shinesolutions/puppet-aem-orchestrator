@@ -5,6 +5,9 @@
 <%- if scope[pfx + 'aem_client_api_debug'] != nil -%>
   <%--%>aem.client.api.debug = <%= scope[pfx + 'aem_client_api_debug'] %>
 <%- end -%>
+<%- if scope[pfx + 'aem_client_api_verifyssl'] != nil -%>
+  <%--%>aem.client.api.verifyssl = <%= scope[pfx + 'aem_client_api_verifyssl'] %>
+<%- end -%>
 <%- if scope[pfx + 'aem_credentials_orchestrator_password'] != nil -%>
   <%--%>aem.credentials.orchestrator.password = <%= scope[pfx + 'aem_credentials_orchestrator_password'] %>
 <%- end -%>
