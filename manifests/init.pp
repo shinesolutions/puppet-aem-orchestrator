@@ -71,7 +71,7 @@
 #
 # @author  James Sinclair <james.sinclair@shinesolutions.com>
 #
-# Copyright © 2017-2019 Shine Solutions Group, unless otherwise noted.
+# Copyright © 2017-2021 Shine Solutions Group Group, unless otherwise noted.
 #
 class aem_orchestrator (
   String $service_name,
