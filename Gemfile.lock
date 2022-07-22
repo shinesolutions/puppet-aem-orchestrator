@@ -197,7 +197,7 @@ GEM
       pusher-client (~> 0.4)
     travis-lint (2.0.0)
       json
-    tzinfo (1.2.8)
+    tzinfo (1.2.10)
       thread_safe (~> 0.1)
     unf (0.1.4)
       unf_ext
