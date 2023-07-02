@@ -41,6 +41,12 @@
 <%- if scope[pfx + 'aem_port_publish_dispatcher'] != nil -%>
   <%--%>aem.port.publishDispatcher = <%= scope[pfx + 'aem_port_publish_dispatcher'] %>
 <%- end -%>
+<%- if scope[pfx + 'aem_port_preview_publish'] != nil -%>
+  <%--%>aem.port.previewPublish = <%= scope[pfx + 'aem_port_preview_publish'] %>
+<%- end -%>
+<%- if scope[pfx + 'aem_port_preview_publish_dispatcher'] != nil -%>
+  <%--%>aem.port.previewPublishDispatcher = <%= scope[pfx + 'aem_port_preview_publish_dispatcher'] %>
+<%- end -%>
 <%- if scope[pfx + 'aem_protocol_author'] != nil -%>
   <%--%>aem.protocol.author = <%= scope[pfx + 'aem_protocol_author'] %>
 <%- end -%>
@@ -52,6 +58,12 @@
 <%- end -%>
 <%- if scope[pfx + 'aem_protocol_publish_dispatcher'] != nil -%>
   <%--%>aem.protocol.publishDispatcher = <%= scope[pfx + 'aem_protocol_publish_dispatcher'] %>
+<%- end -%>
+<%- if scope[pfx + 'aem_protocol_preview_publish'] != nil -%>
+  <%--%>aem.protocol.previewPublish = <%= scope[pfx + 'aem_protocol_preview_publish'] %>
+<%- end -%>
+<%- if scope[pfx + 'aem_protocol_preview_publish_dispatcher'] != nil -%>
+  <%--%>aem.protocol.previewPublishDispatcher = <%= scope[pfx + 'aem_protocol_preview_publish_dispatcher'] %>
 <%- end -%>
 <%- if scope[pfx + 'aem_relaxed_ssl_enable'] != nil -%>
   <%--%>aem.relaxed.ssl.enable = <%= scope[pfx + 'aem_relaxed_ssl_enable'] %>
@@ -98,6 +110,12 @@
 <%- if scope[pfx + 'aws_cloudformation_auto_scale_group_logical_id_publish_dispatcher'] != nil -%>
   <%--%>aws.cloudformation.autoScaleGroup.logicalId.publishDispatcher = <%= scope[pfx + 'aws_cloudformation_auto_scale_group_logical_id_publish_dispatcher'] %>
 <%- end -%>
+<%- if scope[pfx + 'aws_cloudformation_auto_scale_group_logical_id_preview_publish'] != nil -%>
+  <%--%>aws.cloudformation.autoScaleGroup.logicalId.previewPublish = <%= scope[pfx + 'aws_cloudformation_auto_scale_group_logical_id_preview_publish'] %>
+<%- end -%>
+<%- if scope[pfx + 'aws_cloudformation_auto_scale_group_logical_id_preview_publish_dispatcher'] != nil -%>
+  <%--%>aws.cloudformation.autoScaleGroup.logicalId.previewPublishDispatcher = <%= scope[pfx + 'aws_cloudformation_auto_scale_group_logical_id_preview_publish_dispatcher'] %>
+<%- end -%>
 <%- if scope[pfx + 'aws_cloudformation_load_balancer_logical_id_author'] != nil -%>
   <%--%>aws.cloudformation.loadBalancer.logicalId.author = <%= scope[pfx + 'aws_cloudformation_load_balancer_logical_id_author'] %>
 <%- end -%>
@@ -118,6 +136,12 @@
 <%- end -%>
 <%- if scope[pfx + 'aws_cloudformation_stack_name_publish_dispatcher'] != nil -%>
   <%--%>aws.cloudformation.stackName.publishDispatcher = <%= scope[pfx + 'aws_cloudformation_stack_name_publish_dispatcher'] %>
+<%- end -%>
+<%- if scope[pfx + 'aws_cloudformation_stack_name_preview_publish'] != nil -%>
+  <%--%>aws.cloudformation.stackName.previewPublish = <%= scope[pfx + 'aws_cloudformation_stack_name_preview_publish'] %>
+<%- end -%>
+<%- if scope[pfx + 'aws_cloudformation_stack_name_preview_publish_dispatcher'] != nil -%>
+  <%--%>aws.cloudformation.stackName.previewPublishDispatcher = <%= scope[pfx + 'aws_cloudformation_stack_name_preview_publish_dispatcher'] %>
 <%- end -%>
 <%- if scope[pfx + 'aws_device_name'] != nil -%>
   <%--%>aws.device.name = <%= scope[pfx + 'aws_device_name'] %>
