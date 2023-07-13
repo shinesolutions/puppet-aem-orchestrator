@@ -208,7 +208,7 @@
 #   Java property `startup.waitForAuthorElb.maxBackOffPeriod`
 #
 #
-# Copyright © 2017-2019 Shine Solutions Group, unless otherwise noted.
+# Copyright © 2017-2021 Shine Solutions Group Group, unless otherwise noted.
 #
 class aem_orchestrator::application_properties (
   String $path,
