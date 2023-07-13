@@ -121,21 +121,6 @@ def parse_example_file(file):
         keys.append(property_key(key, full_class_name, acronyms = args.acronym))
     return keys
 
-
-# template_tmpl = Template(
-#     """
-# {% set pfx = class_prefix + '::' %}
-# {% for property in properties %}
-#     {% set snake_case = property.snake_case %}
-#     {% if scope[pfx ~ snake_case] is not none %}
-#         {{ property.key }} = {{ scope[pfx ~ snake_case] }}
-#     {% endif %}
-# {% endfor %}
-#     """,
-#     trim_blocks=True,
-#     lstrip_blocks=True,
-# )
-
 template_tmpl = Template(
     """<% pfx = '{{ class_prefix }}::' -%>
 {% for property in properties %}
