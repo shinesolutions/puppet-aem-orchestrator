@@ -11,11 +11,12 @@ def location_for(place, fake_version = nil)
 end
 
 group :test do
-  gem 'puppetlabs_spec_helper',                                     :require => false
+  gem 'puppet', '~> 7.18',                                          :require => false
+  gem 'puppetlabs_spec_helper', '4.0.1',                            :require => false
   # gem 'rspec-puppet',                                               :require => false, :git => 'https://github.com/rodjek/rspec-puppet.git'
   # gem 'rspec-puppet-facts',                                         :require => false
   # gem 'rspec-puppet-utils',                                         :require => false
-  gem 'puppet-lint',                                                :require => false
+  gem 'puppet-lint', '2.5.2',                                       :require => false
   gem 'puppet-lint-param-docs',                                     :require => false
   gem 'puppet-lint-strict_indent-check',                            :require => false
   gem 'puppet-lint-absolute_classname-check',                       :require => false
@@ -30,16 +31,16 @@ group :test do
   gem 'puppet-lint-duplicate_class_parameters-check',               :require => false
   gem 'metadata-json-lint',                                         :require => false
   gem 'puppet-blacksmith',                                          :require => false
-  gem 'voxpupuli-release',                                          :require => false, :git => 'https://github.com/voxpupuli/voxpupuli-release-gem.git'
+  gem 'voxpupuli-release', '2.0.0',                                 :require => false
   gem 'json_pure', '<= 2.0.1',                                      :require => false if RUBY_VERSION < '2.0.0'
   gem 'semantic_puppet',                                            :require => false
 end
 
 group :development do
-  gem 'travis',         :require => false
-  gem 'travis-lint',    :require => false
-  gem 'guard-rake',     :require => false
-  gem 'puppet-strings', :require => false
+  gem 'travis',                  :require => false
+  gem 'travis-lint',             :require => false
+  gem 'guard-rake',              :require => false
+  gem 'puppet-strings',          :require => false
 end
 #
 # group :system_tests do
