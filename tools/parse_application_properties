@@ -142,30 +142,10 @@ template_tmpl = Template(
 <%- if scope[pfx + '{{ property.snake_case }}'] != nil -%>
   <%--%>{{ property.key }} = <%= scope[pfx + '{{ property.snake_case }}'] %>
 <%- end -%>
-{% endfor %}
-    """,
+{% endfor %}""",
     trim_blocks=True,
     lstrip_blocks=True,
 )
-
-# properties = keys,
-# scope=keys,
-# <%- if scope[pfx + 'aem_client_api_debug'] != nil -%>
-#   <%--%>aem.client.api.debug = <%= scope[pfx + 'aem_client_api_debug'] %>
-# <%- end -%>
-
-#
-# textwrap.dedent(u"""\
-#     <% pfx = '{{ class_prefix }}::' -%>
-#     {% for property in properties -%}
-#     <%- if scope[pfx + '{{ property.snake_case }}'] != nil -%>
-#       <%--%>{{ property.key }} = <%= scope[pfx + '{{ property.snake_case }}'] %>
-#     <%- end -%>
-#     {% endfor -%}
-# """
-# ),
-# trim_blocks = True,
-# lstrip_blocks = True,
 
 
 class_tmpl = Template(
@@ -223,8 +203,7 @@ class {{ full_class_name }} (
     mode    => $mode,
     content => template('{{ template_path }}'),
   }
-}
-    """,
+}""",
     trim_blocks = True,
     lstrip_blocks = True,
 )
@@ -241,8 +220,7 @@ describe '{{ full_class_name }}' do
     it { is_expected.to contain_file('/tmp/foo').with_content(/^{{ property.key }} = foo/) }
   end
   {% endfor %}
-end
-    """,
+end""",
     trim_blocks=True,
     lstrip_blocks=True)
 

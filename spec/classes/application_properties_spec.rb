@@ -244,4 +244,3 @@ describe 'aem_orchestrator::application_properties' do
     it { is_expected.to contain_file('/tmp/foo').with_content(/^startup.waitForAuthorElb.maxBackOffPeriod = foo/) }
   end
 end
-    

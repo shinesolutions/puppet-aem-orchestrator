@@ -285,4 +285,3 @@ class aem_orchestrator::application_properties (
     content => template('aem_orchestrator/application_properties.erb'),
   }
 }
-    
