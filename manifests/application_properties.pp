@@ -7,7 +7,7 @@
 #  `application.properties` from which it is generated. (see below)
 #
 #  _Note:_ This is an internal class that shouldn't be used directly. It is
-#  included by the `aem_orchestrator` class. You can change values for it's
+#  included by the `aem_orchestrator` class. You can change values for its
 #  parameters using Hiera.
 #
 # @see https://github.com/shinesolutions/aem-orchestrator/blob/master/src/main/resources/application.properties
@@ -63,17 +63,17 @@
 # @param aem_port_author_dispatcher
 #   Java property `aem.port.authorDispatcher`
 #
-# @param aem_port_publish
-#   Java property `aem.port.publish`
-#
-# @param aem_port_publish_dispatcher
-#   Java property `aem.port.publishDispatcher`
-#
 # @param aem_port_preview_publish
 #   Java property `aem.port.previewPublish`
 #
 # @param aem_port_preview_publish_dispatcher
 #   Java property `aem.port.previewPublishDispatcher`
+#
+# @param aem_port_publish
+#   Java property `aem.port.publish`
+#
+# @param aem_port_publish_dispatcher
+#   Java property `aem.port.publishDispatcher`
 #
 # @param aem_protocol_author
 #   Java property `aem.protocol.author`
@@ -81,17 +81,17 @@
 # @param aem_protocol_author_dispatcher
 #   Java property `aem.protocol.authorDispatcher`
 #
-# @param aem_protocol_publish
-#   Java property `aem.protocol.publish`
-#
-# @param aem_protocol_publish_dispatcher
-#   Java property `aem.protocol.publishDispatcher`
-#
 # @param aem_protocol_preview_publish
 #   Java property `aem.protocol.previewPublish`
 #
 # @param aem_protocol_preview_publish_dispatcher
 #   Java property `aem.protocol.previewPublishDispatcher`
+#
+# @param aem_protocol_publish
+#   Java property `aem.protocol.publish`
+#
+# @param aem_protocol_publish_dispatcher
+#   Java property `aem.protocol.publishDispatcher`
 #
 # @param aem_relaxed_ssl_enable
 #   Java property `aem.relaxed.ssl.enable`
@@ -132,17 +132,17 @@
 # @param aws_cloudformation_auto_scale_group_logical_id_author_dispatcher
 #   Java property `aws.cloudformation.autoScaleGroup.logicalId.authorDispatcher`
 #
-# @param aws_cloudformation_auto_scale_group_logical_id_publish
-#   Java property `aws.cloudformation.autoScaleGroup.logicalId.publish`
-#
-# @param aws_cloudformation_auto_scale_group_logical_id_publish_dispatcher
-#   Java property `aws.cloudformation.autoScaleGroup.logicalId.publishDispatcher`
-#
 # @param aws_cloudformation_auto_scale_group_logical_id_preview_publish
 #   Java property `aws.cloudformation.autoScaleGroup.logicalId.previewPublish`
 #
 # @param aws_cloudformation_auto_scale_group_logical_id_preview_publish_dispatcher
 #   Java property `aws.cloudformation.autoScaleGroup.logicalId.previewPublishDispatcher`
+#
+# @param aws_cloudformation_auto_scale_group_logical_id_publish
+#   Java property `aws.cloudformation.autoScaleGroup.logicalId.publish`
+#
+# @param aws_cloudformation_auto_scale_group_logical_id_publish_dispatcher
+#   Java property `aws.cloudformation.autoScaleGroup.logicalId.publishDispatcher`
 #
 # @param aws_cloudformation_load_balancer_logical_id_author
 #   Java property `aws.cloudformation.loadBalancer.logicalId.author`
@@ -159,17 +159,17 @@
 # @param aws_cloudformation_stack_name_messaging
 #   Java property `aws.cloudformation.stackName.messaging`
 #
-# @param aws_cloudformation_stack_name_publish
-#   Java property `aws.cloudformation.stackName.publish`
-#
-# @param aws_cloudformation_stack_name_publish_dispatcher
-#   Java property `aws.cloudformation.stackName.publishDispatcher`
-#
 # @param aws_cloudformation_stack_name_preview_publish
 #   Java property `aws.cloudformation.stackName.previewPublish`
 #
 # @param aws_cloudformation_stack_name_preview_publish_dispatcher
 #   Java property `aws.cloudformation.stackName.previewPublishDispatcher`
+#
+# @param aws_cloudformation_stack_name_publish
+#   Java property `aws.cloudformation.stackName.publish`
+#
+# @param aws_cloudformation_stack_name_publish_dispatcher
+#   Java property `aws.cloudformation.stackName.publishDispatcher`
 #
 # @param aws_device_name
 #   Java property `aws.device.name`
@@ -228,16 +228,16 @@ class aem_orchestrator::application_properties (
   Variant[String, Undef] $aem_flush_log_level = undef,
   Variant[String, Undef] $aem_port_author = undef,
   Variant[String, Undef] $aem_port_author_dispatcher = undef,
-  Variant[String, Undef] $aem_port_publish = undef,
-  Variant[String, Undef] $aem_port_publish_dispatcher = undef,
   Variant[String, Undef] $aem_port_preview_publish = undef,
   Variant[String, Undef] $aem_port_preview_publish_dispatcher = undef,
+  Variant[String, Undef] $aem_port_publish = undef,
+  Variant[String, Undef] $aem_port_publish_dispatcher = undef,
   Variant[String, Undef] $aem_protocol_author = undef,
   Variant[String, Undef] $aem_protocol_author_dispatcher = undef,
-  Variant[String, Undef] $aem_protocol_publish = undef,
-  Variant[String, Undef] $aem_protocol_publish_dispatcher = undef,
   Variant[String, Undef] $aem_protocol_preview_publish = undef,
   Variant[String, Undef] $aem_protocol_preview_publish_dispatcher = undef,
+  Variant[String, Undef] $aem_protocol_publish = undef,
+  Variant[String, Undef] $aem_protocol_publish_dispatcher = undef,
   Variant[String, Undef] $aem_relaxed_ssl_enable = undef,
   Variant[String, Undef] $aem_replication_log_level = undef,
   Variant[String, Undef] $aem_reverse_replication_enable = undef,
@@ -251,19 +251,19 @@ class aem_orchestrator::application_properties (
   Variant[String, Undef] $aws_client_proxy_port = undef,
   Variant[String, Undef] $aws_client_use_proxy = undef,
   Variant[String, Undef] $aws_cloudformation_auto_scale_group_logical_id_author_dispatcher = undef,
-  Variant[String, Undef] $aws_cloudformation_auto_scale_group_logical_id_publish = undef,
-  Variant[String, Undef] $aws_cloudformation_auto_scale_group_logical_id_publish_dispatcher = undef,
   Variant[String, Undef] $aws_cloudformation_auto_scale_group_logical_id_preview_publish = undef,
   Variant[String, Undef] $aws_cloudformation_auto_scale_group_logical_id_preview_publish_dispatcher = undef,
+  Variant[String, Undef] $aws_cloudformation_auto_scale_group_logical_id_publish = undef,
+  Variant[String, Undef] $aws_cloudformation_auto_scale_group_logical_id_publish_dispatcher = undef,
   Variant[String, Undef] $aws_cloudformation_load_balancer_logical_id_author = undef,
   Variant[String, Undef] $aws_cloudformation_sns_logical_id_event_topic = undef,
   Variant[String, Undef] $aws_cloudformation_stack_name_author = undef,
   Variant[String, Undef] $aws_cloudformation_stack_name_author_dispatcher = undef,
   Variant[String, Undef] $aws_cloudformation_stack_name_messaging = undef,
-  Variant[String, Undef] $aws_cloudformation_stack_name_publish = undef,
-  Variant[String, Undef] $aws_cloudformation_stack_name_publish_dispatcher = undef,
   Variant[String, Undef] $aws_cloudformation_stack_name_preview_publish = undef,
   Variant[String, Undef] $aws_cloudformation_stack_name_preview_publish_dispatcher = undef,
+  Variant[String, Undef] $aws_cloudformation_stack_name_publish = undef,
+  Variant[String, Undef] $aws_cloudformation_stack_name_publish_dispatcher = undef,
   Variant[String, Undef] $aws_device_name = undef,
   Variant[String, Undef] $aws_region = undef,
   Variant[String, Undef] $aws_snapshot_tags = undef,
@@ -276,7 +276,6 @@ class aem_orchestrator::application_properties (
   Variant[String, Undef] $startup_wait_for_author_elb_back_off_period_multiplier = undef,
   Variant[String, Undef] $startup_wait_for_author_elb_max_attempts = undef,
   Variant[String, Undef] $startup_wait_for_author_elb_max_back_off_period = undef,
-
 ) {
   file { $path:
     ensure  => file,
@@ -286,3 +285,4 @@ class aem_orchestrator::application_properties (
     content => template('aem_orchestrator/application_properties.erb'),
   }
 }
+    
