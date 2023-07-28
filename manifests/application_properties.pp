@@ -69,6 +69,12 @@
 # @param aem_port_publish_dispatcher
 #   Java property `aem.port.publishDispatcher`
 #
+# @param aem_port_preview_publish
+#   Java property `aem.port.previewPublish`
+#
+# @param aem_port_preview_publish_dispatcher
+#   Java property `aem.port.previewPublishDispatcher`
+#
 # @param aem_protocol_author
 #   Java property `aem.protocol.author`
 #
@@ -80,6 +86,12 @@
 #
 # @param aem_protocol_publish_dispatcher
 #   Java property `aem.protocol.publishDispatcher`
+#
+# @param aem_protocol_preview_publish
+#   Java property `aem.protocol.previewPublish`
+#
+# @param aem_protocol_preview_publish_dispatcher
+#   Java property `aem.protocol.previewPublishDispatcher`
 #
 # @param aem_relaxed_ssl_enable
 #   Java property `aem.relaxed.ssl.enable`
@@ -126,6 +138,12 @@
 # @param aws_cloudformation_auto_scale_group_logical_id_publish_dispatcher
 #   Java property `aws.cloudformation.autoScaleGroup.logicalId.publishDispatcher`
 #
+# @param aws_cloudformation_auto_scale_group_logical_id_preview_publish
+#   Java property `aws.cloudformation.autoScaleGroup.logicalId.previewPublish`
+#
+# @param aws_cloudformation_auto_scale_group_logical_id_preview_publish_dispatcher
+#   Java property `aws.cloudformation.autoScaleGroup.logicalId.previewPublishDispatcher`
+#
 # @param aws_cloudformation_load_balancer_logical_id_author
 #   Java property `aws.cloudformation.loadBalancer.logicalId.author`
 #
@@ -146,6 +164,12 @@
 #
 # @param aws_cloudformation_stack_name_publish_dispatcher
 #   Java property `aws.cloudformation.stackName.publishDispatcher`
+#
+# @param aws_cloudformation_stack_name_preview_publish
+#   Java property `aws.cloudformation.stackName.previewPublish`
+#
+# @param aws_cloudformation_stack_name_preview_publish_dispatcher
+#   Java property `aws.cloudformation.stackName.previewPublishDispatcher`
 #
 # @param aws_device_name
 #   Java property `aws.device.name`
@@ -206,10 +230,14 @@ class aem_orchestrator::application_properties (
   Variant[String, Undef] $aem_port_author_dispatcher = undef,
   Variant[String, Undef] $aem_port_publish = undef,
   Variant[String, Undef] $aem_port_publish_dispatcher = undef,
+  Variant[String, Undef] $aem_port_preview_publish = undef,
+  Variant[String, Undef] $aem_port_preview_publish_dispatcher = undef,
   Variant[String, Undef] $aem_protocol_author = undef,
   Variant[String, Undef] $aem_protocol_author_dispatcher = undef,
   Variant[String, Undef] $aem_protocol_publish = undef,
   Variant[String, Undef] $aem_protocol_publish_dispatcher = undef,
+  Variant[String, Undef] $aem_protocol_preview_publish = undef,
+  Variant[String, Undef] $aem_protocol_preview_publish_dispatcher = undef,
   Variant[String, Undef] $aem_relaxed_ssl_enable = undef,
   Variant[String, Undef] $aem_replication_log_level = undef,
   Variant[String, Undef] $aem_reverse_replication_enable = undef,
@@ -225,6 +253,8 @@ class aem_orchestrator::application_properties (
   Variant[String, Undef] $aws_cloudformation_auto_scale_group_logical_id_author_dispatcher = undef,
   Variant[String, Undef] $aws_cloudformation_auto_scale_group_logical_id_publish = undef,
   Variant[String, Undef] $aws_cloudformation_auto_scale_group_logical_id_publish_dispatcher = undef,
+  Variant[String, Undef] $aws_cloudformation_auto_scale_group_logical_id_preview_publish = undef,
+  Variant[String, Undef] $aws_cloudformation_auto_scale_group_logical_id_preview_publish_dispatcher = undef,
   Variant[String, Undef] $aws_cloudformation_load_balancer_logical_id_author = undef,
   Variant[String, Undef] $aws_cloudformation_sns_logical_id_event_topic = undef,
   Variant[String, Undef] $aws_cloudformation_stack_name_author = undef,
@@ -232,6 +262,8 @@ class aem_orchestrator::application_properties (
   Variant[String, Undef] $aws_cloudformation_stack_name_messaging = undef,
   Variant[String, Undef] $aws_cloudformation_stack_name_publish = undef,
   Variant[String, Undef] $aws_cloudformation_stack_name_publish_dispatcher = undef,
+  Variant[String, Undef] $aws_cloudformation_stack_name_preview_publish = undef,
+  Variant[String, Undef] $aws_cloudformation_stack_name_preview_publish_dispatcher = undef,
   Variant[String, Undef] $aws_device_name = undef,
   Variant[String, Undef] $aws_region = undef,
   Variant[String, Undef] $aws_snapshot_tags = undef,

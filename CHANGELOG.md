@@ -9,9 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Added new application property parameter `aem_client_api_verifyssl`
+- Added new application property parameters to support Preview components #RS-160
 
 ### Changed
 - Replace Maven Central base URL from http://central.maven.org to https://repo.maven.apache.org
+- Migrated python tools to python3
+
 
 ## [1.4.1] - 2019-05-19
 ### Changed
