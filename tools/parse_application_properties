@@ -1,8 +1,9 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import sys, os, argparse, javaproperties, textwrap, case_conversion
 from jinja2 import Template
-from itertools import imap, chain
+from itertools import chain
+imap=map
 
 __version__='0.1'
 
@@ -120,105 +121,93 @@ def parse_example_file(file):
         keys.append(property_key(key, full_class_name, acronyms = args.acronym))
     return keys
 
-
 template_tmpl = Template(
-    textwrap.dedent(u"""\
-        <% pfx = '{{ class_prefix }}::' -%>
-        {% for property in properties -%}
-        <%- if scope[pfx + '{{ property.snake_case }}'] != nil -%>
-          <%--%>{{ property.key }} = <%= scope[pfx + '{{ property.snake_case }}'] %>
-        <%- end -%>
-        {% endfor -%}
-    """
-    ),
-    trim_blocks = True,
-    lstrip_blocks = True,
+    """<% pfx = '{{ class_prefix }}::' -%>
+{% for property in properties %}
+<%- if scope[pfx + '{{ property.snake_case }}'] != nil -%>
+  <%--%>{{ property.key }} = <%= scope[pfx + '{{ property.snake_case }}'] %>
+<%- end -%>
+{% endfor %}""",
+    trim_blocks=True,
+    lstrip_blocks=True,
 )
 
+
 class_tmpl = Template(
-    textwrap.dedent(u"""\
-    # @summary
-    #   Write the `application.properties` file.
-    #
-    #  This class writes the `application.properties` file for the AEM
-    #  Orchestrator. It is auto-generated and should not be modified by hand.
-    #  Documentation for each of the properties can be found in the example
-    #  `application.properties` from which it is generated. (see below)
-    #
-    #  _Note:_ This is an internal class that shouldn't be used directly. It is
-    #  included by the `aem_orchestrator` class. You can change values for it's
-    #  parameters using Hiera.
-    #
-    # @see https://github.com/shinesolutions/aem-orchestrator/blob/master/src/main/resources/application.properties
-    #   The example AEM Orchestrator file.
-    #
-    # @param path
-    #   The path to the application.properties file on disk. Required.
-    #
-    # @param owner
-    #   The user that should own the application.properties file. This user is *not*
-    #   created by this module and should be managed elsewhere. Required.
-    #
-    # @param group
-    #   The group that should own the application.properties file. This group is
-    #   *not* created by this module and should be managed elsewhere. Required.
-    #
-    # @param mode
-    #   The mode of the application.properties file. Passed to the `file` resource.
-    #
-    {% for property in properties -%}
-    # @param {{ property.snake_case }}
-    #   {{ property.doco }}
-    #
-    {% endfor -%}
-    #
-    # Copyright © 2017-2021 Shine Solutions Group Group, unless otherwise noted.
-    #
-    class {{ full_class_name }} (
-      String $path,
-      String $owner,
-      String $group,
-      String $mode,
+    """# @summary
+#   Write the `application.properties` file.
+#
+#  This class writes the `application.properties` file for the AEM
+#  Orchestrator. It is auto-generated and should not be modified by hand.
+#  Documentation for each of the properties can be found in the example
+#  `application.properties` from which it is generated. (see below)
+#
+#  _Note:_ This is an internal class that shouldn't be used directly. It is
+#  included by the `aem_orchestrator` class. You can change values for its
+#  parameters using Hiera.
+#
+# @see https://github.com/shinesolutions/aem-orchestrator/blob/master/src/main/resources/application.properties
+#   The example AEM Orchestrator file.
+#
+# @param path
+#   The path to the application.properties file on disk. Required.
+#
+# @param owner
+#   The user that should own the application.properties file. This user is *not*
+#   created by this module and should be managed elsewhere. Required.
+#
+# @param group
+#   The group that should own the application.properties file. This group is
+#   *not* created by this module and should be managed elsewhere. Required.
+#
+# @param mode
+#   The mode of the application.properties file. Passed to the `file` resource.
+#
+{% for property in properties %}
+# @param {{ property.snake_case }}
+#   {{ property.doco }}
+#
+{% endfor %}
+#
+# Copyright © 2017-2019 Shine Solutions Group, unless otherwise noted.
+#
+class {{ full_class_name }} (
+  String $path,
+  String $owner,
+  String $group,
+  String $mode,
 
-    {% for property in properties %}
-      Variant[String, Undef] ${{ property.snake_case }} = undef,
-    {% endfor %}
-
-    ) {
-      file { $path:
-        ensure  => file,
-        owner   => $owner,
-        group   => $group,
-        mode    => $mode,
-        content => template('{{ template_path }}'),
-      }
-    }
-
-    """
-    ),
+{% for property in properties %}
+  Variant[String, Undef] ${{ property.snake_case }} = undef,
+{% endfor %}
+) {
+  file { $path:
+    ensure  => file,
+    owner   => $owner,
+    group   => $group,
+    mode    => $mode,
+    content => template('{{ template_path }}'),
+  }
+}""",
     trim_blocks = True,
     lstrip_blocks = True,
 )
 
 spec_tmpl = Template(
-    textwrap.dedent(u"""\
-        require 'spec_helper'
-        describe '{{ full_class_name }}' do
-          context 'with defaults for all parameters' do
-            it { is_expected.to contain_class('{{ full_class_name }}') }
-          end
-          {% for property in properties %}
-          context 'with {{ property.snake_case }} => foo' do
-            let(:params) { {:{{ property.snake_case }} => 'foo', :path => '/tmp/foo', } }
-            it { is_expected.to contain_file('/tmp/foo').with_content(/^{{ property.key }} = foo/) }
-          end
-          {% endfor %}
-        end
-    """
-    ),
-    trim_blocks = True,
-    lstrip_blocks = True,
-)
+    """require 'spec_helper'
+describe '{{ full_class_name }}' do
+  context 'with defaults for all parameters' do
+    it { is_expected.to contain_class('{{ full_class_name }}') }
+  end
+  {% for property in properties %}
+  context 'with {{ property.snake_case }} => foo' do
+    let(:params) { {:{{ property.snake_case }} => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^{{ property.key }} = foo/) }
+  end
+  {% endfor %}
+end""",
+    trim_blocks=True,
+    lstrip_blocks=True)
 
 if __name__ == '__main__':
     args = parse_args()
@@ -239,7 +228,8 @@ if __name__ == '__main__':
         template_file.write(template_tmpl.render(
             class_prefix = full_class_name,
             properties = keys,
-        ).encode('utf-8'))
+            scope=keys,
+        ))
 
     with open(args.class_file, 'w') as class_file:
         template_path = os.path.basename(args.template_file)
@@ -249,11 +239,10 @@ if __name__ == '__main__':
             full_class_name = full_class_name,
             template_path = template_path,
             properties = keys,
-        ).encode('utf-8'))
+        ))
 
     with open(args.spec_file, 'w') as spec_file:
         spec_file.write(spec_tmpl.render(
             full_class_name = full_class_name,
             properties = keys,
-        ).encode('utf-8'))
-
+        ))

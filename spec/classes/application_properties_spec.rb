@@ -51,6 +51,14 @@ describe 'aem_orchestrator::application_properties' do
     let(:params) { {:aem_port_author_dispatcher => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.port.authorDispatcher = foo/) }
   end
+  context 'with aem_port_preview_publish => foo' do
+    let(:params) { {:aem_port_preview_publish => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.port.previewPublish = foo/) }
+  end
+  context 'with aem_port_preview_publish_dispatcher => foo' do
+    let(:params) { {:aem_port_preview_publish_dispatcher => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.port.previewPublishDispatcher = foo/) }
+  end
   context 'with aem_port_publish => foo' do
     let(:params) { {:aem_port_publish => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.port.publish = foo/) }
@@ -66,6 +74,14 @@ describe 'aem_orchestrator::application_properties' do
   context 'with aem_protocol_author_dispatcher => foo' do
     let(:params) { {:aem_protocol_author_dispatcher => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.protocol.authorDispatcher = foo/) }
+  end
+  context 'with aem_protocol_preview_publish => foo' do
+    let(:params) { {:aem_protocol_preview_publish => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.protocol.previewPublish = foo/) }
+  end
+  context 'with aem_protocol_preview_publish_dispatcher => foo' do
+    let(:params) { {:aem_protocol_preview_publish_dispatcher => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^aem.protocol.previewPublishDispatcher = foo/) }
   end
   context 'with aem_protocol_publish => foo' do
     let(:params) { {:aem_protocol_publish => 'foo', :path => '/tmp/foo', } }
@@ -127,6 +143,14 @@ describe 'aem_orchestrator::application_properties' do
     let(:params) { {:aws_cloudformation_auto_scale_group_logical_id_author_dispatcher => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^aws.cloudformation.autoScaleGroup.logicalId.authorDispatcher = foo/) }
   end
+  context 'with aws_cloudformation_auto_scale_group_logical_id_preview_publish => foo' do
+    let(:params) { {:aws_cloudformation_auto_scale_group_logical_id_preview_publish => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^aws.cloudformation.autoScaleGroup.logicalId.previewPublish = foo/) }
+  end
+  context 'with aws_cloudformation_auto_scale_group_logical_id_preview_publish_dispatcher => foo' do
+    let(:params) { {:aws_cloudformation_auto_scale_group_logical_id_preview_publish_dispatcher => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^aws.cloudformation.autoScaleGroup.logicalId.previewPublishDispatcher = foo/) }
+  end
   context 'with aws_cloudformation_auto_scale_group_logical_id_publish => foo' do
     let(:params) { {:aws_cloudformation_auto_scale_group_logical_id_publish => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^aws.cloudformation.autoScaleGroup.logicalId.publish = foo/) }
@@ -154,6 +178,14 @@ describe 'aem_orchestrator::application_properties' do
   context 'with aws_cloudformation_stack_name_messaging => foo' do
     let(:params) { {:aws_cloudformation_stack_name_messaging => 'foo', :path => '/tmp/foo', } }
     it { is_expected.to contain_file('/tmp/foo').with_content(/^aws.cloudformation.stackName.messaging = foo/) }
+  end
+  context 'with aws_cloudformation_stack_name_preview_publish => foo' do
+    let(:params) { {:aws_cloudformation_stack_name_preview_publish => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^aws.cloudformation.stackName.previewPublish = foo/) }
+  end
+  context 'with aws_cloudformation_stack_name_preview_publish_dispatcher => foo' do
+    let(:params) { {:aws_cloudformation_stack_name_preview_publish_dispatcher => 'foo', :path => '/tmp/foo', } }
+    it { is_expected.to contain_file('/tmp/foo').with_content(/^aws.cloudformation.stackName.previewPublishDispatcher = foo/) }
   end
   context 'with aws_cloudformation_stack_name_publish => foo' do
     let(:params) { {:aws_cloudformation_stack_name_publish => 'foo', :path => '/tmp/foo', } }
