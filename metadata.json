@@ -2,8 +2,8 @@
   "name": "shinesolutions-aem_orchestrator",
   "version": "2.0.1-pre.0",
   "author": "Shine Solutions (opensource@shinesolutions.com)",
-  "license": "Apache-2.0",
   "summary": "Puppet module for provisioning Shine Solutions AEM Orchestrator",
+  "license": "Apache-2.0",
   "source": "http://github.com/shinesolutions/puppet-aem-orchestrator",
   "project_page": "https://github.com/shinesolutions/puppet-aem-orchestrator",
   "issues_url": "https://github.com/shinesolutions/puppet-aem-orchestrator/issues/",
@@ -45,7 +45,7 @@
     "cq",
     "aem opencloud"
   ],
-  "pdk-version": "1.7.0",
-  "template-url": "file:///opt/puppetlabs/pdk/share/cache/pdk-templates.git",
-  "template-ref": "1.7.0-0-g57412ed"
+  "pdk-version": "3.0.0",
+  "template-url": "https://github.com/puppetlabs/pdk-templates#3.0.0",
+  "template-ref": "tags/3.0.0-0-g056e50d"
 }
