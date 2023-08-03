@@ -97,7 +97,7 @@ class aem_orchestrator (
 
   Variant[String, Undef] $aws_profile = undef,
   String $user_shell = '/usr/sbin/nologin',
-){
+) {
   if $manage_basedir {
     file { $basedir:
       ensure => directory,
@@ -123,16 +123,16 @@ class aem_orchestrator (
     }
   }
   if $manage_installdir {
-    file { [ $installdir ]:
+    file {[$installdir]:
       ensure  => directory,
       owner   => $user,
       group   => $group,
       mode    => $installdir_mode,
-      require => [ $basedir_require, User[$user] ],
+      require => [$basedir_require, User[$user]],
     }
-    $file_requires = [ File[$installdir], User[$user] ]
+    $file_requires = [File[$installdir], User[$user]]
   } else {
-    $file_requires = [ User[$user] ]
+    $file_requires = [User[$user]]
   }
 
   $jarfile = "${installdir}/aem-orchestrator.jar"
