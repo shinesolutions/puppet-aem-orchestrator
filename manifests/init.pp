@@ -151,7 +151,7 @@ class aem_orchestrator (
 
   if $facts['os']['family'] == 'redhat' {
     if $facts['os']['name'] == 'Amazon' {
-      if $facts['os']['release']['major'] == '2' {
+      if $facts['os']['release']['major'] == '2' or $facts['os']['release']['major'] == '2023' {
         $servicefile = "/etc/systemd/system/${service_name}.service"
         $servicetmpl = 'systemd.erb'
         $serviceprvd = undef
