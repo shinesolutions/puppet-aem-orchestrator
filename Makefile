@@ -3,7 +3,7 @@ APPLICATION_PROPERTIES_URL := "https://raw.githubusercontent.com/shinesolutions/
 ci: clean deps lint gen-properties package
 
 deps:
-	gem install bundler
+	gem install bundler --version=1.17.3
 	bundle install --binstubs
 	pip install -r requirements.txt
 
@@ -26,10 +26,10 @@ lint:
 		./manifests/*.pp
 	# Enable template validation after migration from ERB templates to EPP templates.
 	# puppet epp validate templates/*/*.epp
-	mv Gemfile.lock Gemfile.lock.orig && pdk validate metadata && mv Gemfile.lock.orig Gemfile.lock
+	mv Gemfile.lock Gemfile.lock.orig && PDK_DISABLE_ANALYTICS=true pdk validate metadata && mv Gemfile.lock.orig Gemfile.lock
 
 package: deps
-	pdk build --force
+	PDK_DISABLE_ANALYTICS=true pdk build --force
 
 release:
 	rtk release
