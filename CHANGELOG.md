@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added new application property parameter `aem_client_api_verifyssl`
 
 ### Changed
+- Simplify GitHub Actions release workflows to not use custom action
 - Replace Maven Central base URL from http://central.maven.org to https://repo.maven.apache.org
 
 ## [1.4.1] - 2019-05-19
