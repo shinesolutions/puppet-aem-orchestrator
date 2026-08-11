@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Add actionlint (via actionlint-py) and mdl (markdownlint) checks to lint target
 - Added new application property parameter `aem_client_api_verifyssl`
 
 ### Changed
