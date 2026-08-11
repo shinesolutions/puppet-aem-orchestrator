@@ -27,6 +27,8 @@ lint:
 	# Enable template validation after migration from ERB templates to EPP templates.
 	# puppet epp validate templates/*/*.epp
 	mv Gemfile.lock Gemfile.lock.orig && PDK_DISABLE_ANALYTICS=true pdk validate metadata && mv Gemfile.lock.orig Gemfile.lock
+	actionlint -shellcheck= .github/workflows/*.yaml
+	mdl README.md
 
 package: deps
 	PDK_DISABLE_ANALYTICS=true pdk build --force
