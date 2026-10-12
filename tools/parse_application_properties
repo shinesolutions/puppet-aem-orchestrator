@@ -1,17 +1,27 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import sys, os, argparse, javaproperties, textwrap, case_conversion
+"""Parse an example application.properties file and generate a Puppet class."""
+
+import argparse
+import os
+import sys
+import textwrap
+from pathlib import Path
+from typing import TextIO
+
+import case_conversion
+import javaproperties
 from jinja2 import Template
-from itertools import chain
-imap=map
 
-__version__='0.1'
+__version__ = '0.1'
 
 
-def unwrap(txt):
+def unwrap(txt: str) -> str:
+    """Remove indentations and format text block into a single line."""
     return ' '.join(textwrap.wrap(textwrap.dedent(txt).strip()))
 
-def parse_args():
+
+def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(
         description=unwrap("""
             Parse an example `application.properties` file and generate a
@@ -19,92 +29,108 @@ def parse_args():
         """),
     )
     p.add_argument(
-        '--class-prefix', '-p',
-        default = None,
-        help    = unwrap("""
+        '--class-prefix',
+        '-p',
+        default=None,
+        help=unwrap("""
             A prefix for the class name. Usually the name of the class that
-            will be including the generated class to generate it's
+            will be including the generated class to generate its
             configuration.
         """),
     )
     p.add_argument(
-        '--class-name', '-n',
-        default = None,
-        help    = unwrap("""
+        '--class-name',
+        '-n',
+        default=None,
+        help=unwrap("""
             The name of the generated class. Default is based on the example
             file name.
         """),
     )
     p.add_argument(
-        '--class-file', '-f',
-        default = None,
-        help    = unwrap("""
+        '--class-file',
+        '-f',
+        default=None,
+        help=unwrap("""
             The Puppet file to write to.
         """),
     )
     p.add_argument(
-        '--template-file', '-t',
-        default = None,
-        help    = unwrap("""
+        '--template-file',
+        '-t',
+        default=None,
+        help=unwrap("""
             The ERB template file to write to.
         """),
     )
     p.add_argument(
-        '--spec-file', '-s',
-        default = None,
-        help    = unwrap("""
+        '--spec-file',
+        '-s',
+        default=None,
+        help=unwrap("""
             The Ruby spec file to write to.
         """),
     )
     p.add_argument(
         'file',
-        help     = unwrap("""
+        help=unwrap("""
             The example application.properties file to parse.
         """),
     )
-
     p.add_argument(
         '--acronym',
-        default = [],
-        action  = 'append',
-        help    = unwrap("""
+        default=[],
+        action='append',
+        help=unwrap("""
             Provide an acronym that will not be split when converting CamelCase
             to snake_case. Can be used multiple times.
         """),
     )
-
     p.add_argument(
-        '--version', '-V',
-        action  = 'version',
-        version = '%(prog)s {0}'.format(__version__),
-        help    = 'Show version information and exit.',
+        '--version',
+        '-V',
+        action='version',
+        version=f'%(prog)s {__version__}',
+        help='Show version information and exit.',
     )
 
     args = p.parse_args()
 
     if args.class_name is None:
         if args.file == '-':
-            sys.stderr.write('You must provide a class name (--class-name) when example file is stdin.\n')
+            print(
+                'You must provide a class name (--class-name) when example file is stdin.',
+                file=sys.stderr,
+            )
             raise SystemExit(1)
-        else:
-            args.class_name = os.path.basename(args.file).replace('.', '_')
+        args.class_name = Path(args.file).name.replace('.', '_')
+
     if args.class_file is None:
-        args.class_file = 'manifests/{0}.pp'.format(args.class_name)
+        args.class_file = f'manifests/{args.class_name}.pp'
     if args.template_file is None:
-        args.template_file = 'templates/{0}.erb'.format(args.class_name)
+        args.template_file = f'templates/{args.class_name}.erb'
     if args.spec_file is None:
-        args.spec_file = 'spec/classes/{0}_spec.rb'.format(args.class_name)
-    sys.stderr.write('%r\n'%args)
+        args.spec_file = f'spec/classes/{args.class_name}_spec.rb'
+
+    print(f'{args!r}', file=sys.stderr)
     return args
 
-class property_key(object):
-    def __init__(self, key, full_class_name, acronyms = []):
+
+class PropertyKey:
+    """Container for property details and case conversions."""
+
+    def __init__(
+        self,
+        key: str,
+        full_class_name: str,
+        acronyms: list[str] | None = None,
+    ) -> None:
         self.key = key
         self.full_class_name = full_class_name
-        self.acronyms = acronyms
+        self.acronyms = acronyms or []
 
     @property
-    def snake_case(self):
+    def snake_case(self) -> str:
         return case_conversion.snakecase(
             self.key,
             detect_acronyms=True,
@@ -112,14 +138,20 @@ class property_key(object):
         )
 
     @property
-    def doco(self):
-        return 'Java property `{0}`'.format(self.key)
+    def doco(self) -> str:
+        return f'Java property `{self.key}`'
 
-def parse_example_file(file):
+
+def parse_example_file(
+    file: TextIO, full_class_name: str, acronyms: list[str]
+) -> list[PropertyKey]:
     keys = []
     for key in sorted(javaproperties.load(file).keys()):
-        keys.append(property_key(key, full_class_name, acronyms = args.acronym))
+        keys.append(
+            PropertyKey(key, full_class_name=full_class_name, acronyms=acronyms)
+        )
     return keys
+
 
 template_tmpl = Template(
     """<% pfx = '{{ class_prefix }}::' -%>
@@ -189,8 +221,8 @@ class {{ full_class_name }} (
     content => template('{{ template_path }}'),
   }
 }""",
-    trim_blocks = True,
-    lstrip_blocks = True,
+    trim_blocks=True,
+    lstrip_blocks=True,
 )
 
 spec_tmpl = Template(
@@ -207,42 +239,64 @@ describe '{{ full_class_name }}' do
   {% endfor %}
 end""",
     trim_blocks=True,
-    lstrip_blocks=True)
+    lstrip_blocks=True,
+)
 
-if __name__ == '__main__':
+
+def main() -> None:
     args = parse_args()
-    sys.stderr.write('{} version {}\n'.format(sys.argv[0], __version__))
+    print(f'{sys.argv[0]} version {__version__}', file=sys.stderr)
 
     full_class_name = args.class_name.strip(':')
     if args.class_prefix:
-        full_class_name = args.class_prefix.strip(':') + '::' + full_class_name
+        full_class_name = f"{args.class_prefix.strip(':')}::{full_class_name}"
 
-    keys = []
     if args.file == '-':
-        keys = parse_example_file(sys.stdin)
+        keys = parse_example_file(
+            sys.stdin, full_class_name, acronyms=args.acronym
+        )
     else:
-        with open(args.file) as properties_file:
-            keys = parse_example_file(properties_file)
+        with open(args.file, encoding='utf-8') as properties_file:
+            keys = parse_example_file(
+                properties_file, full_class_name, acronyms=args.acronym
+            )
 
-    with open(args.template_file, 'w') as template_file:
-        template_file.write(template_tmpl.render(
-            class_prefix = full_class_name,
-            properties = keys,
-            scope=keys,
-        ))
+    template_path = Path(args.template_file).name
+    if args.class_prefix:
+        prefix_first = args.class_prefix.strip(':').split('::')[0]
+        template_path = str(Path(prefix_first) / template_path)
 
-    with open(args.class_file, 'w') as class_file:
-        template_path = os.path.basename(args.template_file)
-        if args.class_prefix:
-            template_path = os.path.join(args.class_prefix.strip(':').split('::')[0], template_path)
-        class_file.write(class_tmpl.render(
-            full_class_name = full_class_name,
-            template_path = template_path,
-            properties = keys,
-        ))
+    # Ensure output directories exist if writing to nested paths
+    Path(args.template_file).parent.mkdir(parents=True, exist_ok=True)
+    Path(args.class_file).parent.mkdir(parents=True, exist_ok=True)
+    Path(args.spec_file).parent.mkdir(parents=True, exist_ok=True)
 
-    with open(args.spec_file, 'w') as spec_file:
-        spec_file.write(spec_tmpl.render(
-            full_class_name = full_class_name,
-            properties = keys,
-        ))
+    with open(args.template_file, 'w', encoding='utf-8') as template_file:
+        template_file.write(
+            template_tmpl.render(
+                class_prefix=full_class_name,
+                properties=keys,
+                scope=keys,
+            )
+        )
+
+    with open(args.class_file, 'w', encoding='utf-8') as class_file:
+        class_file.write(
+            class_tmpl.render(
+                full_class_name=full_class_name,
+                template_path=template_path,
+                properties=keys,
+            )
+        )
+
+    with open(args.spec_file, 'w', encoding='utf-8') as spec_file:
+        spec_file.write(
+            spec_tmpl.render(
+                full_class_name=full_class_name,
+                properties=keys,
+            )
+        )
+
+
+if __name__ == '__main__':
+    main()

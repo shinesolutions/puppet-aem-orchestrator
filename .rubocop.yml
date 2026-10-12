@@ -1,84 +1,100 @@
 ---
-require:
-- rubocop-performance
-- rubocop-rspec
+plugins:
+  - rubocop-performance
+  - rubocop-rspec
+
 AllCops:
   DisplayCopNames: true
-  TargetRubyVersion: '2.6'
+  TargetRubyVersion: '3.2'
   Include:
-  - "**/*.rb"
+    - "**/*.rb"
   Exclude:
-  - bin/*
-  - ".vendor/**/*"
-  - "**/Gemfile"
-  - "**/Rakefile"
-  - pkg/**/*
-  - spec/fixtures/**/*
-  - vendor/**/*
-  - "**/Puppetfile"
-  - "**/Vagrantfile"
-  - "**/Guardfile"
+    - bin/*
+    - ".vendor/**/*"
+    - "**/Gemfile"
+    - "**/Rakefile"
+    - pkg/**/*
+    - spec/fixtures/**/*
+    - vendor/**/*
+    - "**/Puppetfile"
+    - "**/Vagrantfile"
+    - "**/Guardfile"
+
 Layout/LineLength:
   Description: People have wide screens, use them.
   Max: 200
+
 RSpec/BeforeAfterAll:
   Description: Beware of using after(:all) as it may cause state to leak between tests.
     A necessary evil in acceptance testing.
   Exclude:
-  - spec/acceptance/**/*.rb
+    - spec/acceptance/**/*.rb
+
 RSpec/HookArgument:
   Description: Prefer explicit :each argument, matching existing module's style
   EnforcedStyle: each
+
 RSpec/DescribeSymbol:
   Exclude:
-  - spec/unit/facter/**/*.rb
+    - spec/unit/facter/**/*.rb
+
 Style/BlockDelimiters:
   Description: Prefer braces for chaining. Mostly an aesthetical choice. Better to
     be consistent then.
   EnforcedStyle: braces_for_chaining
+
 Style/ClassAndModuleChildren:
   Description: Compact style reduces the required amount of indentation.
   EnforcedStyle: compact
+
 Style/EmptyElse:
   Description: Enforce against empty else clauses, but allow `nil` for clarity.
   EnforcedStyle: empty
+
 Style/FormatString:
-  Description: Following the main puppet project's style, prefer the % format format.
+  Description: Following the main puppet project's style, prefer the % format.
   EnforcedStyle: percent
+
 Style/FormatStringToken:
-  Description: Following the main puppet project's style, prefer the simpler template
+  Description: Following the main puppet project's style, prefer simpler template
     tokens over annotated ones.
   EnforcedStyle: template
+
 Style/Lambda:
   Description: Prefer the keyword for easier discoverability.
   EnforcedStyle: literal
+
 Style/RegexpLiteral:
-  Description: Community preference. See https://github.com/voxpupuli/modulesync_config/issues/168
+  Description: Community preference.
   EnforcedStyle: percent_r
+
 Style/TernaryParentheses:
-  Description: Checks for use of parentheses around ternary conditions. Enforce parentheses
-    on complex expressions for better readability, but seriously consider breaking
-    it up.
+  Description: Checks for use of parentheses around ternary conditions.
   EnforcedStyle: require_parentheses_when_complex
+
 Style/TrailingCommaInArguments:
-  Description: Prefer always trailing comma on multiline argument lists. This makes
-    diffs, and re-ordering nicer.
+  Description: Prefer always trailing comma on multiline argument lists.
   EnforcedStyleForMultiline: comma
+
 Style/TrailingCommaInArrayLiteral:
-  Description: Prefer always trailing comma on multiline literals. This makes diffs,
-    and re-ordering nicer.
+  Description: Prefer always trailing comma on multiline literals.
   EnforcedStyleForMultiline: comma
+
 Style/SymbolArray:
   Description: Using percent style obscures symbolic intent of array's contents.
   EnforcedStyle: brackets
+
 RSpec/MessageSpies:
   EnforcedStyle: receive
+
 Style/Documentation:
   Exclude:
-  - lib/puppet/parser/functions/**/*
-  - spec/**/*
+    - lib/puppet/parser/functions/**/*
+    - spec/**/*
+
 Style/WordArray:
   EnforcedStyle: brackets
+
 Performance/AncestorsInclude:
   Enabled: true
 Performance/BigDecimalWithNumericArgument:
@@ -105,20 +121,19 @@ Performance/StringInclude:
   Enabled: true
 Performance/Sum:
   Enabled: true
+
 Style/CollectionMethods:
   Enabled: true
 Style/MethodCalledOnDoEndBlock:
   Enabled: true
 Style/StringMethods:
   Enabled: true
+
 Bundler/GemFilename:
   Enabled: false
 Bundler/InsecureProtocolSource:
   Enabled: false
-Capybara/CurrentPathExpectation:
-  Enabled: false
-Capybara/VisibilityMatcher:
-  Enabled: false
+
 Gemspec/DuplicatedAssignment:
   Enabled: false
 Gemspec/OrderedDependencies:
@@ -127,6 +142,7 @@ Gemspec/RequiredRubyVersion:
   Enabled: false
 Gemspec/RubyVersionGlobalsUsage:
   Enabled: false
+
 Layout/ArgumentAlignment:
   Enabled: false
 Layout/BeginEndAlignment:
@@ -157,6 +173,7 @@ Layout/SpaceInsideArrayLiteralBrackets:
   Enabled: false
 Layout/SpaceInsideReferenceBrackets:
   Enabled: false
+
 Lint/BigDecimalNew:
   Enabled: false
 Lint/BooleanSymbol:
@@ -243,6 +260,7 @@ Lint/UselessMethodDefinition:
   Enabled: false
 Lint/UselessTimes:
   Enabled: false
+
 Metrics/AbcSize:
   Enabled: false
 Metrics/BlockLength:
@@ -261,8 +279,10 @@ Metrics/ParameterLists:
   Enabled: false
 Metrics/PerceivedComplexity:
   Enabled: false
+
 Migration/DepartmentName:
   Enabled: false
+
 Naming/AccessorMethodName:
   Enabled: false
 Naming/BlockParameterName:
@@ -279,6 +299,7 @@ Naming/RescuedExceptionsVariableName:
   Enabled: false
 Naming/VariableNumber:
   Enabled: false
+
 Performance/BindCall:
   Enabled: false
 Performance/DeletePrefix:
@@ -291,9 +312,8 @@ Performance/UnfreezeString:
   Enabled: false
 Performance/UriDefaultParser:
   Enabled: false
+
 RSpec/Be:
-  Enabled: false
-RSpec/Capybara/FeatureMethods:
   Enabled: false
 RSpec/ContainExactly:
   Enabled: false
@@ -318,12 +338,6 @@ RSpec/ExampleWithoutDescription:
 RSpec/ExpectChange:
   Enabled: false
 RSpec/ExpectInHook:
-  Enabled: false
-RSpec/FactoryBot/AttributeDefinedStatically:
-  Enabled: false
-RSpec/FactoryBot/CreateList:
-  Enabled: false
-RSpec/FactoryBot/FactoryClassName:
   Enabled: false
 RSpec/HooksBeforeExamples:
   Enabled: false
@@ -373,8 +387,10 @@ RSpec/VoidExpect:
   Enabled: false
 RSpec/Yield:
   Enabled: false
+
 Security/Open:
   Enabled: false
+
 Style/AccessModifierDeclarations:
   Enabled: false
 Style/AccessorGrouping:
@@ -489,22 +505,14 @@ Style/TrailingMethodEndStatement:
   Enabled: false
 Style/UnpackFirst:
   Enabled: false
-Capybara/MatchStyle:
-  Enabled: false
-Capybara/NegationMatcher:
-  Enabled: false
-Capybara/SpecificActions:
-  Enabled: false
-Capybara/SpecificFinders:
-  Enabled: false
-Capybara/SpecificMatcher:
-  Enabled: false
+
 Gemspec/DeprecatedAttributeAssignment:
   Enabled: false
 Gemspec/DevelopmentDependencies:
   Enabled: false
 Gemspec/RequireMFA:
   Enabled: false
+
 Layout/LineContinuationLeadingSpace:
   Enabled: false
 Layout/LineContinuationSpacing:
@@ -513,6 +521,7 @@ Layout/LineEndStringConcatenationIndentation:
   Enabled: false
 Layout/SpaceBeforeBrackets:
   Enabled: false
+
 Lint/AmbiguousAssignment:
   Enabled: false
 Lint/AmbiguousOperatorPrecedence:
@@ -569,10 +578,13 @@ Lint/UselessRescue:
   Enabled: false
 Lint/UselessRuby2Keywords:
   Enabled: false
+
 Metrics/CollectionLiteralLength:
   Enabled: false
+
 Naming/BlockForwarding:
   Enabled: false
+
 Performance/CollectionLiteralInLoop:
   Enabled: false
 Performance/ConcurrentMonotonicTime:
@@ -585,6 +597,7 @@ Performance/RedundantSplitRegexpArgument:
   Enabled: false
 Performance/StringIdentifierArgument:
   Enabled: false
+
 RSpec/BeEq:
   Enabled: false
 RSpec/BeNil:
@@ -597,27 +610,11 @@ RSpec/DuplicatedMetadata:
   Enabled: false
 RSpec/ExcessiveDocstringSpacing:
   Enabled: false
-RSpec/FactoryBot/ConsistentParenthesesStyle:
-  Enabled: false
-RSpec/FactoryBot/FactoryNameStyle:
-  Enabled: false
-RSpec/FactoryBot/SyntaxMethods:
-  Enabled: false
 RSpec/IdenticalEqualityAssertion:
   Enabled: false
 RSpec/NoExpectationExample:
   Enabled: false
 RSpec/PendingWithoutReason:
-  Enabled: false
-RSpec/Rails/AvoidSetupHook:
-  Enabled: false
-RSpec/Rails/HaveHttpStatus:
-  Enabled: false
-RSpec/Rails/InferredSpecType:
-  Enabled: false
-RSpec/Rails/MinitestAssertions:
-  Enabled: false
-RSpec/Rails/TravelAround:
   Enabled: false
 RSpec/RedundantAround:
   Enabled: false
@@ -629,10 +626,12 @@ RSpec/SubjectDeclaration:
   Enabled: false
 RSpec/VerifiedDoubleReference:
   Enabled: false
+
 Security/CompoundHash:
   Enabled: false
 Security/IoMethods:
   Enabled: false
+
 Style/ArgumentsForwarding:
   Enabled: false
 Style/ArrayIntersect:

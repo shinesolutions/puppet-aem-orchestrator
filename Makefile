@@ -1,10 +1,10 @@
 APPLICATION_PROPERTIES_URL := "https://raw.githubusercontent.com/shinesolutions/aem-orchestrator/master/src/main/resources/application.properties"
 
-ci: clean deps lint gen-properties package
+ci: clean deps gen-properties package
 
 deps:
-	gem install bundler --version=1.17.3
-	bundle install --binstubs
+	gem install bundler --version=4.0.22
+	bundle install
 	pip install -r requirements.txt
 
 gen-properties:
@@ -17,16 +17,16 @@ gen-properties:
 clean:
 	rm -rf bin/ pkg/ stage/ test/ vendor/ *.lock
 
+test:
+	bundle exec rake test spec
+
 lint:
-	bundle exec puppet-lint \
-		--fail-on-warnings \
-		--no-140chars-check \
-		--no-autoloader_layout-check \
-		--no-documentation-check \
-		./manifests/*.pp
+	bundle exec rake lint
 	# Enable template validation after migration from ERB templates to EPP templates.
 	# puppet epp validate templates/*/*.epp
-	mv Gemfile.lock Gemfile.lock.orig && PDK_DISABLE_ANALYTICS=true pdk validate metadata && mv Gemfile.lock.orig Gemfile.lock
+	@trap 'if [ -f Gemfile.lock.orig ]; then mv Gemfile.lock.orig Gemfile.lock; fi' EXIT; \
+		if [ -f Gemfile.lock ]; then mv Gemfile.lock Gemfile.lock.orig; fi; \
+		PDK_DISABLE_ANALYTICS=true pdk validate metadata
 
 package: deps
 	PDK_DISABLE_ANALYTICS=true pdk build --force

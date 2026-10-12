@@ -95,7 +95,7 @@ class aem_orchestrator (
   Boolean $manage_user       = true,
   Boolean $manage_group      = true,
 
-  Variant[String, Undef] $aws_profile = undef,
+  Optional[String] $aws_profile = undef,
   String $user_shell = '/usr/sbin/nologin',
 ) {
   if $manage_basedir {
@@ -107,6 +107,7 @@ class aem_orchestrator (
   } else {
     $basedir_require = undef
   }
+
   if $manage_user {
     group { $group:
       ensure => present,
@@ -122,8 +123,9 @@ class aem_orchestrator (
       expiry     => absent,
     }
   }
+
   if $manage_installdir {
-    file {[$installdir]:
+    file { $installdir:
       ensure  => directory,
       owner   => $user,
       group   => $group,
@@ -141,7 +143,7 @@ class aem_orchestrator (
     source        => $jarfile_source,
     checksum_type => $jarfile_checksum_type,
     checksum      => $jarfile_checksum_value,
-    require       => $file_requires;
+    require       => $file_requires,
   }
   -> file { $jarfile:
     owner => $user,
@@ -149,21 +151,21 @@ class aem_orchestrator (
     mode  => $jarfile_mode,
   }
 
-  if $facts['os']['family'] == 'redhat' {
-    if $facts['os']['name'] == 'Amazon' {
-      if $facts['os']['release']['major'] == '2' {
-        $servicefile = "/etc/systemd/system/${service_name}.service"
-        $servicetmpl = 'systemd.erb'
-        $serviceprvd = undef
-      } else {
+  case $facts.dig('os', 'family') {
+    'RedHat', 'redhat', 'Amazon', 'amazon': {
+      if $facts.dig('os', 'name') == 'Amazon' and $facts.dig('os', 'release', 'major') == '1' {
         $servicefile = "/etc/init/${service_name}.conf"
         $servicetmpl = 'upstart.erb'
         $serviceprvd = 'upstart'
+      } else {
+        # Rocky Linux 10, Amazon Linux 2023, Amazon Linux 2
+        $servicefile = "/etc/systemd/system/${service_name}.service"
+        $servicetmpl = 'systemd.erb'
+        $serviceprvd = undef
       }
-    } else {
-      $servicefile = "/etc/systemd/system/${service_name}.service"
-      $servicetmpl = 'systemd.erb'
-      $serviceprvd = undef
+    }
+    default: {
+      fail("Operating system family ${facts.dig('os', 'family')} is not supported by aem_orchestrator.")
     }
   }
 

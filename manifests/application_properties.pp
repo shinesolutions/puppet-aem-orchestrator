@@ -1,14 +1,14 @@
 # @summary
 #   Write the `application.properties` file.
 #
-#  This class writes the `application.properties` file for the AEM
-#  Orchestrator. It is auto-generated and should not be modified by hand.
-#  Documentation for each of the properties can be found in the example
-#  `application.properties` from which it is generated. (see below)
+# This class writes the `application.properties` file for the AEM
+# Orchestrator. It is auto-generated and should not be modified by hand.
+# Documentation for each of the properties can be found in the example
+# `application.properties` from which it is generated. (see below)
 #
-#  _Note:_ This is an internal class that shouldn't be used directly. It is
-#  included by the `aem_orchestrator` class. You can change values for its
-#  parameters using Hiera.
+# _Note:_ This is an internal class that shouldn't be used directly. It is
+# included by the `aem_orchestrator` class. You can change values for its
+# parameters using Hiera.
 #
 # @see https://github.com/shinesolutions/aem-orchestrator/blob/master/src/main/resources/application.properties
 #   The example AEM Orchestrator file.
@@ -207,8 +207,7 @@
 # @param startup_wait_for_author_elb_max_back_off_period
 #   Java property `startup.waitForAuthorElb.maxBackOffPeriod`
 #
-#
-# Copyright © 2017-2021 Shine Solutions Group Group, unless otherwise noted.
+# Copyright © 2017-2021 Shine Solutions Group, unless otherwise noted.
 #
 class aem_orchestrator::application_properties (
   String $path,
@@ -216,66 +215,66 @@ class aem_orchestrator::application_properties (
   String $group,
   String $mode,
 
-  Variant[String, Undef] $aem_client_api_connection_timeout = undef,
-  Variant[String, Undef] $aem_client_api_debug = undef,
-  Variant[String, Undef] $aem_client_api_verifyssl = undef,
-  Variant[String, Undef] $aem_credentials_orchestrator_password = undef,
-  Variant[String, Undef] $aem_credentials_orchestrator_username = undef,
-  Variant[String, Undef] $aem_credentials_replicator_password = undef,
-  Variant[String, Undef] $aem_credentials_replicator_username = undef,
-  Variant[String, Undef] $aem_credentials_s3_file_uri = undef,
-  Variant[String, Undef] $aem_credentials_s3_use = undef,
-  Variant[String, Undef] $aem_flush_log_level = undef,
-  Variant[String, Undef] $aem_port_author = undef,
-  Variant[String, Undef] $aem_port_author_dispatcher = undef,
-  Variant[String, Undef] $aem_port_preview_publish = undef,
-  Variant[String, Undef] $aem_port_preview_publish_dispatcher = undef,
-  Variant[String, Undef] $aem_port_publish = undef,
-  Variant[String, Undef] $aem_port_publish_dispatcher = undef,
-  Variant[String, Undef] $aem_protocol_author = undef,
-  Variant[String, Undef] $aem_protocol_author_dispatcher = undef,
-  Variant[String, Undef] $aem_protocol_preview_publish = undef,
-  Variant[String, Undef] $aem_protocol_preview_publish_dispatcher = undef,
-  Variant[String, Undef] $aem_protocol_publish = undef,
-  Variant[String, Undef] $aem_protocol_publish_dispatcher = undef,
-  Variant[String, Undef] $aem_relaxed_ssl_enable = undef,
-  Variant[String, Undef] $aem_replication_log_level = undef,
-  Variant[String, Undef] $aem_reverse_replication_enable = undef,
-  Variant[String, Undef] $aem_reverse_replication_log_level = undef,
-  Variant[String, Undef] $aem_reverse_replication_transport_uri_postfix = undef,
-  Variant[String, Undef] $alarm_content_health_check_terminate_instance_enable = undef,
-  Variant[String, Undef] $aws_client_connection_timeout = undef,
-  Variant[String, Undef] $aws_client_max_error_retry = undef,
-  Variant[String, Undef] $aws_client_protocol = undef,
-  Variant[String, Undef] $aws_client_proxy_host = undef,
-  Variant[String, Undef] $aws_client_proxy_port = undef,
-  Variant[String, Undef] $aws_client_use_proxy = undef,
-  Variant[String, Undef] $aws_cloudformation_auto_scale_group_logical_id_author_dispatcher = undef,
-  Variant[String, Undef] $aws_cloudformation_auto_scale_group_logical_id_preview_publish = undef,
-  Variant[String, Undef] $aws_cloudformation_auto_scale_group_logical_id_preview_publish_dispatcher = undef,
-  Variant[String, Undef] $aws_cloudformation_auto_scale_group_logical_id_publish = undef,
-  Variant[String, Undef] $aws_cloudformation_auto_scale_group_logical_id_publish_dispatcher = undef,
-  Variant[String, Undef] $aws_cloudformation_load_balancer_logical_id_author = undef,
-  Variant[String, Undef] $aws_cloudformation_sns_logical_id_event_topic = undef,
-  Variant[String, Undef] $aws_cloudformation_stack_name_author = undef,
-  Variant[String, Undef] $aws_cloudformation_stack_name_author_dispatcher = undef,
-  Variant[String, Undef] $aws_cloudformation_stack_name_messaging = undef,
-  Variant[String, Undef] $aws_cloudformation_stack_name_preview_publish = undef,
-  Variant[String, Undef] $aws_cloudformation_stack_name_preview_publish_dispatcher = undef,
-  Variant[String, Undef] $aws_cloudformation_stack_name_publish = undef,
-  Variant[String, Undef] $aws_cloudformation_stack_name_publish_dispatcher = undef,
-  Variant[String, Undef] $aws_device_name = undef,
-  Variant[String, Undef] $aws_region = undef,
-  Variant[String, Undef] $aws_snapshot_tags = undef,
-  Variant[String, Undef] $aws_sqs_queue_name = undef,
-  Variant[String, Undef] $endpoints_enabled = undef,
-  Variant[String, Undef] $endpoints_health_enabled = undef,
-  Variant[String, Undef] $endpoints_info_enabled = undef,
-  Variant[String, Undef] $http_client_relaxed_ssl_enable = undef,
-  Variant[String, Undef] $startup_wait_for_author_elb_back_off_period = undef,
-  Variant[String, Undef] $startup_wait_for_author_elb_back_off_period_multiplier = undef,
-  Variant[String, Undef] $startup_wait_for_author_elb_max_attempts = undef,
-  Variant[String, Undef] $startup_wait_for_author_elb_max_back_off_period = undef,
+  Optional[String] $aem_client_api_connection_timeout = undef,
+  Optional[String] $aem_client_api_debug = undef,
+  Optional[String] $aem_client_api_verifyssl = undef,
+  Optional[String] $aem_credentials_orchestrator_password = undef,
+  Optional[String] $aem_credentials_orchestrator_username = undef,
+  Optional[String] $aem_credentials_replicator_password = undef,
+  Optional[String] $aem_credentials_replicator_username = undef,
+  Optional[String] $aem_credentials_s3_file_uri = undef,
+  Optional[String] $aem_credentials_s3_use = undef,
+  Optional[String] $aem_flush_log_level = undef,
+  Optional[String] $aem_port_author = undef,
+  Optional[String] $aem_port_author_dispatcher = undef,
+  Optional[String] $aem_port_preview_publish = undef,
+  Optional[String] $aem_port_preview_publish_dispatcher = undef,
+  Optional[String] $aem_port_publish = undef,
+  Optional[String] $aem_port_publish_dispatcher = undef,
+  Optional[String] $aem_protocol_author = undef,
+  Optional[String] $aem_protocol_author_dispatcher = undef,
+  Optional[String] $aem_protocol_preview_publish = undef,
+  Optional[String] $aem_protocol_preview_publish_dispatcher = undef,
+  Optional[String] $aem_protocol_publish = undef,
+  Optional[String] $aem_protocol_publish_dispatcher = undef,
+  Optional[String] $aem_relaxed_ssl_enable = undef,
+  Optional[String] $aem_replication_log_level = undef,
+  Optional[String] $aem_reverse_replication_enable = undef,
+  Optional[String] $aem_reverse_replication_log_level = undef,
+  Optional[String] $aem_reverse_replication_transport_uri_postfix = undef,
+  Optional[String] $alarm_content_health_check_terminate_instance_enable = undef,
+  Optional[String] $aws_client_connection_timeout = undef,
+  Optional[String] $aws_client_max_error_retry = undef,
+  Optional[String] $aws_client_protocol = undef,
+  Optional[String] $aws_client_proxy_host = undef,
+  Optional[String] $aws_client_proxy_port = undef,
+  Optional[String] $aws_client_use_proxy = undef,
+  Optional[String] $aws_cloudformation_auto_scale_group_logical_id_author_dispatcher = undef,
+  Optional[String] $aws_cloudformation_auto_scale_group_logical_id_preview_publish = undef,
+  Optional[String] $aws_cloudformation_auto_scale_group_logical_id_preview_publish_dispatcher = undef,
+  Optional[String] $aws_cloudformation_auto_scale_group_logical_id_publish = undef,
+  Optional[String] $aws_cloudformation_auto_scale_group_logical_id_publish_dispatcher = undef,
+  Optional[String] $aws_cloudformation_load_balancer_logical_id_author = undef,
+  Optional[String] $aws_cloudformation_sns_logical_id_event_topic = undef,
+  Optional[String] $aws_cloudformation_stack_name_author = undef,
+  Optional[String] $aws_cloudformation_stack_name_author_dispatcher = undef,
+  Optional[String] $aws_cloudformation_stack_name_messaging = undef,
+  Optional[String] $aws_cloudformation_stack_name_preview_publish = undef,
+  Optional[String] $aws_cloudformation_stack_name_preview_publish_dispatcher = undef,
+  Optional[String] $aws_cloudformation_stack_name_publish = undef,
+  Optional[String] $aws_cloudformation_stack_name_publish_dispatcher = undef,
+  Optional[String] $aws_device_name = undef,
+  Optional[String] $aws_region = undef,
+  Optional[String] $aws_snapshot_tags = undef,
+  Optional[String] $aws_sqs_queue_name = undef,
+  Optional[String] $endpoints_enabled = undef,
+  Optional[String] $endpoints_health_enabled = undef,
+  Optional[String] $endpoints_info_enabled = undef,
+  Optional[String] $http_client_relaxed_ssl_enable = undef,
+  Optional[String] $startup_wait_for_author_elb_back_off_period = undef,
+  Optional[String] $startup_wait_for_author_elb_back_off_period_multiplier = undef,
+  Optional[String] $startup_wait_for_author_elb_max_attempts = undef,
+  Optional[String] $startup_wait_for_author_elb_max_back_off_period = undef,
 ) {
   file { $path:
     ensure  => file,

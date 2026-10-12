@@ -2,5 +2,3 @@
 fixtures:
   forge_modules:
     archive: "puppet/archive"
-  symlinks:
-    aem_orchestrator: "#{source_dir}"

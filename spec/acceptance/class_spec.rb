@@ -1,16 +1,15 @@
+# frozen_string_literal: true
+
 require 'spec_helper_acceptance'
 
 describe 'aem_orchestrator class' do
-  context 'default parameters' do
-    # Using puppet_apply as a helper
+  context 'with default parameters' do
     it 'works idempotently with no errors' do
-      pp = <<-EOS
-      include aem_orchestrator
-      EOS
+      pp = <<-MANIFEST
+        include aem_orchestrator
+      MANIFEST
 
-      # Run it twice and test for idempotency
-      apply_manifest(pp, catch_failures: true)
-      apply_manifest(pp, catch_changes: true)
+      idempotent_apply(pp)
     end
   end
 end
