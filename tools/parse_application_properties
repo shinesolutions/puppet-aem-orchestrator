@@ -60,7 +60,7 @@ def parse_args() -> argparse.Namespace:
         '-t',
         default=None,
         help=unwrap("""
-            The ERB template file to write to.
+            The EPP template file to write to.
         """),
     )
     p.add_argument(
@@ -108,7 +108,7 @@ def parse_args() -> argparse.Namespace:
     if args.class_file is None:
         args.class_file = f'manifests/{args.class_name}.pp'
     if args.template_file is None:
-        args.template_file = f'templates/{args.class_name}.erb'
+        args.template_file = f'templates/{args.class_name}.epp'
     if args.spec_file is None:
         args.spec_file = f'spec/classes/{args.class_name}_spec.rb'
 
@@ -131,11 +131,7 @@ class PropertyKey:
 
     @property
     def snake_case(self) -> str:
-        return case_conversion.snakecase(
-            self.key,
-            detect_acronyms=True,
-            acronyms=self.acronyms,
-        )
+        return case_conversion.snake(self.key, acronyms=self.acronyms)
 
     @property
     def doco(self) -> str:
@@ -153,30 +149,26 @@ def parse_example_file(
     return keys
 
 
-template_tmpl = Template(
-    """<% pfx = '{{ class_prefix }}::' -%>
-{% for property in properties %}
-<%- if scope[pfx + '{{ property.snake_case }}'] != nil -%>
-  <%--%>{{ property.key }} = <%= scope[pfx + '{{ property.snake_case }}'] %>
-<%- end -%>
-{% endfor %}""",
-    trim_blocks=True,
-    lstrip_blocks=True,
-)
+# The template is static: the generated class passes it only the properties that are set
+template_tmpl = """<%- | Hash[String, String] $properties | -%>
+<% $properties.each |$key, $value| { -%>
+<%= $key %> = <%= $value %>
+<% } -%>
+"""
 
 
 class_tmpl = Template(
     """# @summary
 #   Write the `application.properties` file.
 #
-#  This class writes the `application.properties` file for the AEM
-#  Orchestrator. It is auto-generated and should not be modified by hand.
-#  Documentation for each of the properties can be found in the example
-#  `application.properties` from which it is generated. (see below)
+# This class writes the `application.properties` file for the AEM
+# Orchestrator. It is auto-generated and should not be modified by hand.
+# Documentation for each of the properties can be found in the example
+# `application.properties` from which it is generated. (see below)
 #
-#  _Note:_ This is an internal class that shouldn't be used directly. It is
-#  included by the `aem_orchestrator` class. You can change values for its
-#  parameters using Hiera.
+# _Note:_ This is an internal class that shouldn't be used directly. It is
+# included by the `aem_orchestrator` class. You can change values for its
+# parameters using Hiera.
 #
 # @see https://github.com/shinesolutions/aem-orchestrator/blob/master/src/main/resources/application.properties
 #   The example AEM Orchestrator file.
@@ -200,8 +192,7 @@ class_tmpl = Template(
 #   {{ property.doco }}
 #
 {% endfor %}
-#
-# Copyright © 2017-2019 Shine Solutions Group, unless otherwise noted.
+# Copyright © 2017-2021 Shine Solutions Group, unless otherwise noted.
 #
 class {{ full_class_name }} (
   String $path,
@@ -210,19 +201,29 @@ class {{ full_class_name }} (
   String $mode,
 
 {% for property in properties %}
-  Variant[String, Undef] ${{ property.snake_case }} = undef,
+  Optional[String] ${{ property.snake_case }} = undef,
 {% endfor %}
 ) {
+  $properties = {
+{% for property in properties %}
+    {{ ("'" ~ property.key ~ "'").ljust(key_width) }} => ${{ property.snake_case }},
+{% endfor %}
+  }
+
   file { $path:
     ensure  => file,
     owner   => $owner,
     group   => $group,
     mode    => $mode,
-    content => template('{{ template_path }}'),
+    content => epp('{{ template_path }}', {
+      'properties' => $properties.filter |$key, $value| { $value =~ NotUndef },
+    }),
   }
-}""",
+}
+""",
     trim_blocks=True,
     lstrip_blocks=True,
+    keep_trailing_newline=True,
 )
 
 spec_tmpl = Template(
@@ -231,15 +232,18 @@ describe '{{ full_class_name }}' do
   context 'with defaults for all parameters' do
     it { is_expected.to contain_class('{{ full_class_name }}') }
   end
-  {% for property in properties %}
+{% for property in properties %}
   context 'with {{ property.snake_case }} => foo' do
-    let(:params) { {:{{ property.snake_case }} => 'foo', :path => '/tmp/foo', } }
-    it { is_expected.to contain_file('/tmp/foo').with_content(/^{{ property.key }} = foo/) }
+    let(:params) { { {{ property.snake_case }}: 'foo', path: '/tmp/foo', } }
+
+    it { is_expected.to contain_file('/tmp/foo').with_content(%r{^{{ property.key }} = foo}) }
   end
-  {% endfor %}
-end""",
+{% endfor %}
+end
+""",
     trim_blocks=True,
     lstrip_blocks=True,
+    keep_trailing_newline=True,
 )
 
 
@@ -272,13 +276,7 @@ def main() -> None:
     Path(args.spec_file).parent.mkdir(parents=True, exist_ok=True)
 
     with open(args.template_file, 'w', encoding='utf-8') as template_file:
-        template_file.write(
-            template_tmpl.render(
-                class_prefix=full_class_name,
-                properties=keys,
-                scope=keys,
-            )
-        )
+        template_file.write(template_tmpl)
 
     with open(args.class_file, 'w', encoding='utf-8') as class_file:
         class_file.write(
@@ -286,6 +284,7 @@ def main() -> None:
                 full_class_name=full_class_name,
                 template_path=template_path,
                 properties=keys,
+                key_width=max(len(key.key) for key in keys) + 2,
             )
         )
 

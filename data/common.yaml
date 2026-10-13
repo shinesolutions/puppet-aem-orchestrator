@@ -1,15 +1,15 @@
 ---
 aem_orchestrator::service_name: aem-orchestrator
 aem_orchestrator::basedir: /opt/shinesolutions
-aem_orchestrator::installdir: "%{hiera('aem_orchestrator::basedir')}/%{hiera('aem_orchestrator::service_name')}"
-aem_orchestrator::homedir: "%{hiera('aem_orchestrator::installdir')}"
-aem_orchestrator::user: "%{hiera('aem_orchestrator::service_name')}"
-aem_orchestrator::group: "%{hiera('aem_orchestrator::service_name')}"
-aem_orchestrator::jarfile_source: https://repo.maven.apache.org/maven2/com/shinesolutions/aem-orchestrator/1.0.3/aem-orchestrator-1.0.3.jar
+aem_orchestrator::installdir: "%{lookup('aem_orchestrator::basedir')}/%{lookup('aem_orchestrator::service_name')}"
+aem_orchestrator::homedir: "%{lookup('aem_orchestrator::installdir')}"
+aem_orchestrator::user: "%{lookup('aem_orchestrator::service_name')}"
+aem_orchestrator::group: "%{lookup('aem_orchestrator::service_name')}"
+aem_orchestrator::jarfile_source: https://repo.maven.apache.org/maven2/com/shinesolutions/aem-orchestrator/4.0.0/aem-orchestrator-4.0.0.jar
 # SHA 256 checksum
-aem_orchestrator::jarfile_checksum_value: 8c8e9979cebdf5aa5283d7ea0ad94531bf5c0194be282e17a0d871fc1b02df23
+aem_orchestrator::jarfile_checksum_value: fcc98a2b4e419872d65827f39027a521748094e26951e887281470d52e361935
 
-aem_orchestrator::application_properties::path: "%{hiera('aem_orchestrator::installdir')}/application.properties"
-aem_orchestrator::application_properties::owner: "%{hiera('aem_orchestrator::user')}"
-aem_orchestrator::application_properties::group: "%{hiera('aem_orchestrator::group')}"
+aem_orchestrator::application_properties::path: "%{lookup('aem_orchestrator::installdir')}/application.properties"
+aem_orchestrator::application_properties::owner: "%{lookup('aem_orchestrator::user')}"
+aem_orchestrator::application_properties::group: "%{lookup('aem_orchestrator::group')}"
 aem_orchestrator::application_properties::mode : "0400"

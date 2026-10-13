@@ -5,7 +5,7 @@ plugins:
 
 AllCops:
   DisplayCopNames: true
-  TargetRubyVersion: '3.2'
+  TargetRubyVersion: '4.0'
   Include:
     - "**/*.rb"
   Exclude:

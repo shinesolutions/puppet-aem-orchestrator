@@ -151,27 +151,19 @@ class aem_orchestrator (
     mode  => $jarfile_mode,
   }
 
-  case $facts.dig('os', 'family') {
-    'RedHat', 'redhat', 'Amazon', 'amazon': {
-      if $facts.dig('os', 'name') == 'Amazon' and $facts.dig('os', 'release', 'major') == '1' {
-        $servicefile = "/etc/init/${service_name}.conf"
-        $servicetmpl = 'upstart.erb'
-        $serviceprvd = 'upstart'
-      } else {
-        # Rocky Linux 10, Amazon Linux 2023, Amazon Linux 2
-        $servicefile = "/etc/systemd/system/${service_name}.service"
-        $servicetmpl = 'systemd.erb'
-        $serviceprvd = undef
-      }
-    }
-    default: {
-      fail("Operating system family ${facts.dig('os', 'family')} is not supported by aem_orchestrator.")
-    }
+  # Rocky Linux 10 and Amazon Linux 2023 both report the RedHat family and use systemd
+  if $facts.dig('os', 'family') != 'RedHat' {
+    fail("Operating system family ${facts.dig('os', 'family')} is not supported by aem_orchestrator.")
   }
 
+  $servicefile = "/etc/systemd/system/${service_name}.service"
   file { $servicefile:
     ensure  => file,
-    content => template("aem_orchestrator/service/${servicetmpl}"),
+    content => epp('aem_orchestrator/service/systemd.epp', {
+      'user'        => $user,
+      'jarfile'     => $jarfile,
+      'aws_profile' => $aws_profile,
+    }),
     require => File[$jarfile],
   }
 
@@ -185,9 +177,8 @@ class aem_orchestrator (
   }
 
   service { $service_name:
-    ensure   => running,
-    enable   => true,
-    provider => $serviceprvd,
-    require  => File[$application_properties_file],
+    ensure  => running,
+    enable  => true,
+    require => File[$application_properties_file],
   }
 }

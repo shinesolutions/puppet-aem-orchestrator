@@ -1,0 +1,4 @@
+<%- | Hash[String, String] $properties | -%>
+<% $properties.each |$key, $value| { -%>
+<%= $key %> = <%= $value %>
+<% } -%>

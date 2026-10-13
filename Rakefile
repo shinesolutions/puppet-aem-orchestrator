@@ -3,13 +3,17 @@
 require 'bundler'
 require 'json'
 
-# --- JSON Compatibility for Subprocesses ---
-compat_file = File.expand_path('spec/json_compat.rb', __dir__)
-ENV['RUBYOPT'] = "-r#{compat_file} #{ENV['RUBYOPT']}".strip
-
 # --- Vox Pupuli Rake Tasks ---
 # Automatically provides: syntax, lint, rubocop, spec, test, strings:generate
 require 'voxpupuli/test/rake'
+
+# --- Vox Pupuli Release Tasks ---
+# Provides: module:build (packages the module into pkg/), module:*, release
+begin
+  require 'voxpupuli/release/rake_tasks'
+rescue LoadError
+  # Safe to rescue if the development group is omitted
+end
 
 begin
   require 'voxpupuli/acceptance/rake'

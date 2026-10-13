@@ -15,33 +15,14 @@ def location_for(place_or_version, fake_version = nil)
   end
 end
 
-group :development do
-  # --- Standard Library Backports (Extracted in Ruby 3.4 / 4.0) ---
-  gem "ostruct",    require: false
-  gem "base64",     require: false
-  gem "mutex_m",    require: false
-  gem "drb",        require: false
-  gem "bigdecimal", require: false
-  gem "logger",     require: false
-  gem "csv",        require: false
-  gem "benchmark",  require: false
-
-  # --- Pure-Ruby Faraday 2.x HTTP Stack ---
-  gem "faraday",          "~> 2.12", require: false
-  gem "faraday-net_http", "~> 3.4",  require: false
-
-  # --- Miscellaneous Tooling ---
-  gem "puppet-strings",              '~> 4.0',  require: false
-  gem "github_changelog_generator", '~> 1.16', require: false
-end
-
 group :development, :test, :system_tests do
-  gem 'json', '< 3.0.0'
-  gem "voxpupuli-test", require: false
-  gem "faraday-retry",  require: false
-  gem 'rubocop-performance', require: false
-  gem 'beaker-rspec'
-  gem 'voxpupuli-acceptance'
+  # OpenVox 9 calls JSON.parse(string, options), which json 3 no longer accepts
+  gem "json",                 "~> 2.21"
+  gem "voxpupuli-test",       "~> 15.0", require: false
+  gem "voxpupuli-acceptance", "~> 4.4",  require: false
+  gem "voxpupuli-release",    "~> 5.5",  require: false
+  # Loaded as a plugin in .rubocop.yml, not a dependency of voxpupuli-test
+  gem "rubocop-performance",  "~> 1.27", require: false
 end
 
 puppet_version = ENV['PUPPET_GEM_VERSION']
