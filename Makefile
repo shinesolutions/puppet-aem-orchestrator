@@ -1,6 +1,6 @@
 APPLICATION_PROPERTIES_URL := "https://raw.githubusercontent.com/shinesolutions/aem-orchestrator/master/src/main/resources/application.properties"
 
-ci: clean deps gen-properties package
+ci: clean deps gen-properties test acceptance package
 
 define python_venv
 	. .venv/bin/activate && $(1)
