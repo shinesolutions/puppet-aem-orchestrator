@@ -39,8 +39,12 @@ test:
 lint:
 	bundle exec rake lint syntax metadata_lint rubocop
 
+# Run acceptance tests against every nodeset; beaker only runs one per invocation
 acceptance:
-	bundle exec rake beaker
+	set -e; for nodeset in spec/acceptance/nodesets/*.yml; do \
+		echo "== $$nodeset"; \
+		BEAKER_SETFILE=$$nodeset bundle exec rake beaker; \
+	done
 
 # Regenerate the HTML reference in docs/ (published on GitHub Pages)
 docs:

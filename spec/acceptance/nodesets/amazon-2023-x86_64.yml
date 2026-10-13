@@ -1,11 +1,11 @@
 ---
 HOSTS:
-  amazon-2023-aarch64:
+  amazon-2023-x86_64:
     roles:
       - default
     # Must match the image's OS: beaker uses it to pick the OpenVox repo, and
     # el-10 packages need GLIBC_2.38 while Amazon Linux 2023 ships glibc 2.34
-    platform: amazon-2023-aarch64
+    platform: amazon-2023-x86_64
     image: amazonlinux:2023
     hypervisor: docker
     # Keep the built image so these layers are cached between runs. The agent and

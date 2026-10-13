@@ -1,9 +1,9 @@
 ---
 HOSTS:
-  rocky-10-aarch64:
+  rocky-10-x86_64:
     roles:
       - default
-    platform: el-10-aarch64
+    platform: el-10-x86_64
     image: rockylinux/rockylinux:10
     hypervisor: docker
     # Keep the built image so these layers are cached between runs. The agent and

@@ -5,6 +5,7 @@ modules/
 pkg/
 stage/
 zzz-*.*
+.yardoc/
 # End of AOC gitignore
 
 # Created by https://www.toptal.com/developers/gitignore/api/ansible,macos,visualstudiocode,python

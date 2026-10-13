@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Added Makefile targets for unit tests, acceptance tests, docs and changelog
+- Added unit and acceptance tests to GitHub CI
+
+### Changed
+- Upgraded to Ruby 4.0.7 and OpenVox 9 with Vox Pupuli tooling, replacing PDK
+- Migrated ERB templates to EPP
+- Converted hiera.yaml to version 5
+- Limited OS support to Amazon Linux 2023 and Rocky Linux 10
+- Changed the default AEM Orchestrator jar to 4.0.0
+- Upgraded GitHub CI to actions/checkout v7
+
+### Fixed
+- Fixed the application properties generator for case-conversion 3.x
+
 ## [2.0.1]
 
 ### Fixed
