@@ -6,15 +6,15 @@
 <title>
   Puppet Class: aem_orchestrator::application_properties
   
-    &mdash; Documentation by YARD 0.9.9
+    &mdash; Documentation by YARD 0.9.45
   
 </title>
 
-  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css">
 
-  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css">
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "puppet_classes::aem_orchestrator::application_properties";
   relpath = '../';
 </script>
@@ -27,6 +27,8 @@
 
   </head>
   <body>
+    <div id="main_progress" aria-hidden="true"></div>
+
     <div class="nav_wrap">
       <iframe id="nav" src="../puppet_class_list.html?1"></iframe>
       <div id="resizer"></div>
@@ -77,20 +79,19 @@
 <h2>Overview</h2>
 <div class="docstring">
   <div class="discussion">
-    
-<p>This class writes the <code>application.properties</code> file for the AEM 
-Orchestrator. It is auto-generated and should not be modified by hand. 
-Documentation for each of the properties can be found in the example 
+    <p>This class writes the <code>application.properties</code> file for the AEM
+Orchestrator. It is auto-generated and should not be modified by hand.
+Documentation for each of the properties can be found in the example
 <code>application.properties</code> from which it is generated. (see below)</p>
-
-<p><em>Note:</em> This is an internal class that shouldn&#39;t be used
-directly. It is  included by the <code>aem_orchestrator</code> class. You
-can change values for it&#39;s  parameters using Hiera.</p>
-
-<p>Copyright © 2017-2021 Shine Solutions Group Group, unless otherwise noted.</p>
-
+<p><em>Note:</em> This is an internal class that shouldn't be used directly. It is
+included by the <code>aem_orchestrator</code> class. You can change values for its
+parameters using Hiera.</p>
+<p>Copyright © 2017-2021 Shine Solutions Group, unless otherwise noted.</p>
   </div>
 </div>
+
+
+
 <div class="tags">
   <p class="tag_title">Parameters:</p>
 <ul class="param">
@@ -105,9 +106,7 @@ can change values for it&#39;s  parameters using Hiera.</p>
       
       
         &mdash;
-        <div class='inline'>
-<p>The path to the application.properties file on disk. Required.</p>
-</div>
+        <div class='inline'><p>The path to the application.properties file on disk. Required.</p></div>
       
     </li>
   
@@ -121,11 +120,8 @@ can change values for it&#39;s  parameters using Hiera.</p>
       
       
         &mdash;
-        <div class='inline'>
-<p>The user that should own the application.properties file. This user is
-<em>not</em> created by this module and should be managed elsewhere.
-Required.</p>
-</div>
+        <div class='inline'><p>The user that should own the application.properties file. This user is <em>not</em>
+created by this module and should be managed elsewhere. Required.</p></div>
       
     </li>
   
@@ -139,11 +135,8 @@ Required.</p>
       
       
         &mdash;
-        <div class='inline'>
-<p>The group that should own the application.properties file. This group is
-<em>not</em> created by this module and should be managed elsewhere.
-Required.</p>
-</div>
+        <div class='inline'><p>The group that should own the application.properties file. This group is
+<em>not</em> created by this module and should be managed elsewhere. Required.</p></div>
       
     </li>
   
@@ -157,10 +150,7 @@ Required.</p>
       
       
         &mdash;
-        <div class='inline'>
-<p>The mode of the application.properties file. Passed to the
-<code>file</code> resource.</p>
-</div>
+        <div class='inline'><p>The mode of the application.properties file. Passed to the <code>file</code> resource.</p></div>
       
     </li>
   
@@ -169,16 +159,14 @@ Required.</p>
         <span class='name'>aem_client_api_connection_timeout</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aem.client.api.connection.timeout</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aem.client.api.connection.timeout</code></p></div>
       
     </li>
   
@@ -187,16 +175,30 @@ Required.</p>
         <span class='name'>aem_client_api_debug</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aem.client.api.debug</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aem.client.api.debug</code></p></div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>aem_client_api_verifyssl</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Java property <code>aem.client.api.verifyssl</code></p></div>
       
     </li>
   
@@ -205,16 +207,14 @@ Required.</p>
         <span class='name'>aem_credentials_orchestrator_password</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aem.credentials.orchestrator.password</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aem.credentials.orchestrator.password</code></p></div>
       
     </li>
   
@@ -223,16 +223,14 @@ Required.</p>
         <span class='name'>aem_credentials_orchestrator_username</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aem.credentials.orchestrator.username</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aem.credentials.orchestrator.username</code></p></div>
       
     </li>
   
@@ -241,16 +239,14 @@ Required.</p>
         <span class='name'>aem_credentials_replicator_password</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aem.credentials.replicator.password</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aem.credentials.replicator.password</code></p></div>
       
     </li>
   
@@ -259,16 +255,14 @@ Required.</p>
         <span class='name'>aem_credentials_replicator_username</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aem.credentials.replicator.username</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aem.credentials.replicator.username</code></p></div>
       
     </li>
   
@@ -277,16 +271,14 @@ Required.</p>
         <span class='name'>aem_credentials_s3_file_uri</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aem.credentials.s3.file.uri</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aem.credentials.s3.file.uri</code></p></div>
       
     </li>
   
@@ -295,16 +287,14 @@ Required.</p>
         <span class='name'>aem_credentials_s3_use</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aem.credentials.s3.use</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aem.credentials.s3.use</code></p></div>
       
     </li>
   
@@ -313,16 +303,14 @@ Required.</p>
         <span class='name'>aem_flush_log_level</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aem.flush.logLevel</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aem.flush.logLevel</code></p></div>
       
     </li>
   
@@ -331,16 +319,14 @@ Required.</p>
         <span class='name'>aem_port_author</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aem.port.author</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aem.port.author</code></p></div>
       
     </li>
   
@@ -349,16 +335,46 @@ Required.</p>
         <span class='name'>aem_port_author_dispatcher</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aem.port.authorDispatcher</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aem.port.authorDispatcher</code></p></div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>aem_port_preview_publish</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Java property <code>aem.port.previewPublish</code></p></div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>aem_port_preview_publish_dispatcher</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Java property <code>aem.port.previewPublishDispatcher</code></p></div>
       
     </li>
   
@@ -367,16 +383,14 @@ Required.</p>
         <span class='name'>aem_port_publish</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aem.port.publish</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aem.port.publish</code></p></div>
       
     </li>
   
@@ -385,16 +399,14 @@ Required.</p>
         <span class='name'>aem_port_publish_dispatcher</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aem.port.publishDispatcher</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aem.port.publishDispatcher</code></p></div>
       
     </li>
   
@@ -403,16 +415,14 @@ Required.</p>
         <span class='name'>aem_protocol_author</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aem.protocol.author</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aem.protocol.author</code></p></div>
       
     </li>
   
@@ -421,16 +431,46 @@ Required.</p>
         <span class='name'>aem_protocol_author_dispatcher</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aem.protocol.authorDispatcher</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aem.protocol.authorDispatcher</code></p></div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>aem_protocol_preview_publish</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Java property <code>aem.protocol.previewPublish</code></p></div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>aem_protocol_preview_publish_dispatcher</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Java property <code>aem.protocol.previewPublishDispatcher</code></p></div>
       
     </li>
   
@@ -439,16 +479,14 @@ Required.</p>
         <span class='name'>aem_protocol_publish</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aem.protocol.publish</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aem.protocol.publish</code></p></div>
       
     </li>
   
@@ -457,16 +495,14 @@ Required.</p>
         <span class='name'>aem_protocol_publish_dispatcher</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aem.protocol.publishDispatcher</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aem.protocol.publishDispatcher</code></p></div>
       
     </li>
   
@@ -475,16 +511,14 @@ Required.</p>
         <span class='name'>aem_relaxed_ssl_enable</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aem.relaxed.ssl.enable</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aem.relaxed.ssl.enable</code></p></div>
       
     </li>
   
@@ -493,16 +527,14 @@ Required.</p>
         <span class='name'>aem_replication_log_level</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aem.replication.logLevel</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aem.replication.logLevel</code></p></div>
       
     </li>
   
@@ -511,16 +543,14 @@ Required.</p>
         <span class='name'>aem_reverse_replication_enable</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aem.reverseReplication.enable</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aem.reverseReplication.enable</code></p></div>
       
     </li>
   
@@ -529,16 +559,14 @@ Required.</p>
         <span class='name'>aem_reverse_replication_log_level</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aem.reverseReplication.logLevel</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aem.reverseReplication.logLevel</code></p></div>
       
     </li>
   
@@ -547,16 +575,30 @@ Required.</p>
         <span class='name'>aem_reverse_replication_transport_uri_postfix</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aem.reverseReplication.transportUri.postfix</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aem.reverseReplication.transportUri.postfix</code></p></div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>alarm_content_health_check_terminate_instance_enable</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Java property <code>alarm.content.health.check.terminate.instance.enable</code></p></div>
       
     </li>
   
@@ -565,16 +607,14 @@ Required.</p>
         <span class='name'>aws_client_connection_timeout</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aws.client.connection.timeout</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aws.client.connection.timeout</code></p></div>
       
     </li>
   
@@ -583,16 +623,14 @@ Required.</p>
         <span class='name'>aws_client_max_error_retry</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aws.client.max.errorRetry</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aws.client.max.errorRetry</code></p></div>
       
     </li>
   
@@ -601,16 +639,14 @@ Required.</p>
         <span class='name'>aws_client_protocol</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aws.client.protocol</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aws.client.protocol</code></p></div>
       
     </li>
   
@@ -619,16 +655,14 @@ Required.</p>
         <span class='name'>aws_client_proxy_host</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aws.client.proxy.host</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aws.client.proxy.host</code></p></div>
       
     </li>
   
@@ -637,16 +671,14 @@ Required.</p>
         <span class='name'>aws_client_proxy_port</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aws.client.proxy.port</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aws.client.proxy.port</code></p></div>
       
     </li>
   
@@ -655,16 +687,14 @@ Required.</p>
         <span class='name'>aws_client_use_proxy</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aws.client.useProxy</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aws.client.useProxy</code></p></div>
       
     </li>
   
@@ -673,17 +703,46 @@ Required.</p>
         <span class='name'>aws_cloudformation_auto_scale_group_logical_id_author_dispatcher</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property
-<code>aws.cloudformation.autoScaleGroup.logicalId.authorDispatcher</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aws.cloudformation.autoScaleGroup.logicalId.authorDispatcher</code></p></div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>aws_cloudformation_auto_scale_group_logical_id_preview_publish</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Java property <code>aws.cloudformation.autoScaleGroup.logicalId.previewPublish</code></p></div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>aws_cloudformation_auto_scale_group_logical_id_preview_publish_dispatcher</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Java property <code>aws.cloudformation.autoScaleGroup.logicalId.previewPublishDispatcher</code></p></div>
       
     </li>
   
@@ -692,17 +751,14 @@ Required.</p>
         <span class='name'>aws_cloudformation_auto_scale_group_logical_id_publish</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property
-<code>aws.cloudformation.autoScaleGroup.logicalId.publish</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aws.cloudformation.autoScaleGroup.logicalId.publish</code></p></div>
       
     </li>
   
@@ -711,17 +767,14 @@ Required.</p>
         <span class='name'>aws_cloudformation_auto_scale_group_logical_id_publish_dispatcher</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property
-<code>aws.cloudformation.autoScaleGroup.logicalId.publishDispatcher</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aws.cloudformation.autoScaleGroup.logicalId.publishDispatcher</code></p></div>
       
     </li>
   
@@ -730,16 +783,14 @@ Required.</p>
         <span class='name'>aws_cloudformation_load_balancer_logical_id_author</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aws.cloudformation.loadBalancer.logicalId.author</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aws.cloudformation.loadBalancer.logicalId.author</code></p></div>
       
     </li>
   
@@ -748,16 +799,14 @@ Required.</p>
         <span class='name'>aws_cloudformation_sns_logical_id_event_topic</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aws.cloudformation.sns.logicalId.eventTopic</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aws.cloudformation.sns.logicalId.eventTopic</code></p></div>
       
     </li>
   
@@ -766,16 +815,14 @@ Required.</p>
         <span class='name'>aws_cloudformation_stack_name_author</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aws.cloudformation.stackName.author</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aws.cloudformation.stackName.author</code></p></div>
       
     </li>
   
@@ -784,16 +831,14 @@ Required.</p>
         <span class='name'>aws_cloudformation_stack_name_author_dispatcher</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aws.cloudformation.stackName.authorDispatcher</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aws.cloudformation.stackName.authorDispatcher</code></p></div>
       
     </li>
   
@@ -802,16 +847,46 @@ Required.</p>
         <span class='name'>aws_cloudformation_stack_name_messaging</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aws.cloudformation.stackName.messaging</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aws.cloudformation.stackName.messaging</code></p></div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>aws_cloudformation_stack_name_preview_publish</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Java property <code>aws.cloudformation.stackName.previewPublish</code></p></div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>aws_cloudformation_stack_name_preview_publish_dispatcher</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Java property <code>aws.cloudformation.stackName.previewPublishDispatcher</code></p></div>
       
     </li>
   
@@ -820,16 +895,14 @@ Required.</p>
         <span class='name'>aws_cloudformation_stack_name_publish</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aws.cloudformation.stackName.publish</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aws.cloudformation.stackName.publish</code></p></div>
       
     </li>
   
@@ -838,16 +911,14 @@ Required.</p>
         <span class='name'>aws_cloudformation_stack_name_publish_dispatcher</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aws.cloudformation.stackName.publishDispatcher</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aws.cloudformation.stackName.publishDispatcher</code></p></div>
       
     </li>
   
@@ -856,16 +927,14 @@ Required.</p>
         <span class='name'>aws_device_name</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aws.device.name</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aws.device.name</code></p></div>
       
     </li>
   
@@ -874,16 +943,14 @@ Required.</p>
         <span class='name'>aws_region</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aws.region</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aws.region</code></p></div>
       
     </li>
   
@@ -892,16 +959,14 @@ Required.</p>
         <span class='name'>aws_snapshot_tags</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aws.snapshot.tags</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aws.snapshot.tags</code></p></div>
       
     </li>
   
@@ -910,16 +975,14 @@ Required.</p>
         <span class='name'>aws_sqs_queue_name</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>aws.sqs.queueName</code></p>
-</div>
+        <div class='inline'><p>Java property <code>aws.sqs.queueName</code></p></div>
       
     </li>
   
@@ -928,16 +991,14 @@ Required.</p>
         <span class='name'>endpoints_enabled</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>endpoints.enabled</code></p>
-</div>
+        <div class='inline'><p>Java property <code>endpoints.enabled</code></p></div>
       
     </li>
   
@@ -946,16 +1007,14 @@ Required.</p>
         <span class='name'>endpoints_health_enabled</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>endpoints.health.enabled</code></p>
-</div>
+        <div class='inline'><p>Java property <code>endpoints.health.enabled</code></p></div>
       
     </li>
   
@@ -964,16 +1023,14 @@ Required.</p>
         <span class='name'>endpoints_info_enabled</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>endpoints.info.enabled</code></p>
-</div>
+        <div class='inline'><p>Java property <code>endpoints.info.enabled</code></p></div>
       
     </li>
   
@@ -982,16 +1039,14 @@ Required.</p>
         <span class='name'>http_client_relaxed_ssl_enable</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>http.client.relaxed.ssl.enable</code></p>
-</div>
+        <div class='inline'><p>Java property <code>http.client.relaxed.ssl.enable</code></p></div>
       
     </li>
   
@@ -1000,71 +1055,31 @@ Required.</p>
         <span class='name'>startup_wait_for_author_elb_back_off_period</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>startup.waitForAuthorElb.backOffPeriod</code></p>
-</div>
+        <div class='inline'><p>Java property <code>startup.waitForAuthorElb.backOffPeriod</code></p></div>
       
     </li>
-
+  
     <li>
-
-        <span class='name'>startup_wait_for_author_elb_max_back_off_period</span>
-
-
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
-
-
-        <em class="default">(defaults to: <tt>undef</tt>)</em>
-
-
-        &mdash;
-        <div class='inline'>
-            <p>Java property <code>startup.waitForAuthorElb.maxBackOffPeriod</code></p>
-        </div>
-
-    </li>
-
-    <li>
-
+      
         <span class='name'>startup_wait_for_author_elb_back_off_period_multiplier</span>
-
-
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
-
-
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
         <em class="default">(defaults to: <tt>undef</tt>)</em>
-
-
+      
+      
         &mdash;
-        <div class='inline'>
-            <p>Java property <code>startup.waitForAuthorElb.backOffPeriodMultiplier</code></p>
-        </div>
-
-    </li>
-
-    <li>
-
-        <span class='name'>alarm_content_health_check_terminate_instance_enable</span>
-
-
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
-
-
-        <em class="default">(defaults to: <tt>undef</tt>)</em>
-
-
-        &mdash;
-        <div class='inline'>
-            <p>Java property <code>alarm.content.health.check.terminate.instance.enable</code></p>
-        </div>
-
+        <div class='inline'><p>Java property <code>startup.waitForAuthorElb.backOffPeriodMultiplier</code></p></div>
+      
     </li>
   
     <li>
@@ -1072,20 +1087,35 @@ Required.</p>
         <span class='name'>startup_wait_for_author_elb_max_attempts</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>Java property <code>startup.waitForAuthorElb.maxAttempts</code></p>
-</div>
+        <div class='inline'><p>Java property <code>startup.waitForAuthorElb.maxAttempts</code></p></div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>startup_wait_for_author_elb_max_back_off_period</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Java property <code>startup.waitForAuthorElb.maxBackOffPeriod</code></p></div>
       
     </li>
   
 </ul>
+
 
 
   <p class="tag_title">See Also:</p>
@@ -1102,41 +1132,6 @@ Required.</p>
         <pre class="lines">
 
 
-177
-178
-179
-180
-181
-182
-183
-184
-185
-186
-187
-188
-189
-190
-191
-192
-193
-194
-195
-196
-197
-198
-199
-200
-201
-202
-203
-204
-205
-206
-207
-208
-209
-210
-211
 212
 213
 214
@@ -1165,10 +1160,121 @@ Required.</p>
 237
 238
 239
-240</pre>
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351</pre>
       </td>
       <td>
-        <pre class="code"><span class="info file"># File 'manifests/application_properties.pp', line 177</span>
+        <pre class="code"><span class="info file"># File 'manifests/application_properties.pp', line 212</span>
 
 class aem_orchestrator::application_properties (
   String $path,
@@ -1176,62 +1282,138 @@ class aem_orchestrator::application_properties (
   String $group,
   String $mode,
 
-  Variant[String, Undef] $aem_client_api_connection_timeout = undef,
-  Variant[String, Undef] $aem_client_api_debug = undef,
-  Variant[String, Undef] $aem_credentials_orchestrator_password = undef,
-  Variant[String, Undef] $aem_credentials_orchestrator_username = undef,
-  Variant[String, Undef] $aem_credentials_replicator_password = undef,
-  Variant[String, Undef] $aem_credentials_replicator_username = undef,
-  Variant[String, Undef] $aem_credentials_s3_file_uri = undef,
-  Variant[String, Undef] $aem_credentials_s3_use = undef,
-  Variant[String, Undef] $aem_flush_log_level = undef,
-  Variant[String, Undef] $aem_port_author = undef,
-  Variant[String, Undef] $aem_port_author_dispatcher = undef,
-  Variant[String, Undef] $aem_port_publish = undef,
-  Variant[String, Undef] $aem_port_publish_dispatcher = undef,
-  Variant[String, Undef] $aem_protocol_author = undef,
-  Variant[String, Undef] $aem_protocol_author_dispatcher = undef,
-  Variant[String, Undef] $aem_protocol_publish = undef,
-  Variant[String, Undef] $aem_protocol_publish_dispatcher = undef,
-  Variant[String, Undef] $aem_relaxed_ssl_enable = undef,
-  Variant[String, Undef] $aem_replication_log_level = undef,
-  Variant[String, Undef] $aem_reverse_replication_enable = undef,
-  Variant[String, Undef] $aem_reverse_replication_log_level = undef,
-  Variant[String, Undef] $aem_reverse_replication_transport_uri_postfix = undef,
-  Variant[String, Undef] $aws_client_connection_timeout = undef,
-  Variant[String, Undef] $aws_client_max_error_retry = undef,
-  Variant[String, Undef] $aws_client_protocol = undef,
-  Variant[String, Undef] $aws_client_proxy_host = undef,
-  Variant[String, Undef] $aws_client_proxy_port = undef,
-  Variant[String, Undef] $aws_client_use_proxy = undef,
-  Variant[String, Undef] $aws_cloudformation_auto_scale_group_logical_id_author_dispatcher = undef,
-  Variant[String, Undef] $aws_cloudformation_auto_scale_group_logical_id_publish = undef,
-  Variant[String, Undef] $aws_cloudformation_auto_scale_group_logical_id_publish_dispatcher = undef,
-  Variant[String, Undef] $aws_cloudformation_load_balancer_logical_id_author = undef,
-  Variant[String, Undef] $aws_cloudformation_sns_logical_id_event_topic = undef,
-  Variant[String, Undef] $aws_cloudformation_stack_name_author = undef,
-  Variant[String, Undef] $aws_cloudformation_stack_name_author_dispatcher = undef,
-  Variant[String, Undef] $aws_cloudformation_stack_name_messaging = undef,
-  Variant[String, Undef] $aws_cloudformation_stack_name_publish = undef,
-  Variant[String, Undef] $aws_cloudformation_stack_name_publish_dispatcher = undef,
-  Variant[String, Undef] $aws_device_name = undef,
-  Variant[String, Undef] $aws_region = undef,
-  Variant[String, Undef] $aws_snapshot_tags = undef,
-  Variant[String, Undef] $aws_sqs_queue_name = undef,
-  Variant[String, Undef] $endpoints_enabled = undef,
-  Variant[String, Undef] $endpoints_health_enabled = undef,
-  Variant[String, Undef] $endpoints_info_enabled = undef,
-  Variant[String, Undef] $http_client_relaxed_ssl_enable = undef,
-  Variant[String, Undef] $startup_wait_for_author_elb_back_off_period = undef,
-  Variant[String, Undef] $startup_wait_for_author_elb_max_attempts = undef,
-
+  Optional[String] $aem_client_api_connection_timeout = undef,
+  Optional[String] $aem_client_api_debug = undef,
+  Optional[String] $aem_client_api_verifyssl = undef,
+  Optional[String] $aem_credentials_orchestrator_password = undef,
+  Optional[String] $aem_credentials_orchestrator_username = undef,
+  Optional[String] $aem_credentials_replicator_password = undef,
+  Optional[String] $aem_credentials_replicator_username = undef,
+  Optional[String] $aem_credentials_s3_file_uri = undef,
+  Optional[String] $aem_credentials_s3_use = undef,
+  Optional[String] $aem_flush_log_level = undef,
+  Optional[String] $aem_port_author = undef,
+  Optional[String] $aem_port_author_dispatcher = undef,
+  Optional[String] $aem_port_preview_publish = undef,
+  Optional[String] $aem_port_preview_publish_dispatcher = undef,
+  Optional[String] $aem_port_publish = undef,
+  Optional[String] $aem_port_publish_dispatcher = undef,
+  Optional[String] $aem_protocol_author = undef,
+  Optional[String] $aem_protocol_author_dispatcher = undef,
+  Optional[String] $aem_protocol_preview_publish = undef,
+  Optional[String] $aem_protocol_preview_publish_dispatcher = undef,
+  Optional[String] $aem_protocol_publish = undef,
+  Optional[String] $aem_protocol_publish_dispatcher = undef,
+  Optional[String] $aem_relaxed_ssl_enable = undef,
+  Optional[String] $aem_replication_log_level = undef,
+  Optional[String] $aem_reverse_replication_enable = undef,
+  Optional[String] $aem_reverse_replication_log_level = undef,
+  Optional[String] $aem_reverse_replication_transport_uri_postfix = undef,
+  Optional[String] $alarm_content_health_check_terminate_instance_enable = undef,
+  Optional[String] $aws_client_connection_timeout = undef,
+  Optional[String] $aws_client_max_error_retry = undef,
+  Optional[String] $aws_client_protocol = undef,
+  Optional[String] $aws_client_proxy_host = undef,
+  Optional[String] $aws_client_proxy_port = undef,
+  Optional[String] $aws_client_use_proxy = undef,
+  Optional[String] $aws_cloudformation_auto_scale_group_logical_id_author_dispatcher = undef,
+  Optional[String] $aws_cloudformation_auto_scale_group_logical_id_preview_publish = undef,
+  Optional[String] $aws_cloudformation_auto_scale_group_logical_id_preview_publish_dispatcher = undef,
+  Optional[String] $aws_cloudformation_auto_scale_group_logical_id_publish = undef,
+  Optional[String] $aws_cloudformation_auto_scale_group_logical_id_publish_dispatcher = undef,
+  Optional[String] $aws_cloudformation_load_balancer_logical_id_author = undef,
+  Optional[String] $aws_cloudformation_sns_logical_id_event_topic = undef,
+  Optional[String] $aws_cloudformation_stack_name_author = undef,
+  Optional[String] $aws_cloudformation_stack_name_author_dispatcher = undef,
+  Optional[String] $aws_cloudformation_stack_name_messaging = undef,
+  Optional[String] $aws_cloudformation_stack_name_preview_publish = undef,
+  Optional[String] $aws_cloudformation_stack_name_preview_publish_dispatcher = undef,
+  Optional[String] $aws_cloudformation_stack_name_publish = undef,
+  Optional[String] $aws_cloudformation_stack_name_publish_dispatcher = undef,
+  Optional[String] $aws_device_name = undef,
+  Optional[String] $aws_region = undef,
+  Optional[String] $aws_snapshot_tags = undef,
+  Optional[String] $aws_sqs_queue_name = undef,
+  Optional[String] $endpoints_enabled = undef,
+  Optional[String] $endpoints_health_enabled = undef,
+  Optional[String] $endpoints_info_enabled = undef,
+  Optional[String] $http_client_relaxed_ssl_enable = undef,
+  Optional[String] $startup_wait_for_author_elb_back_off_period = undef,
+  Optional[String] $startup_wait_for_author_elb_back_off_period_multiplier = undef,
+  Optional[String] $startup_wait_for_author_elb_max_attempts = undef,
+  Optional[String] $startup_wait_for_author_elb_max_back_off_period = undef,
 ) {
+  $properties = {
+    &#39;aem.client.api.connection.timeout&#39;                                    =&gt; $aem_client_api_connection_timeout,
+    &#39;aem.client.api.debug&#39;                                                 =&gt; $aem_client_api_debug,
+    &#39;aem.client.api.verifyssl&#39;                                             =&gt; $aem_client_api_verifyssl,
+    &#39;aem.credentials.orchestrator.password&#39;                                =&gt; $aem_credentials_orchestrator_password,
+    &#39;aem.credentials.orchestrator.username&#39;                                =&gt; $aem_credentials_orchestrator_username,
+    &#39;aem.credentials.replicator.password&#39;                                  =&gt; $aem_credentials_replicator_password,
+    &#39;aem.credentials.replicator.username&#39;                                  =&gt; $aem_credentials_replicator_username,
+    &#39;aem.credentials.s3.file.uri&#39;                                          =&gt; $aem_credentials_s3_file_uri,
+    &#39;aem.credentials.s3.use&#39;                                               =&gt; $aem_credentials_s3_use,
+    &#39;aem.flush.logLevel&#39;                                                   =&gt; $aem_flush_log_level,
+    &#39;aem.port.author&#39;                                                      =&gt; $aem_port_author,
+    &#39;aem.port.authorDispatcher&#39;                                            =&gt; $aem_port_author_dispatcher,
+    &#39;aem.port.previewPublish&#39;                                              =&gt; $aem_port_preview_publish,
+    &#39;aem.port.previewPublishDispatcher&#39;                                    =&gt; $aem_port_preview_publish_dispatcher,
+    &#39;aem.port.publish&#39;                                                     =&gt; $aem_port_publish,
+    &#39;aem.port.publishDispatcher&#39;                                           =&gt; $aem_port_publish_dispatcher,
+    &#39;aem.protocol.author&#39;                                                  =&gt; $aem_protocol_author,
+    &#39;aem.protocol.authorDispatcher&#39;                                        =&gt; $aem_protocol_author_dispatcher,
+    &#39;aem.protocol.previewPublish&#39;                                          =&gt; $aem_protocol_preview_publish,
+    &#39;aem.protocol.previewPublishDispatcher&#39;                                =&gt; $aem_protocol_preview_publish_dispatcher,
+    &#39;aem.protocol.publish&#39;                                                 =&gt; $aem_protocol_publish,
+    &#39;aem.protocol.publishDispatcher&#39;                                       =&gt; $aem_protocol_publish_dispatcher,
+    &#39;aem.relaxed.ssl.enable&#39;                                               =&gt; $aem_relaxed_ssl_enable,
+    &#39;aem.replication.logLevel&#39;                                             =&gt; $aem_replication_log_level,
+    &#39;aem.reverseReplication.enable&#39;                                        =&gt; $aem_reverse_replication_enable,
+    &#39;aem.reverseReplication.logLevel&#39;                                      =&gt; $aem_reverse_replication_log_level,
+    &#39;aem.reverseReplication.transportUri.postfix&#39;                          =&gt; $aem_reverse_replication_transport_uri_postfix,
+    &#39;alarm.content.health.check.terminate.instance.enable&#39;                 =&gt; $alarm_content_health_check_terminate_instance_enable,
+    &#39;aws.client.connection.timeout&#39;                                        =&gt; $aws_client_connection_timeout,
+    &#39;aws.client.max.errorRetry&#39;                                            =&gt; $aws_client_max_error_retry,
+    &#39;aws.client.protocol&#39;                                                  =&gt; $aws_client_protocol,
+    &#39;aws.client.proxy.host&#39;                                                =&gt; $aws_client_proxy_host,
+    &#39;aws.client.proxy.port&#39;                                                =&gt; $aws_client_proxy_port,
+    &#39;aws.client.useProxy&#39;                                                  =&gt; $aws_client_use_proxy,
+    &#39;aws.cloudformation.autoScaleGroup.logicalId.authorDispatcher&#39;         =&gt; $aws_cloudformation_auto_scale_group_logical_id_author_dispatcher,
+    &#39;aws.cloudformation.autoScaleGroup.logicalId.previewPublish&#39;           =&gt; $aws_cloudformation_auto_scale_group_logical_id_preview_publish,
+    &#39;aws.cloudformation.autoScaleGroup.logicalId.previewPublishDispatcher&#39; =&gt; $aws_cloudformation_auto_scale_group_logical_id_preview_publish_dispatcher,
+    &#39;aws.cloudformation.autoScaleGroup.logicalId.publish&#39;                  =&gt; $aws_cloudformation_auto_scale_group_logical_id_publish,
+    &#39;aws.cloudformation.autoScaleGroup.logicalId.publishDispatcher&#39;        =&gt; $aws_cloudformation_auto_scale_group_logical_id_publish_dispatcher,
+    &#39;aws.cloudformation.loadBalancer.logicalId.author&#39;                     =&gt; $aws_cloudformation_load_balancer_logical_id_author,
+    &#39;aws.cloudformation.sns.logicalId.eventTopic&#39;                          =&gt; $aws_cloudformation_sns_logical_id_event_topic,
+    &#39;aws.cloudformation.stackName.author&#39;                                  =&gt; $aws_cloudformation_stack_name_author,
+    &#39;aws.cloudformation.stackName.authorDispatcher&#39;                        =&gt; $aws_cloudformation_stack_name_author_dispatcher,
+    &#39;aws.cloudformation.stackName.messaging&#39;                               =&gt; $aws_cloudformation_stack_name_messaging,
+    &#39;aws.cloudformation.stackName.previewPublish&#39;                          =&gt; $aws_cloudformation_stack_name_preview_publish,
+    &#39;aws.cloudformation.stackName.previewPublishDispatcher&#39;                =&gt; $aws_cloudformation_stack_name_preview_publish_dispatcher,
+    &#39;aws.cloudformation.stackName.publish&#39;                                 =&gt; $aws_cloudformation_stack_name_publish,
+    &#39;aws.cloudformation.stackName.publishDispatcher&#39;                       =&gt; $aws_cloudformation_stack_name_publish_dispatcher,
+    &#39;aws.device.name&#39;                                                      =&gt; $aws_device_name,
+    &#39;aws.region&#39;                                                           =&gt; $aws_region,
+    &#39;aws.snapshot.tags&#39;                                                    =&gt; $aws_snapshot_tags,
+    &#39;aws.sqs.queueName&#39;                                                    =&gt; $aws_sqs_queue_name,
+    &#39;endpoints.enabled&#39;                                                    =&gt; $endpoints_enabled,
+    &#39;endpoints.health.enabled&#39;                                             =&gt; $endpoints_health_enabled,
+    &#39;endpoints.info.enabled&#39;                                               =&gt; $endpoints_info_enabled,
+    &#39;http.client.relaxed.ssl.enable&#39;                                       =&gt; $http_client_relaxed_ssl_enable,
+    &#39;startup.waitForAuthorElb.backOffPeriod&#39;                               =&gt; $startup_wait_for_author_elb_back_off_period,
+    &#39;startup.waitForAuthorElb.backOffPeriodMultiplier&#39;                     =&gt; $startup_wait_for_author_elb_back_off_period_multiplier,
+    &#39;startup.waitForAuthorElb.maxAttempts&#39;                                 =&gt; $startup_wait_for_author_elb_max_attempts,
+    &#39;startup.waitForAuthorElb.maxBackOffPeriod&#39;                            =&gt; $startup_wait_for_author_elb_max_back_off_period,
+  }
+
   file { $path:
     ensure  =&gt; file,
     owner   =&gt; $owner,
     group   =&gt; $group,
     mode    =&gt; $mode,
-    content =&gt; template(&#39;aem_orchestrator/application_properties.erb&#39;),
+    content =&gt; epp(&#39;aem_orchestrator/application_properties.epp&#39;, {
+      &#39;properties&#39; =&gt; $properties.filter |$key, $value| { $value =~ NotUndef },
+    }),
   }
 }</pre>
       </td>
@@ -1241,9 +1423,7 @@ class aem_orchestrator::application_properties (
 </div>
 
       <div id="footer">
-  Generated on Mon Apr 24 14:46:29 2017 by
-  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.9 (ruby-2.3.1).
+     Generated by <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>.
 </div>
 
     </div>

@@ -21,11 +21,12 @@ deps-upgrade:
 	$(call python_venv,pip-compile --upgrade)
 
 gen-properties:
-	curl -sL $(APPLICATION_PROPERTIES_URL) | \
-	  tools/parse_application_properties \
-		-p aem_orchestrator \
-		-n application_properties \
-		-
+	$(call python_venv,curl -sL $(APPLICATION_PROPERTIES_URL) | \
+		tools/parse_application_properties \
+			-p aem_orchestrator \
+			-n application_properties \
+			-)
+
 clean:
 	rm -rf bin/ pkg/ stage/ test/ vendor/
 
@@ -41,10 +42,19 @@ lint:
 acceptance:
 	bundle exec rake beaker
 
+# Regenerate the HTML reference in docs/ (published on GitHub Pages)
+docs:
+	bundle exec rake "strings:generate[,,,,,,--output-dir docs]"
+
+# Move the Unreleased CHANGELOG.md entries to a release section, e.g. make changelog VERSION=2.0.2
+# (VERSION defaults to metadata.json's version without its pre-release suffix)
+changelog:
+	bundle exec rake "changelog:release[$(VERSION)]"
+
 package: deps
 	bundle exec rake module:build
 
 release:
 	rtk release
 
-.PHONY: APPLICATION_PROPERTIES_URL ci deps gen-properties clean test lint acceptance package release
+.PHONY: APPLICATION_PROPERTIES_URL ci deps gen-properties clean test lint acceptance docs changelog package release

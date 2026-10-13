@@ -6,15 +6,15 @@
 <title>
   Puppet Class: aem_orchestrator
   
-    &mdash; Documentation by YARD 0.9.9
+    &mdash; Documentation by YARD 0.9.45
   
 </title>
 
-  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css">
 
-  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css">
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "puppet_classes::aem_orchestrator";
   relpath = '../';
 </script>
@@ -27,6 +27,8 @@
 
   </head>
   <body>
+    <div id="main_progress" aria-hidden="true"></div>
+
     <div class="nav_wrap">
       <iframe id="nav" src="../puppet_class_list.html?1"></iframe>
       <div id="resizer"></div>
@@ -78,20 +80,19 @@ Manager.
 <h2>Overview</h2>
 <div class="docstring">
   <div class="discussion">
-    
-<p>Copyright © 2017-2021 Shine Solutions Group Group, unless otherwise noted.</p>
-
+    <p>Copyright © 2017-2021 Shine Solutions Group Group, unless otherwise noted.</p>
   </div>
 </div>
+
+
+
 <div class="tags">
   
   <div class="examples">
-    <p class="tag_title">Examples:</p>
+    <h4 class="tag_title">Examples:</h4>
     
       
-        <p class="example_title"><div class='inline'>
-<p>Declaring the class</p>
-</div></p>
+        <h5 class="example_title"><div class='inline'><p>Declaring the class</p></div></h5>
       
       <pre class="example code"><code><span class='id identifier rubyid_include'>include</span> <span class='id identifier rubyid_aem_orchestrator'>aem_orchestrator</span></code></pre>
     
@@ -109,11 +110,9 @@ Manager.
       
       
         &mdash;
-        <div class='inline'>
-<p>The name of the service when it is installed. Defaults to
-<code>aem-orchestrator</code> and several other variables are based on it.
-You probably shouldn&#39;t change this.</p>
-</div>
+        <div class='inline'><p>The name of the service when it is installed. Defaults to
+<code>aem-orchestrator</code> and several other variables are based on it. You probably
+shouldn't change this.</p></div>
       
     </li>
   
@@ -127,10 +126,24 @@ You probably shouldn&#39;t change this.</p>
       
       
         &mdash;
-        <div class='inline'>
-<p>Path to the base directory for installation. Defaults to
-&#39;/opt/shinesolutions&#39; and several other paths are based on it.</p>
-</div>
+        <div class='inline'><p>Path to the base directory for installation. Defaults to
+'/opt/shinesolutions' and several other paths are based on it.</p></div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>basedir_mode</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;0755&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>File mode for the base directory.</p></div>
       
     </li>
   
@@ -144,10 +157,24 @@ You probably shouldn&#39;t change this.</p>
       
       
         &mdash;
-        <div class='inline'>
-<p>Path to the directory for installation. The JAR file and configuration
-files are installed here. Defaults to &lt;basedir&gt;/&lt;service_name&gt;.</p>
-</div>
+        <div class='inline'><p>Path to the directory for installation. The JAR file and configuration
+files are installed here. Defaults to <basedir>/&lt;service_name&gt;.</p></div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>installdir_mode</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;0750&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>File mode for the installation directory.</p></div>
       
     </li>
   
@@ -161,10 +188,8 @@ files are installed here. Defaults to &lt;basedir&gt;/&lt;service_name&gt;.</p>
       
       
         &mdash;
-        <div class='inline'>
-<p>Path to the home directory for the user the service runs as. Only used if
-&lt;manage_homedir&gt; is true.</p>
-</div>
+        <div class='inline'><p>Path to the home directory for the user the service runs as. Only used if
+&lt;manage_homedir&gt; is true.</p></div>
       
     </li>
   
@@ -178,9 +203,7 @@ files are installed here. Defaults to &lt;basedir&gt;/&lt;service_name&gt;.</p>
       
       
         &mdash;
-        <div class='inline'>
-<p>The user the service runs as. Defaults to &lt;service_name&gt;.</p>
-</div>
+        <div class='inline'><p>The user the service runs as. Defaults to &lt;service_name&gt;.</p></div>
       
     </li>
   
@@ -194,10 +217,7 @@ files are installed here. Defaults to &lt;basedir&gt;/&lt;service_name&gt;.</p>
       
       
         &mdash;
-        <div class='inline'>
-<p>The primary group for user the service runs as. Defaults to
-&lt;service_name&gt;.</p>
-</div>
+        <div class='inline'><p>The primary group for user the service runs as. Defaults to &lt;service_name&gt;.</p></div>
       
     </li>
   
@@ -211,9 +231,7 @@ files are installed here. Defaults to &lt;basedir&gt;/&lt;service_name&gt;.</p>
       
       
         &mdash;
-        <div class='inline'>
-<p>Source URL for the AEM Orchestrator JAR file.</p>
-</div>
+        <div class='inline'><p>Source URL for the AEM Orchestrator JAR file.</p></div>
       
     </li>
   
@@ -227,11 +245,8 @@ files are installed here. Defaults to &lt;basedir&gt;/&lt;service_name&gt;.</p>
       
       
         &mdash;
-        <div class='inline'>
-<p>Checksum of the AEM Orchestrator JAR file. If not specified and an HTTP URL
-is used, Puppet will treat the <code>File</code> resource as updated on
-every run.</p>
-</div>
+        <div class='inline'><p>Checksum of the AEM Orchestrator JAR file. If not specified and an HTTP URL
+is used, Puppet will treat the <code>File</code> resource as updated on every run.</p></div>
       
     </li>
   
@@ -247,9 +262,7 @@ every run.</p>
       
       
         &mdash;
-        <div class='inline'>
-<p>The checksum algorithm used to produce <code>jarfile_checksum_value</code>.</p>
-</div>
+        <div class='inline'><p>The checksum algorithm used to produce <code>jarfile_checksum_value</code>.</p></div>
       
     </li>
   
@@ -265,9 +278,7 @@ every run.</p>
       
       
         &mdash;
-        <div class='inline'>
-<p>File mode for the JAR file.</p>
-</div>
+        <div class='inline'><p>File mode for the JAR file.</p></div>
       
     </li>
   
@@ -283,9 +294,7 @@ every run.</p>
       
       
         &mdash;
-        <div class='inline'>
-<p>Whether or not to manage &lt;basedir&gt; as a resource in Puppet.</p>
-</div>
+        <div class='inline'><p>Whether or not to manage <basedir> as a resource in Puppet.</p></div>
       
     </li>
   
@@ -301,9 +310,7 @@ every run.</p>
       
       
         &mdash;
-        <div class='inline'>
-<p>Whether or not to manage &lt;installdir&gt; as a resource in Puppet.</p>
-</div>
+        <div class='inline'><p>Whether or not to manage <installdir> as a resource in Puppet.</p></div>
       
     </li>
   
@@ -319,9 +326,7 @@ every run.</p>
       
       
         &mdash;
-        <div class='inline'>
-<p>Whether or not to manage &lt;homedir&gt; as a resource in Puppet.</p>
-</div>
+        <div class='inline'><p>Whether or not to manage <homedir> as a resource in Puppet.</p></div>
       
     </li>
   
@@ -337,9 +342,7 @@ every run.</p>
       
       
         &mdash;
-        <div class='inline'>
-<p>Whether or not to manage &lt;user&gt; as a resource in Puppet.</p>
-</div>
+        <div class='inline'><p>Whether or not to manage <user> as a resource in Puppet.</p></div>
       
     </li>
   
@@ -355,9 +358,7 @@ every run.</p>
       
       
         &mdash;
-        <div class='inline'>
-<p>Whether or not to manage &lt;group&gt; as a resource in Puppet.</p>
-</div>
+        <div class='inline'><p>Whether or not to manage <group> as a resource in Puppet.</p></div>
       
     </li>
   
@@ -366,17 +367,14 @@ every run.</p>
         <span class='name'>aws_profile</span>
       
       
-        <span class='type'>(<tt>Variant[String, Undef]</tt>)</span>
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
       
       
         &mdash;
-        <div class='inline'>
-<p>If specified, sets the <code>AWS_PROFILE</code> variable in the
-service&#39;s environment.</p>
-</div>
+        <div class='inline'><p>If specified, sets the <code>AWS_PROFILE</code> variable in the service's environment.</p></div>
       
     </li>
   
@@ -392,14 +390,13 @@ service&#39;s environment.</p>
       
       
         &mdash;
-        <div class='inline'>
-<p>The shell to be used when managing the user. Should be the full path to the
-<code>nologin</code> shell.</p>
-</div>
+        <div class='inline'><p>The shell to be used when managing the user. Should be the full path to the
+<code>nologin</code> shell.</p></div>
       
     </li>
   
 </ul>
+
 
 <p class="tag_title">Author:</p>
 <ul class="author">
@@ -410,10 +407,7 @@ service&#39;s environment.</p>
       
       
         
-        <div class='inline'>
-<p>James Sinclair <a
-href="mailto:james.sinclair@shinesolutions.com">james.sinclair@shinesolutions.com</a></p>
-</div>
+        <div class='inline'><p>James Sinclair <a href="mailto:james.sinclair@shinesolutions.com">james.sinclair@shinesolutions.com</a></p></div>
       
     </li>
   
@@ -426,12 +420,6 @@ href="mailto:james.sinclair@shinesolutions.com">james.sinclair@shinesolutions.co
         <pre class="lines">
 
 
-70
-71
-72
-73
-74
-75
 76
 77
 78
@@ -530,10 +518,20 @@ href="mailto:james.sinclair@shinesolutions.com">james.sinclair@shinesolutions.co
 171
 172
 173
-174</pre>
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184</pre>
       </td>
       <td>
-        <pre class="code"><span class="info file"># File 'manifests/init.pp', line 70</span>
+        <pre class="code"><span class="info file"># File 'manifests/init.pp', line 76</span>
 
 class aem_orchestrator (
   String $service_name,
@@ -548,23 +546,28 @@ class aem_orchestrator (
   String $jarfile_checksum_type = &#39;sha256&#39;,
   String $jarfile_mode          = &#39;0500&#39;,
 
+  String $basedir_mode    = &#39;0755&#39;,
+  String $installdir_mode = &#39;0750&#39;,
+
   Boolean $manage_basedir    = true,
   Boolean $manage_installdir = false,
   Boolean $manage_homedir    = true,
   Boolean $manage_user       = true,
   Boolean $manage_group      = true,
 
-  Variant[String, Undef] $aws_profile = undef,
+  Optional[String] $aws_profile = undef,
   String $user_shell = &#39;/usr/sbin/nologin&#39;,
-){
+) {
   if $manage_basedir {
     file { $basedir:
       ensure =&gt; directory,
+      mode   =&gt; $basedir_mode,
     }
     $basedir_require = File[$basedir]
   } else {
     $basedir_require = undef
   }
+
   if $manage_user {
     group { $group:
       ensure =&gt; present,
@@ -580,16 +583,18 @@ class aem_orchestrator (
       expiry     =&gt; absent,
     }
   }
+
   if $manage_installdir {
-    file { [ $installdir ]:
+    file { $installdir:
       ensure  =&gt; directory,
       owner   =&gt; $user,
       group   =&gt; $group,
-      require =&gt; [ $basedir_require, User[$user] ],
+      mode    =&gt; $installdir_mode,
+      require =&gt; [$basedir_require, User[$user]],
     }
-    $file_requires = [ File[$installdir], User[$user] ]
+    $file_requires = [File[$installdir], User[$user]]
   } else {
-    $file_requires = [ User[$user] ]
+    $file_requires = [User[$user]]
   }
 
   $jarfile = &quot;${installdir}/aem-orchestrator.jar&quot;
@@ -598,7 +603,7 @@ class aem_orchestrator (
     source        =&gt; $jarfile_source,
     checksum_type =&gt; $jarfile_checksum_type,
     checksum      =&gt; $jarfile_checksum_value,
-    require       =&gt; $file_requires;
+    require       =&gt; $file_requires,
   }
   -&gt; file { $jarfile:
     owner =&gt; $user,
@@ -606,26 +611,24 @@ class aem_orchestrator (
     mode  =&gt; $jarfile_mode,
   }
 
-  if $facts[&#39;os&#39;][&#39;family&#39;] == &#39;redhat&#39; {
-    if $facts[&#39;os&#39;][&#39;name&#39;] == &#39;Amazon&#39; {
-      $servicefile = &quot;/etc/init/${service_name}.conf&quot;
-      $servicetmpl = &#39;upstart.erb&#39;
-      $serviceprvd = &#39;upstart&#39;
-    } else {
-      $servicefile = &quot;/etc/systemd/system/${service_name}.service&quot;
-      $servicetmpl = &#39;systemd.erb&#39;
-      $serviceprvd = undef
-    }
+  # Rocky Linux 10 and Amazon Linux 2023 both report the RedHat family and use systemd
+  if $facts.dig(&#39;os&#39;, &#39;family&#39;) != &#39;RedHat&#39; {
+    fail(&quot;Operating system family ${facts.dig(&#39;os&#39;, &#39;family&#39;)} is not supported by aem_orchestrator.&quot;)
   }
 
+  $servicefile = &quot;/etc/systemd/system/${service_name}.service&quot;
   file { $servicefile:
     ensure  =&gt; file,
-    content =&gt; template(&quot;aem_orchestrator/service/${servicetmpl}&quot;),
+    content =&gt; epp(&#39;aem_orchestrator/service/systemd.epp&#39;, {
+      &#39;user&#39;        =&gt; $user,
+      &#39;jarfile&#39;     =&gt; $jarfile,
+      &#39;aws_profile&#39; =&gt; $aws_profile,
+    }),
     require =&gt; File[$jarfile],
   }
 
   $application_properties_file = &quot;${installdir}/application.properties&quot;
-  class { &#39;::aem_orchestrator::application_properties&#39;:
+  class { &#39;aem_orchestrator::application_properties&#39;:
     path    =&gt; $application_properties_file,
     owner   =&gt; $user,
     group   =&gt; $group,
@@ -634,10 +637,9 @@ class aem_orchestrator (
   }
 
   service { $service_name:
-    ensure   =&gt; running,
-    enable   =&gt; true,
-    provider =&gt; $serviceprvd,
-    require  =&gt; File[$application_properties_file],
+    ensure  =&gt; running,
+    enable  =&gt; true,
+    require =&gt; File[$application_properties_file],
   }
 }</pre>
       </td>
@@ -647,9 +649,7 @@ class aem_orchestrator (
 </div>
 
       <div id="footer">
-  Generated on Mon Apr 24 19:45:32 2017 by
-  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.9 (ruby-2.3.1).
+     Generated by <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>.
 </div>
 
     </div>
