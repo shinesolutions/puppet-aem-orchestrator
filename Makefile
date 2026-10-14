@@ -61,4 +61,13 @@ package: deps
 release:
 	rtk release
 
-.PHONY: APPLICATION_PROPERTIES_URL ci deps gen-properties clean test lint acceptance docs changelog package release
+# Check the module is ready to publish to the Puppet Forge; reports what is missing
+publish-check: package
+	tools/publish-check
+
+# Publish the built package to the Puppet Forge. Run manually, never from CI.
+# Requires BLACKSMITH_FORGE_API_KEY (a Forge API key) and a passing publish-check
+publish: publish-check
+	bundle exec rake module:push
+
+.PHONY: APPLICATION_PROPERTIES_URL ci deps gen-properties clean test lint acceptance docs changelog package release publish-check publish
