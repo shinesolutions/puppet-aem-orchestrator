@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Converted hiera.yaml to version 5
 - Limited OS support to Amazon Linux 2023 and Rocky Linux 10
 - Changed the default AEM Orchestrator jar to 4.0.0
+- Changed the service to start the jar with `java -jar`, as Spring Boot 4 jars are no longer executable scripts
 - Upgraded GitHub CI to actions/checkout v7
 
 ### Fixed
