@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Added Makefile targets for unit tests, acceptance tests, docs and changelog
 - Added unit and acceptance tests to GitHub CI
+- Add release and publish workflows
 
 ### Changed
 - Upgraded to Ruby 4.0.7 and OpenVox 9 with Vox Pupuli tooling, replacing PDK
@@ -19,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changed the default AEM Orchestrator jar to 4.0.0
 - Changed the service to start the jar with `java -jar`, as Spring Boot 4 jars are no longer executable scripts
 - Upgraded GitHub CI to actions/checkout v7
+- Simplify CI workflow to not use action files anymore
 
 ### Fixed
 - Fixed the application properties generator for case-conversion 3.x
