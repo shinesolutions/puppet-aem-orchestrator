@@ -24,8 +24,7 @@ configure_beaker do |host|
 
   on host, 'pip3 install --upgrade awscli'
 
-  # Configure AWS credentials
-  proj_root = File.expand_path(File.join(File.dirname(__FILE__), '..'))
+  # Configure AWS credentials from the placeholder file
   on host, 'install -o root -g root -m 0700 -d ~/.aws'
-  scp_to host, File.join(proj_root, 'aws_credentials'), '/root/.aws/credentials'
+  scp_to host, File.join(__dir__, 'acceptance', 'aws_credentials'), '/root/.aws/credentials'
 end
