@@ -38,6 +38,7 @@ test:
 
 lint:
 	bundle exec rake lint syntax metadata_lint rubocop
+	$(call python_venv,pylint tools/parse_application_properties)
 
 # Run acceptance tests against every nodeset; beaker only runs one per invocation
 acceptance:

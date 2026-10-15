@@ -1,1 +1,2 @@
 pip-tools==7.6.2
+pylint==4.1.3

@@ -3,7 +3,6 @@
 """Parse an example application.properties file and generate a Puppet class."""
 
 import argparse
-import os
 import sys
 import textwrap
 from pathlib import Path
@@ -22,6 +21,7 @@ def unwrap(txt: str) -> str:
 
 
 def parse_args() -> argparse.Namespace:
+    """Parse the command line arguments and fill in default file paths."""
     p = argparse.ArgumentParser(
         description=unwrap("""
             Parse an example `application.properties` file and generate a
@@ -131,16 +131,19 @@ class PropertyKey:
 
     @property
     def snake_case(self) -> str:
+        """Puppet parameter name for the property key."""
         return case_conversion.snake(self.key, acronyms=self.acronyms)
 
     @property
     def doco(self) -> str:
+        """Puppet Strings description for the parameter."""
         return f'Java property `{self.key}`'
 
 
 def parse_example_file(
     file: TextIO, full_class_name: str, acronyms: list[str]
 ) -> list[PropertyKey]:
+    """Read the property keys from an example application.properties file."""
     keys = []
     for key in sorted(javaproperties.load(file).keys()):
         keys.append(
@@ -150,13 +153,15 @@ def parse_example_file(
 
 
 # The template is static: the generated class passes it only the properties that are set
-template_tmpl = """<%- | Hash[String, String] $properties | -%>
+TEMPLATE_TMPL = """<%- | Hash[String, String] $properties | -%>
 <% $properties.each |$key, $value| { -%>
 <%= $key %> = <%= $value %>
 <% } -%>
 """
 
 
+# The @see URL in the generated class documentation is longer than the line limit
+# pylint: disable=line-too-long
 class_tmpl = Template(
     """# @summary
 #   Write the `application.properties` file.
@@ -225,6 +230,7 @@ class {{ full_class_name }} (
     lstrip_blocks=True,
     keep_trailing_newline=True,
 )
+# pylint: enable=line-too-long
 
 spec_tmpl = Template(
     """require 'spec_helper'
@@ -248,6 +254,7 @@ end
 
 
 def main() -> None:
+    """Generate the Puppet class, EPP template and spec from an example file."""
     args = parse_args()
     print(f'{sys.argv[0]} version {__version__}', file=sys.stderr)
 
@@ -276,7 +283,7 @@ def main() -> None:
     Path(args.spec_file).parent.mkdir(parents=True, exist_ok=True)
 
     with open(args.template_file, 'w', encoding='utf-8') as template_file:
-        template_file.write(template_tmpl)
+        template_file.write(TEMPLATE_TMPL)
 
     with open(args.class_file, 'w', encoding='utf-8') as class_file:
         class_file.write(
