@@ -1,5 +1,5 @@
 ---
-name: Publish Ruby
+name: Publish Puppet Module
 'on':
   push:
     tags:
