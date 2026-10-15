@@ -1,0 +1,22 @@
+---
+name: Publish Ruby
+'on':
+  push:
+    tags:
+      - '*'
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  build:
+    runs-on: ubuntu-26.04
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          set-safe-directory: ${{ github.workspace }}
+      - uses: cliffano/command-docker-action@v2.1.0
+        with:
+          image: shinesolutions/aem-platform-buildenv:6.2.1
+          shell: bash
+          command: |
+            make clean deps package publish
