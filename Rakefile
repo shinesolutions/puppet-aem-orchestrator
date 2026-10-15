@@ -72,7 +72,9 @@ if Gem.loaded_specs.key? 'github_changelog_generator'
     config.project = changelog_project
     config.future_release = changelog_future_release
     config.exclude_labels = ['maintenance']
-    config.header = "# Change log\n\nAll notable changes to this project will be documented in this file."
+    config.header = "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n" \
+                    "The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),\n" \
+                    'and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).'
     config.add_pr_wo_labels = true
     config.issues = false
     config.merge_prefix = '### UNCATEGORIZED PRS; LABEL THEM ON GITHUB'
