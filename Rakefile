@@ -64,8 +64,7 @@ if Gem.loaded_specs.key? 'github_changelog_generator'
     version = metadata['version']
     raise 'unable to find version in metadata.json' if version.nil?
 
-    # Release tags are plain versions (e.g. 2.0.1), without the pre-release suffix
-    version.sub(%r{-.*\z}, '')
+    version
   end
 
   GitHubChangelogGenerator::RakeTask.new :changelog do |config|
