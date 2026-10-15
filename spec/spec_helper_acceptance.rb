@@ -1,38 +1,30 @@
-require 'beaker-rspec/spec_helper'
-require 'beaker-rspec/helpers/serverspec'
+require 'beaker_puppet_helpers'
+require 'voxpupuli/acceptance/spec_helper_acceptance'
 
-unless ENV['RS_PROVISION'] == 'no'
-  hosts.each do |host|
-    # Install Puppet
-    if host.is_pe?
-      install_pe
-    else
-      install_puppet_agent_on(host, { :puppet_agent_version => '1.8.3', })
-      on host, "yum -y install epel-release"
-      on host, "yum -y install python2-pip rsync"
-      on host, "pip install --upgrade awscli"
-    end
+# beaker_puppet_helpers has no repo install step for Amazon Linux, although the
+# OpenVox yum repo publishes <collection>-release-amazon-<version>.noarch.rpm
+module AmazonReleaseRepo
+  def install_puppet_release_repo_on(host, collection = 'puppet')
+    variant, version, = host['packaging_platform'].split('-', 3)
+    return super unless variant == 'amazon'
+
+    repos = BeakerPuppetHelpers::InstallUtils::REPOS[implementation_from_collection(collection).to_sym][:release]
+    host.install_package("#{repos[:yum]}/#{collection}-release-amazon-#{version}.noarch.rpm")
   end
 end
+BeakerPuppetHelpers::InstallUtils.singleton_class.prepend(AmazonReleaseRepo)
 
-RSpec.configure do |c|
-  # Project root
-  proj_root = File.expand_path(File.join(File.dirname(__FILE__), '..'))
+# configure_beaker installs the local module (and its metadata.json dependencies)
+# on each host in before(:suite), then runs this block
+configure_beaker do |host|
+  # Supported platforms: Amazon Linux 2023 and Rocky Linux 10
+  install_package(host, 'libxcrypt-compat')
+  install_package(host, 'python3-pip')
+  install_package(host, host['platform'].start_with?('amazon') ? 'java-21-amazon-corretto-headless' : 'java-21-openjdk-headless')
 
-  # Readable test descriptions
-  c.formatter = :documentation
+  on host, 'pip3 install --upgrade awscli'
 
-  # Configure all nodes in nodeset
-  c.before :suite do
-    # Install module and dependencies
-    hosts.each do |host|
-      apply_manifest('package { [ "tree", "rsync" ]: ensure => present }')
-      on host, 'install -o root -g root -m 0700 -d ~/.aws'
-      rsync_to host, File.join(proj_root, 'aws_credentials'), '~/.aws/credentials'
-      install_dev_puppet_module_on(host, source: proj_root, module_name: 'aem_orchestrator')
-      on host, puppet('module', 'install', 'puppetlabs-java'), acceptable_exit_codes: [0, 1]
-      on host, puppet('module', 'install', 'puppet-archive'), acceptable_exit_codes: [0, 1]
-      apply_manifest('class { "java": distribution => "jre" }')
-    end
-  end
+  # Configure AWS credentials from the placeholder file
+  on host, 'install -o root -g root -m 0700 -d ~/.aws'
+  scp_to host, File.join(__dir__, 'acceptance', 'aws_credentials'), '/root/.aws/credentials'
 end

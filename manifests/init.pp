@@ -95,7 +95,7 @@ class aem_orchestrator (
   Boolean $manage_user       = true,
   Boolean $manage_group      = true,
 
-  Variant[String, Undef] $aws_profile = undef,
+  Optional[String] $aws_profile = undef,
   String $user_shell = '/usr/sbin/nologin',
 ) {
   if $manage_basedir {
@@ -107,6 +107,7 @@ class aem_orchestrator (
   } else {
     $basedir_require = undef
   }
+
   if $manage_user {
     group { $group:
       ensure => present,
@@ -122,8 +123,9 @@ class aem_orchestrator (
       expiry     => absent,
     }
   }
+
   if $manage_installdir {
-    file {[$installdir]:
+    file { $installdir:
       ensure  => directory,
       owner   => $user,
       group   => $group,
@@ -141,7 +143,7 @@ class aem_orchestrator (
     source        => $jarfile_source,
     checksum_type => $jarfile_checksum_type,
     checksum      => $jarfile_checksum_value,
-    require       => $file_requires;
+    require       => $file_requires,
   }
   -> file { $jarfile:
     owner => $user,
@@ -149,27 +151,19 @@ class aem_orchestrator (
     mode  => $jarfile_mode,
   }
 
-  if $facts['os']['family'] == 'redhat' {
-    if $facts['os']['name'] == 'Amazon' {
-      if $facts['os']['release']['major'] == '2' {
-        $servicefile = "/etc/systemd/system/${service_name}.service"
-        $servicetmpl = 'systemd.erb'
-        $serviceprvd = undef
-      } else {
-        $servicefile = "/etc/init/${service_name}.conf"
-        $servicetmpl = 'upstart.erb'
-        $serviceprvd = 'upstart'
-      }
-    } else {
-      $servicefile = "/etc/systemd/system/${service_name}.service"
-      $servicetmpl = 'systemd.erb'
-      $serviceprvd = undef
-    }
+  # Rocky Linux 10 and Amazon Linux 2023 both report the RedHat family and use systemd
+  if $facts.dig('os', 'family') != 'RedHat' {
+    fail("Operating system family ${facts.dig('os', 'family')} is not supported by aem_orchestrator.")
   }
 
+  $servicefile = "/etc/systemd/system/${service_name}.service"
   file { $servicefile:
     ensure  => file,
-    content => template("aem_orchestrator/service/${servicetmpl}"),
+    content => epp('aem_orchestrator/service/systemd.epp', {
+      'user'        => $user,
+      'jarfile'     => $jarfile,
+      'aws_profile' => $aws_profile,
+    }),
     require => File[$jarfile],
   }
 
@@ -183,9 +177,8 @@ class aem_orchestrator (
   }
 
   service { $service_name:
-    ensure   => running,
-    enable   => true,
-    provider => $serviceprvd,
-    require  => File[$application_properties_file],
+    ensure  => running,
+    enable  => true,
+    require => File[$application_properties_file],
   }
 }

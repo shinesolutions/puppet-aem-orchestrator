@@ -1,0 +1,19 @@
+<%- |
+  String $user,
+  String $jarfile,
+  Optional[String] $aws_profile = undef,
+| -%>
+[Unit]
+Description=Shine Solution Orchestrator for Adobe Experience Manager
+After=syslog.target
+
+[Service]
+<% if $aws_profile and !$aws_profile.empty { -%>
+Environment=AWS_PROFILE=<%= $aws_profile %>
+<% } -%>
+User=<%= $user %>
+ExecStart=/usr/bin/java -jar <%= $jarfile %>
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
