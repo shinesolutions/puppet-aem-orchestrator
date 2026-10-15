@@ -36,10 +36,14 @@ if Gem.loaded_specs.key? 'github_changelog_generator'
   def changelog_user
     return unless Rake.application.top_level_tasks.include? 'changelog'
 
-    author = metadata['author']
-    raise 'unable to find author in metadata.json' if author.nil?
+    # GitHub owner from the source URL, e.g. http://github.com/<user>/<project>
+    source = metadata['source']
+    match = source&.match(%r{.*\/([^\/]+)\/[^\/]+?(?:\.git)?\Z})
+    user = match&.[](1)
 
-    author
+    raise 'unable to calculate user from metadata.json' if user.nil?
+
+    user
   end
 
   def changelog_project
@@ -60,7 +64,8 @@ if Gem.loaded_specs.key? 'github_changelog_generator'
     version = metadata['version']
     raise 'unable to find version in metadata.json' if version.nil?
 
-    "v#{version}"
+    # Release tags are plain versions (e.g. 2.0.1), without the pre-release suffix
+    version.sub(%r{-.*\z}, '')
   end
 
   GitHubChangelogGenerator::RakeTask.new :changelog do |config|
@@ -79,8 +84,8 @@ if Gem.loaded_specs.key? 'github_changelog_generator'
     config.issues = false
     config.merge_prefix = '### UNCATEGORIZED PRS; LABEL THEM ON GITHUB'
     config.configure_sections = {
-      'Changed' => { 'prefix' => '### Changed', 'labels' => ['backwards-incompatible'] },
       'Added'   => { 'prefix' => '### Added',   'labels' => ['enhancement', 'feature'] },
+      'Changed' => { 'prefix' => '### Changed', 'labels' => ['backwards-incompatible'] },
       'Fixed'   => { 'prefix' => '### Fixed',   'labels' => ['bug', 'documentation', 'bugfix'] },
     }
   end
