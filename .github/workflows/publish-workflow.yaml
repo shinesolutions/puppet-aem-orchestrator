@@ -18,5 +18,8 @@ jobs:
         with:
           image: shinesolutions/aem-platform-buildenv:6.2.1
           shell: bash
+          extra_args: -e BLACKSMITH_FORGE_API_KEY
           command: |
             make clean deps package publish
+        env:
+          BLACKSMITH_FORGE_API_KEY: ${{ secrets.SHINEOPENSOURCE_PUPPETFORGE_TOKEN }}

@@ -24,8 +24,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Fixed the application properties generator for case-conversion 3.x
+- Fixed the publish workflow to pass the Forge API key and the publish checks to run git as root in the buildenv container
 
-## [2.0.1]
+## [2.0.1] - 2023-08-03
 
 ### Fixed
 - Fixed issues regarding generating a new package release
