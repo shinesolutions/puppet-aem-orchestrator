@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Fix metadata-lint failure on publishing via workflow runner 6.4.1
+
 ## [3.0.0] - 2026-10-16
 ### Added
 - Added Makefile targets for unit tests, acceptance tests, docs and changelog
