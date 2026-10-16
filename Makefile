@@ -62,11 +62,13 @@ package: deps
 release:
 	rtk release
 
-# Check the module is ready to publish to the Puppet Forge; reports what is missing
+# Check the module is ready to publish to the Puppet Forge; reports what is missing.
+# safe.directory lets the git-based checks run as root in the buildenv container
 publish-check: package
-	tools/publish-check
+	GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=safe.directory GIT_CONFIG_VALUE_0=$(CURDIR) \
+		tools/publish-check
 
-# Publish the built package to the Puppet Forge. Run manually, never from CI.
+# Publish the built package to the Puppet Forge, run by the publish workflow on a pushed tag.
 # Requires BLACKSMITH_FORGE_API_KEY (a Forge API key) and a passing publish-check
 publish: publish-check
 	bundle exec rake module:push
