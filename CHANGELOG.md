@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changed the service to start the jar with `java -jar`, as Spring Boot 4 jars are no longer executable scripts
 - Upgraded GitHub CI to actions/checkout v7
 - Simplify CI workflow to not use action files anymore
+- Upgrade aem-platform-buildenv to 6.3.0
 
 ### Fixed
 - Fixed the application properties generator for case-conversion 3.x
