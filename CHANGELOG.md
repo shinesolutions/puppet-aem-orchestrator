@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Actually fix metadata-lint failure on publishing by upgrading release-action to 2.1.0
+
 ## [3.0.1] - 2026-10-17
 ### Fixed
 - Fix metadata-lint failure on publishing via workflow runner 6.4.1
