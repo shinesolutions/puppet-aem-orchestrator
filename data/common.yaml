@@ -5,9 +5,9 @@ aem_orchestrator::installdir: "%{lookup('aem_orchestrator::basedir')}/%{lookup('
 aem_orchestrator::homedir: "%{lookup('aem_orchestrator::installdir')}"
 aem_orchestrator::user: "%{lookup('aem_orchestrator::service_name')}"
 aem_orchestrator::group: "%{lookup('aem_orchestrator::service_name')}"
-aem_orchestrator::jarfile_source: https://repo.maven.apache.org/maven2/com/shinesolutions/aem-orchestrator/4.0.0/aem-orchestrator-4.0.0.jar
+aem_orchestrator::jarfile_source: https://repo.maven.apache.org/maven2/com/shinesolutions/aem-orchestrator/5.0.0/aem-orchestrator-5.0.0.jar
 # SHA 256 checksum
-aem_orchestrator::jarfile_checksum_value: fcc98a2b4e419872d65827f39027a521748094e26951e887281470d52e361935
+aem_orchestrator::jarfile_checksum_value: c42928026c73e733b3c9d70e372a9536b78afcb4187a2bf23ee394acaea86718
 
 aem_orchestrator::application_properties::path: "%{lookup('aem_orchestrator::installdir')}/application.properties"
 aem_orchestrator::application_properties::owner: "%{lookup('aem_orchestrator::user')}"

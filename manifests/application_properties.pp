@@ -183,17 +183,11 @@
 # @param aws_sqs_queue_name
 #   Java property `aws.sqs.queueName`
 #
-# @param endpoints_enabled
-#   Java property `endpoints.enabled`
-#
-# @param endpoints_health_enabled
-#   Java property `endpoints.health.enabled`
-#
-# @param endpoints_info_enabled
-#   Java property `endpoints.info.enabled`
-#
 # @param http_client_relaxed_ssl_enable
 #   Java property `http.client.relaxed.ssl.enable`
+#
+# @param management_endpoints_web_exposure_include
+#   Java property `management.endpoints.web.exposure.include`
 #
 # @param startup_wait_for_author_elb_back_off_period
 #   Java property `startup.waitForAuthorElb.backOffPeriod`
@@ -267,10 +261,8 @@ class aem_orchestrator::application_properties (
   Optional[String] $aws_region = undef,
   Optional[String] $aws_snapshot_tags = undef,
   Optional[String] $aws_sqs_queue_name = undef,
-  Optional[String] $endpoints_enabled = undef,
-  Optional[String] $endpoints_health_enabled = undef,
-  Optional[String] $endpoints_info_enabled = undef,
   Optional[String] $http_client_relaxed_ssl_enable = undef,
+  Optional[String] $management_endpoints_web_exposure_include = undef,
   Optional[String] $startup_wait_for_author_elb_back_off_period = undef,
   Optional[String] $startup_wait_for_author_elb_back_off_period_multiplier = undef,
   Optional[String] $startup_wait_for_author_elb_max_attempts = undef,
@@ -329,10 +321,8 @@ class aem_orchestrator::application_properties (
     'aws.region'                                                           => $aws_region,
     'aws.snapshot.tags'                                                    => $aws_snapshot_tags,
     'aws.sqs.queueName'                                                    => $aws_sqs_queue_name,
-    'endpoints.enabled'                                                    => $endpoints_enabled,
-    'endpoints.health.enabled'                                             => $endpoints_health_enabled,
-    'endpoints.info.enabled'                                               => $endpoints_info_enabled,
     'http.client.relaxed.ssl.enable'                                       => $http_client_relaxed_ssl_enable,
+    'management.endpoints.web.exposure.include'                            => $management_endpoints_web_exposure_include,
     'startup.waitForAuthorElb.backOffPeriod'                               => $startup_wait_for_author_elb_back_off_period,
     'startup.waitForAuthorElb.backOffPeriodMultiplier'                     => $startup_wait_for_author_elb_back_off_period_multiplier,
     'startup.waitForAuthorElb.maxAttempts'                                 => $startup_wait_for_author_elb_max_attempts,
