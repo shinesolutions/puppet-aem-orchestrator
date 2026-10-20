@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changed the default AEM Orchestrator jar to 5.0.0
 - Replaced the `endpoints_enabled`, `endpoints_health_enabled` and `endpoints_info_enabled` parameters with `management_endpoints_web_exposure_include`, following AEM Orchestrator 5.0.0
 
+### Removed
+- Removed the `make changelog` target, which called a `changelog:release` rake task that doesn't exist, and the unused GitHub Changelog Generator rake task; `rtk release` updates CHANGELOG.md
+
 ## [3.0.2] - 2026-10-17
 ### Fixed
 - Actually fix metadata-lint failure on publishing by upgrading release-action to 2.1.0

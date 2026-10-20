@@ -54,11 +54,6 @@ acceptance:
 docs:
 	bundle exec rake "strings:generate[,,,,,,--output-dir docs]"
 
-# Move the Unreleased CHANGELOG.md entries to a release section, e.g. make changelog VERSION=2.0.2
-# (VERSION defaults to metadata.json's version without its pre-release suffix)
-changelog:
-	bundle exec rake "changelog:release[$(VERSION)]"
-
 package: deps
 	bundle exec rake module:build
 
@@ -76,4 +71,4 @@ publish-check: package
 publish: publish-check
 	bundle exec rake module:push
 
-.PHONY: APPLICATION_PROPERTIES_URL ci deps gen-properties clean test lint acceptance docs changelog package release publish-check publish
+.PHONY: APPLICATION_PROPERTIES_URL ci deps gen-properties clean test lint acceptance docs package release publish-check publish
