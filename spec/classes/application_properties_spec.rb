@@ -263,25 +263,15 @@ describe 'aem_orchestrator::application_properties' do
 
     it { is_expected.to contain_file('/tmp/foo').with_content(%r{^aws.sqs.queueName = foo}) }
   end
-  context 'with endpoints_enabled => foo' do
-    let(:params) { { endpoints_enabled: 'foo', path: '/tmp/foo', } }
-
-    it { is_expected.to contain_file('/tmp/foo').with_content(%r{^endpoints.enabled = foo}) }
-  end
-  context 'with endpoints_health_enabled => foo' do
-    let(:params) { { endpoints_health_enabled: 'foo', path: '/tmp/foo', } }
-
-    it { is_expected.to contain_file('/tmp/foo').with_content(%r{^endpoints.health.enabled = foo}) }
-  end
-  context 'with endpoints_info_enabled => foo' do
-    let(:params) { { endpoints_info_enabled: 'foo', path: '/tmp/foo', } }
-
-    it { is_expected.to contain_file('/tmp/foo').with_content(%r{^endpoints.info.enabled = foo}) }
-  end
   context 'with http_client_relaxed_ssl_enable => foo' do
     let(:params) { { http_client_relaxed_ssl_enable: 'foo', path: '/tmp/foo', } }
 
     it { is_expected.to contain_file('/tmp/foo').with_content(%r{^http.client.relaxed.ssl.enable = foo}) }
+  end
+  context 'with management_endpoints_web_exposure_include => foo' do
+    let(:params) { { management_endpoints_web_exposure_include: 'foo', path: '/tmp/foo', } }
+
+    it { is_expected.to contain_file('/tmp/foo').with_content(%r{^management.endpoints.web.exposure.include = foo}) }
   end
   context 'with startup_wait_for_author_elb_back_off_period => foo' do
     let(:params) { { startup_wait_for_author_elb_back_off_period: 'foo', path: '/tmp/foo', } }
