@@ -7,7 +7,8 @@ HOSTS:
     image: rockylinux/rockylinux:10
     hypervisor: docker
     # Keep the built image so these layers are cached between runs. The agent and
-    # prerequisites are baked in, so the installs in spec_helper_acceptance.rb are no-ops.
+    # prerequisites are baked in, so beaker doesn't install them
+    # (BEAKER_PUPPET_COLLECTION is preinstalled in the Makefile).
     docker_preserve_image: true
     docker_image_commands:
       - dnf install -y https://yum.voxpupuli.org/openvox9-release-el-10.noarch.rpm
