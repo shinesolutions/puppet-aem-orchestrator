@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Changed
+- Run acceptance tests with the OpenVox 9 agent preinstalled in the nodeset images, instead of installing the release repo and agent again
+- Fall back to the GWDG mirror of yum.voxpupuli.org for the OpenVox 9 release package and repo in the acceptance nodesets, so an outage of yum.voxpupuli.org does not block CI
+- Upgrade aem-platform-buildenv to 6.5.0, which has RTK 4.4.0
+- Upgrade release-action to 2.2.0
 - Changed the default AEM Orchestrator jar to 5.1.0
 
 ## [3.1.0] - 2026-10-21
