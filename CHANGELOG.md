@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- Replaced the `aem_credentials_s3_use` and `aem_credentials_s3_file_uri` parameters with `aem_credentials_secretsmanager_use` and `aem_credentials_secretsmanager_secret_id`, following AEM Orchestrator reading the AEM credentials from AWS Secrets Manager instead of S3
 
 ## [3.1.0] - 2026-10-21
 ### Changed

@@ -38,15 +38,15 @@ describe 'aem_orchestrator::application_properties' do
 
     it { is_expected.to contain_file('/tmp/foo').with_content(%r{^aem.credentials.replicator.username = foo}) }
   end
-  context 'with aem_credentials_s3_file_uri => foo' do
-    let(:params) { { aem_credentials_s3_file_uri: 'foo', path: '/tmp/foo', } }
+  context 'with aem_credentials_secretsmanager_secret_id => foo' do
+    let(:params) { { aem_credentials_secretsmanager_secret_id: 'foo', path: '/tmp/foo', } }
 
-    it { is_expected.to contain_file('/tmp/foo').with_content(%r{^aem.credentials.s3.file.uri = foo}) }
+    it { is_expected.to contain_file('/tmp/foo').with_content(%r{^aem.credentials.secretsmanager.secret.id = foo}) }
   end
-  context 'with aem_credentials_s3_use => foo' do
-    let(:params) { { aem_credentials_s3_use: 'foo', path: '/tmp/foo', } }
+  context 'with aem_credentials_secretsmanager_use => foo' do
+    let(:params) { { aem_credentials_secretsmanager_use: 'foo', path: '/tmp/foo', } }
 
-    it { is_expected.to contain_file('/tmp/foo').with_content(%r{^aem.credentials.s3.use = foo}) }
+    it { is_expected.to contain_file('/tmp/foo').with_content(%r{^aem.credentials.secretsmanager.use = foo}) }
   end
   context 'with aem_flush_log_level => foo' do
     let(:params) { { aem_flush_log_level: 'foo', path: '/tmp/foo', } }

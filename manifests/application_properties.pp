@@ -48,11 +48,11 @@
 # @param aem_credentials_replicator_username
 #   Java property `aem.credentials.replicator.username`
 #
-# @param aem_credentials_s3_file_uri
-#   Java property `aem.credentials.s3.file.uri`
+# @param aem_credentials_secretsmanager_secret_id
+#   Java property `aem.credentials.secretsmanager.secret.id`
 #
-# @param aem_credentials_s3_use
-#   Java property `aem.credentials.s3.use`
+# @param aem_credentials_secretsmanager_use
+#   Java property `aem.credentials.secretsmanager.use`
 #
 # @param aem_flush_log_level
 #   Java property `aem.flush.logLevel`
@@ -216,8 +216,8 @@ class aem_orchestrator::application_properties (
   Optional[String] $aem_credentials_orchestrator_username = undef,
   Optional[String] $aem_credentials_replicator_password = undef,
   Optional[String] $aem_credentials_replicator_username = undef,
-  Optional[String] $aem_credentials_s3_file_uri = undef,
-  Optional[String] $aem_credentials_s3_use = undef,
+  Optional[String] $aem_credentials_secretsmanager_secret_id = undef,
+  Optional[String] $aem_credentials_secretsmanager_use = undef,
   Optional[String] $aem_flush_log_level = undef,
   Optional[String] $aem_port_author = undef,
   Optional[String] $aem_port_author_dispatcher = undef,
@@ -276,8 +276,8 @@ class aem_orchestrator::application_properties (
     'aem.credentials.orchestrator.username'                                => $aem_credentials_orchestrator_username,
     'aem.credentials.replicator.password'                                  => $aem_credentials_replicator_password,
     'aem.credentials.replicator.username'                                  => $aem_credentials_replicator_username,
-    'aem.credentials.s3.file.uri'                                          => $aem_credentials_s3_file_uri,
-    'aem.credentials.s3.use'                                               => $aem_credentials_s3_use,
+    'aem.credentials.secretsmanager.secret.id'                             => $aem_credentials_secretsmanager_secret_id,
+    'aem.credentials.secretsmanager.use'                                   => $aem_credentials_secretsmanager_use,
     'aem.flush.logLevel'                                                   => $aem_flush_log_level,
     'aem.port.author'                                                      => $aem_port_author,
     'aem.port.authorDispatcher'                                            => $aem_port_author_dispatcher,
