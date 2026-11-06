@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Replaced the `aem_credentials_s3_use` and `aem_credentials_s3_file_uri` parameters with `aem_credentials_secretsmanager_use` and `aem_credentials_secretsmanager_secret_id`, following AEM Orchestrator reading the AEM credentials from AWS Secrets Manager instead of S3
 
+## [3.2.0] - 2026-11-04
+### Changed
+- Run acceptance tests with the OpenVox 9 agent preinstalled in the nodeset images, instead of installing the release repo and agent again
+- Fall back to the GWDG mirror of yum.voxpupuli.org for the OpenVox 9 release package and repo in the acceptance nodesets, so an outage of yum.voxpupuli.org does not block CI
+- Upgrade aem-platform-buildenv to 6.5.0, which has RTK 4.4.0
+- Upgrade release-action to 2.2.0
+- Changed the default AEM Orchestrator jar to 5.1.0
+
 ## [3.1.0] - 2026-10-21
 ### Changed
 - Changed the default AEM Orchestrator jar to 5.0.0
@@ -117,7 +125,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial version
 
-[Unreleased]: https://github.com/shinesolutions/puppet-aem-orchestrator/compare/3.1.0...HEAD
+[Unreleased]: https://github.com/shinesolutions/puppet-aem-orchestrator/compare/3.2.0...HEAD
+[3.2.0]: https://github.com/shinesolutions/puppet-aem-orchestrator/compare/3.1.0...3.2.0
 [3.1.0]: https://github.com/shinesolutions/puppet-aem-orchestrator/compare/3.0.2...3.1.0
 [3.0.2]: https://github.com/shinesolutions/puppet-aem-orchestrator/compare/3.0.1...3.0.2
 [3.0.1]: https://github.com/shinesolutions/puppet-aem-orchestrator/compare/3.0.0...3.0.1
