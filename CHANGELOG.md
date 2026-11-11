@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Replaced the `aem_credentials_s3_use` and `aem_credentials_s3_file_uri` parameters with `aem_credentials_secretsmanager_use` and `aem_credentials_secretsmanager_secret_id`, following AEM Orchestrator reading the AEM credentials from AWS Secrets Manager instead of S3
 - Make the GitHub Actions workflows' GITHUB_TOKEN read-only
+- Changed the default AEM Orchestrator jar to 6.0.0, which reads the AEM credentials from AWS Secrets Manager
 
 ## [3.2.0] - 2026-11-04
 ### Changed
