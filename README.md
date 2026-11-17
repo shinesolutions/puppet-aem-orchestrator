@@ -1,4 +1,5 @@
 [![Build Status](https://github.com/shinesolutions/puppet-aem-orchestrator/workflows/CI/badge.svg)](https://github.com/shinesolutions/puppet-aem-orchestrator/actions?query=workflow%3ACI)
+[![Code Scanning Status](https://github.com/shinesolutions/puppet-aem-orchestrator/workflows/CodeQL/badge.svg)](https://github.com/shinesolutions/puppet-aem-orchestrator/actions?query=workflow%3ACodeQL)
 
 # shinesolutions-aem_orchestrator
 
